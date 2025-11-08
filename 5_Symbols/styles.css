@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.cv-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.cv-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.cv-card h2 {
+    color: #667eea;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.cv-content {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.cv-content p {
+    margin-bottom: 10px;
+}
+
+.cv-content h3 {
+    color: #764ba2;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.copy-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.1s ease;
+}
+
+.copy-btn:hover {
+    opacity: 0.9;
+}
+
+.copy-btn:active {
+    transform: scale(0.98);
+}
+
+.copy-btn.copied {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+.notification.hidden {
+    display: none;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .cv-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .cv-card {
+        padding: 20px;
+    }
+}
