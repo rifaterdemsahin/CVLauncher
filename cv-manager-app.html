@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 1200px;
+            height: 80vh;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 24px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #212529;
+            margin-bottom: 16px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+
+        .cv-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+        }
+
+        .cv-item {
+            padding: 12px 16px;
+            margin-bottom: 4px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .cv-item:hover {
+            background: #e9ecef;
+        }
+
+        .cv-item.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .cv-item-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .cv-item-desc {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .cv-item-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .cv-item.selected .cv-item-tag {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .main-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-header {
+            padding: 24px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .btn-secondary:hover {
+            background: #dee2e6;
+        }
+
+        .preview-content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            background: #fafafa;
+        }
+
+        .preview-box {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            min-height: 400px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-state svg {
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+
+        .stats {
+            padding: 16px 24px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.show {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #dee2e6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <h1>📋 CV Manager</h1>
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search CVs... (Ctrl+K)" autofocus>
+                </div>
+            </div>
+            <div class="cv-list" id="cvList"></div>
+            <div class="stats">
+                <span id="cvCount">0 CVs</span>
+                <span>Press Ctrl+Enter to copy</span>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <div class="preview-header">
+                <div class="preview-title" id="previewTitle">Select a CV</div>
+                <div class="actions">
+                    <button class="btn btn-secondary" id="editBtn">
+                        ✏️ Edit
+                    </button>
+                    <button class="btn btn-primary" id="copyBtn">
+                        📋 Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+            <div class="preview-content">
+                <div class="preview-box" id="previewBox">
+                    <div class="empty-state">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <h3>No CV Selected</h3>
+                        <p>Select a CV from the list to preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <span>✓</span>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Sample CV data - in production, this would load from files
+        const cvData = [
+            { id: 'cto', name: 'CTO', desc: 'Chief Technology Officer', tag: 'Leadership', content: 'CHIEF TECHNOLOGY OFFICER\n\nEXPERIENCE:\n• Led engineering teams of 50+ developers\n• Built scalable architecture serving 10M+ users\n• Implemented CI/CD pipelines reducing deploy time by 80%' },
+            { id: 'devops', name: 'DevOps', desc: 'DevOps Engineer', tag: 'Engineering', content: 'DEVOPS ENGINEER\n\nSKILLS:\n• AWS, Azure, GCP\n• Docker, Kubernetes\n• Terraform, Ansible\n• Jenkins, GitLab CI\n\nEXPERIENCE:\n• Automated infrastructure deployment\n• Reduced deployment time by 70%' },
+            { id: 'aiengineer', name: 'AI Engineer', desc: 'AI/ML Engineer', tag: 'AI/ML', content: 'AI/ML ENGINEER\n\nSKILLS:\n• Python, TensorFlow, PyTorch\n• NLP, Computer Vision\n• MLOps, Model Deployment\n\nEXPERIENCE:\n• Developed recommendation engine\n• Implemented real-time ML pipelines' },
+            { id: 'frontend', name: 'Frontend', desc: 'Frontend Developer (React)', tag: 'Engineering', content: 'FRONTEND DEVELOPER\n\nSKILLS:\n• React, TypeScript, Next.js\n• Tailwind CSS, Material-UI\n• State Management (Redux, Zustand)\n\nEXPERIENCE:\n• Built responsive web applications\n• Optimized performance (Lighthouse 95+)' },
+            { id: 'backend', name: 'Backend', desc: 'Backend Developer (Node.js)', tag: 'Engineering', content: 'BACKEND DEVELOPER\n\nSKILLS:\n• Node.js, Express, NestJS\n• PostgreSQL, MongoDB, Redis\n• REST APIs, GraphQL\n\nEXPERIENCE:\n• Designed microservices architecture\n• Handled 100k+ requests/minute' },
+            { id: 'fullstack', name: 'Full Stack', desc: 'Full Stack Developer', tag: 'Engineering', content: 'FULL STACK DEVELOPER\n\nSKILLS:\n• Frontend: React, Vue.js\n• Backend: Node.js, Python\n• Database: PostgreSQL, MongoDB\n\nEXPERIENCE:\n• End-to-end feature development\n• Built and deployed production apps' },
+            { id: 'dataengineer', name: 'Data Engineer', desc: 'Data Engineering', tag: 'Data', content: 'DATA ENGINEER\n\nSKILLS:\n• Python, Spark, Airflow\n• Data Warehousing (Snowflake, BigQuery)\n• ETL Pipelines\n\nEXPERIENCE:\n• Built data pipelines processing TB+ daily\n• Designed data lake architecture' },
+            { id: 'productmanager', name: 'Product Manager', desc: 'Product Management', tag: 'Product', content: 'PRODUCT MANAGER\n\nSKILLS:\n• Product Strategy & Roadmapping\n• User Research & Analytics\n• Agile/Scrum\n\nEXPERIENCE:\n• Launched 5+ successful products\n• Increased user engagement by 150%' }
+        ];
+
+        let selectedCV = null;
+        let filteredCVs = cvData;
+
+        const searchInput = document.getElementById('searchInput');
+        const cvList = document.getElementById('cvList');
+        const previewBox = document.getElementById('previewBox');
+        const previewTitle = document.getElementById('previewTitle');
+        const copyBtn = document.getElementById('copyBtn');
+        const editBtn = document.getElementById('editBtn');
+        const notification = document.getElementById('notification');
+        const cvCount = document.getElementById('cvCount');
+
+        function renderCVList() {
+            cvList.innerHTML = '';
+            
+            if (filteredCVs.length === 0) {
+                cvList.innerHTML = '<div class="no-results">No CVs found</div>';
+                return;
+            }
+
+            filteredCVs.forEach((cv, index) => {
+                const item = document.createElement('div');
+                item.className = 'cv-item';
+                if (selectedCV && selectedCV.id === cv.id) {
+                    item.classList.add('selected');
+                }
+                
+                item.innerHTML = `
+                    <div class="cv-item-name">/cv${cv.id}</div>
+                    <div class="cv-item-desc">${cv.desc}</div>
+                    <div class="cv-item-tag">${cv.tag}</div>
+                `;
+                
+                item.addEventListener('click', () => selectCV(cv));
+                cvList.appendChild(item);
+            });
+
+            cvCount.textContent = `${filteredCVs.length} CV${filteredCVs.length !== 1 ? 's' : ''}`;
+        }
+
+        function selectCV(cv) {
+            selectedCV = cv;
+            renderCVList();
+            previewTitle.textContent = cv.desc;
+            previewBox.textContent = cv.content;
+            previewBox.style.fontFamily = "'Courier New', monospace";
+        }
+
+        function filterCVs(query) {
+            query = query.toLowerCase();
+            filteredCVs = cvData.filter(cv => 
+                cv.name.toLowerCase().includes(query) ||
+                cv.desc.toLowerCase().includes(query) ||
+                cv.tag.toLowerCase().includes(query) ||
+                cv.id.toLowerCase().includes(query)
+            );
+            renderCVList();
+        }
+
+        function copyToClipboard() {
+            if (!selectedCV) return;
+            
+            navigator.clipboard.writeText(selectedCV.content).then(() => {
+                showNotification();
+            });
+        }
+
+        function showNotification() {
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        function editCV() {
+            if (!selectedCV) return;
+            
+            const newContent = prompt('Edit CV content:', selectedCV.content);
+            if (newContent !== null) {
+                selectedCV.content = newContent;
+                previewBox.textContent = newContent;
+                showNotification();
+            }
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', (e) => filterCVs(e.target.value));
+        copyBtn.addEventListener('click', copyToClipboard);
+        editBtn.addEventListener('click', editCV);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+K to focus search
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+                searchInput.select();
+            }
+            
+            // Ctrl+Enter to copy
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                copyToClipboard();
+            }
+
+            // Arrow navigation
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                const currentIndex = filteredCVs.findIndex(cv => cv.id === selectedCV?.id);
+                let newIndex;
+                
+                if (e.key === 'ArrowDown') {
+                    newIndex = currentIndex < filteredCVs.length - 1 ? currentIndex + 1 : 0;
+                } else {
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : filteredCVs.length - 1;
+                }
+                
+                if (filteredCVs[newIndex]) {
+                    selectCV(filteredCVs[newIndex]);
+                }
+            }
+        });
+
+        // Initialize
+        renderCVList();
+        if (cvData.length > 0) {
+            selectCV(cvData[0]);
+        }
+    </script>
+</body>
+</html>
