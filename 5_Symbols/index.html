@@ -20,7 +20,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             padding: 20px;
         }
 
@@ -347,10 +346,20 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                justify-content: flex-start;
+            }
+            
+            .main-content {
+                align-items: flex-start;
+            }
+            
             .container {
                 grid-template-columns: 1fr;
                 height: auto;
-                min-height: 70vh;
+                min-height: 60vh;
+                max-height: none;
             }
             
             .sidebar {
@@ -370,15 +379,45 @@
                 max-height: 200px;
             }
             
-            body {
-                padding: 10px;
+            .preview-header {
+                padding: 16px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .actions {
+                gap: 8px;
+                width: 100%;
+                justify-content: stretch;
+            }
+            
+            .actions .btn {
+                flex: 1;
+                justify-content: center;
+                padding: 12px 16px;
+                font-size: 13px;
+            }
+            
+            .preview-content {
+                padding: 16px;
+            }
+            
+            .preview-box {
+                padding: 16px;
+                font-size: 12px;
+                min-height: 300px;
             }
         }
 
         @media (max-width: 576px) {
+            body {
+                padding: 5px;
+            }
+            
             .container {
                 border-radius: 8px;
                 margin: 10px 0;
+                min-height: 50vh;
             }
             
             .header {
@@ -388,12 +427,32 @@
             .search-box input {
                 font-size: 14px;
             }
+            
+            .preview-header {
+                padding: 12px;
+            }
+            
+            .actions .btn {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            
+            .preview-content {
+                padding: 12px;
+            }
+            
+            .preview-box {
+                padding: 12px;
+                font-size: 11px;
+                min-height: 250px;
+            }
         }
 
         /* Enhanced Footer Responsive Styles */
         footer {
-            margin-top: 20px !important;
+            margin-top: auto !important;
             padding: 30px 20px 20px 20px !important;
+            flex-shrink: 0;
         }
 
         @media (max-width: 768px) {
@@ -401,6 +460,7 @@
                 flex-direction: column !important;
                 gap: 20px !important;
                 text-align: center !important;
+                margin-top: 20px !important;
             }
             
             .footer-section {
