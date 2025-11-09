@@ -1,0 +1,187 @@
+TITLE: CV Portfolio Tutorial - Music & Sound Effects
+FCM: NON-DROP FRAME
+
+001  BL       V     C        01:00:00:00 01:05:43:23 01:00:00:00 01:05:43:23
+* FROM CLIP NAME: Background_Music_Track_1
+* COMMENT: Search: "upbeat corporate tech" or "motivational business"
+* VOLUME: 20%
+
+002  BL       A     C        01:00:12:18 01:00:13:00 01:00:12:18 01:00:13:00
+* FROM CLIP NAME: SFX_Whoosh_01
+* COMMENT: "Watch this carefully" attention grabber
+* VOLUME: 35%
+
+003  BL       A     C        01:00:18:07 01:00:18:15 01:00:18:07 01:00:18:15
+* FROM CLIP NAME: SFX_Pop_01
+* COMMENT: Data analyst CV reveal
+* VOLUME: 30%
+
+004  BL       A     C        01:00:21:02 01:00:21:10 01:00:21:02 01:00:21:10
+* FROM CLIP NAME: SFX_Pop_02
+* COMMENT: Product manager CV reveal
+* VOLUME: 30%
+
+005  BL       A     C        01:00:23:04 01:00:23:12 01:00:23:04 01:00:23:12
+* FROM CLIP NAME: SFX_Pop_03
+* COMMENT: Software engineer CV reveal
+* VOLUME: 30%
+
+006  BL       A     C        01:01:04:16 01:01:04:24 01:01:04:16 01:01:04:24
+* FROM CLIP NAME: SFX_Button_Click_Step1
+* COMMENT: "Step 1" announcement
+* VOLUME: 40%
+
+007  BL       A     C        01:01:07:05 01:01:08:00 01:01:07:05 01:01:08:00
+* FROM CLIP NAME: SFX_Keyboard_Typing_01
+* COMMENT: ChatGPT prompt paste moment
+* VOLUME: 25%
+
+008  BL       A     C        01:01:26:13 01:01:27:10 01:01:26:13 01:01:27:10
+* FROM CLIP NAME: SFX_Keyboard_Typing_02
+* COMMENT: Master CV and job description paste
+* VOLUME: 25%
+
+009  BL       A     C        01:01:48:08 01:01:48:20 01:01:48:08 01:01:48:20
+* FROM CLIP NAME: SFX_Success_Ding
+* COMMENT: Markdown output complete
+* VOLUME: 35%
+
+010  BL       A     C        01:02:13:20 01:02:14:04 01:02:13:20 01:02:14:04
+* FROM CLIP NAME: SFX_Button_Click_Step2
+* COMMENT: "Step 2" announcement
+* VOLUME: 40%
+
+011  BL       A     C        01:02:20:17 01:02:21:05 01:02:20:17 01:02:21:05
+* FROM CLIP NAME: SFX_Keyboard_Typing_03
+* COMMENT: ChatGPT Word conversion prompt
+* VOLUME: 25%
+
+012  BL       A     C        01:02:31:21 01:02:32:09 01:02:31:21 01:02:32:09
+* FROM CLIP NAME: SFX_Upload
+* COMMENT: Upload to Google Drive
+* VOLUME: 35%
+
+013  BL       A     C        01:02:34:14 01:02:35:02 01:02:34:14 01:02:35:02
+* FROM CLIP NAME: SFX_Download_PDF
+* COMMENT: Export as PDF
+* VOLUME: 35%
+
+014  BL       A     C        01:02:45:14 01:02:45:22 01:02:45:14 01:02:45:22
+* FROM CLIP NAME: SFX_Button_Click_Step3
+* COMMENT: "Step 3" announcement
+* VOLUME: 40%
+
+015  BL       A     C        01:03:03:04 01:03:04:00 01:03:03:04 01:03:04:00
+* FROM CLIP NAME: SFX_Upload_GitHub
+* COMMENT: Upload files to GitHub
+* VOLUME: 35%
+
+016  BL       A     C        01:03:15:14 01:03:15:22 01:03:15:14 01:03:15:22
+* FROM CLIP NAME: SFX_Button_Click_Step4
+* COMMENT: "Step 4" announcement
+* VOLUME: 40%
+
+017  BL       A     C        01:03:28:17 01:03:29:05 01:03:28:17 01:03:29:05
+* FROM CLIP NAME: SFX_Keyboard_Typing_04
+* COMMENT: GitHub Copilot prompt
+* VOLUME: 25%
+
+018  BL       A     C        01:03:47:15 01:03:48:00 01:03:47:15 01:03:48:00
+* FROM CLIP NAME: SFX_Swipe_Interface
+* COMMENT: Portfolio page reveal
+* VOLUME: 30%
+
+019  BL       A     C        01:04:00:05 01:04:00:15 01:04:00:05 01:04:00:15
+* FROM CLIP NAME: SFX_Mouse_Click
+* COMMENT: Recruiter clicks portfolio link
+* VOLUME: 35%
+
+020  BL       A     C        01:04:07:00 01:04:07:12 01:04:07:00 01:04:07:12
+* FROM CLIP NAME: SFX_Download_CV
+* COMMENT: Recruiter downloads CV
+* VOLUME: 35%
+
+021  BL       A     C        01:04:32:10 01:04:33:00 01:04:32:10 01:04:33:00
+* FROM CLIP NAME: SFX_Level_Up_Success
+* COMMENT: "10x your responses" - BIG WIN moment
+* VOLUME: 45%
+
+022  BL       A     C        01:04:43:17 01:04:44:03 01:04:43:17 01:04:44:03
+* FROM CLIP NAME: SFX_Bell_Notification
+* COMMENT: "Hit subscribe" call to action
+* VOLUME: 40%
+
+023  BL       A     C        01:05:35:08 01:05:36:00 01:05:35:08 01:05:36:00
+* FROM CLIP NAME: SFX_Achievement_Fanfare
+* COMMENT: End screen CTA appears
+* VOLUME: 40%
+
+024  BL       V     C        01:02:45:00 01:05:43:23 01:02:45:00 01:05:43:23
+* FROM CLIP NAME: Background_Music_Track_2
+* COMMENT: Search: "inspiring success" or "achievement corporate" (optional second track)
+* VOLUME: 25%
+
+===== MUSIC DUCKING KEYFRAMES =====
+
+KEYFRAME 001: 01:01:04:00 - Background_Music_Track_1 - Volume: 15%
+KEYFRAME 002: 01:02:10:00 - Background_Music_Track_1 - Volume: 20%
+KEYFRAME 003: 01:02:13:00 - Background_Music_Track_1 - Volume: 15%
+KEYFRAME 004: 01:02:42:00 - Background_Music_Track_1 - Volume: 20%
+KEYFRAME 005: 01:02:45:00 - Background_Music_Track_1 - Volume: 15%
+KEYFRAME 006: 01:03:15:00 - Background_Music_Track_1 - Volume: 20%
+KEYFRAME 007: 01:04:25:00 - Background_Music_Track_1 - Volume: 25%
+
+===== CANVA SEARCH REFERENCE =====
+
+BACKGROUND MUSIC:
+- Track 1 (01:00:00 - 01:05:43): "upbeat corporate tech" OR "motivational business" OR "tech tutorial background"
+- Track 2 (Optional 01:02:45 - end): "inspiring success" OR "achievement corporate"
+
+SOUND EFFECTS BY CATEGORY:
+- Whoosh/Swoosh: Search "whoosh" or "swoosh transition"
+- Pop/UI Sounds: Search "pop" or "bubble pop" or "UI notification"
+- Button Clicks: Search "button click" or "interface click"
+- Keyboard Typing: Search "keyboard typing short" (0.5-1 second clips)
+- Success Sounds: Search "success ding" or "achievement bell"
+- Upload Sounds: Search "upload" or "file transfer"
+- Download Sounds: Search "download complete" or "file save"
+- Level Up: Search "level up" or "achievement unlock"
+- Bell: Search "bell notification" or "subscribe bell"
+- Final Fanfare: Search "success fanfare short" or "achievement"
+
+===== IMPORT INSTRUCTIONS FOR DAVINCI RESOLVE =====
+
+1. Save this file as "CV_Tutorial_Music_SFX.edl"
+2. In DaVinci Resolve: File > Import > Timeline > Import AAF, EDL, XML
+3. Select this EDL file
+4. Choose "Create New Timeline"
+5. All clips will be placed at correct timecodes with comments
+6. Search for sound effects in your library using the comments as reference
+7. Replace placeholder clips with actual audio files
+8. Adjust volumes using the percentages in comments
+9. Add audio ducking keyframes manually (see MUSIC DUCKING KEYFRAMES section)
+
+===== PRIORITY ORDER FOR IMPLEMENTATION =====
+
+ESSENTIAL (Do These First):
+- Event 001: Background Music Track
+- Event 006: Step 1 click
+- Event 010: Step 2 click
+- Event 014: Step 3 click
+- Event 016: Step 4 click
+- Event 021: "10x" success sound
+- Event 022: Subscribe bell
+
+RECOMMENDED (Add Next):
+- Events 003-005: CV reveal pops
+- Event 002: "Watch this" whoosh
+- Events 012-013: Upload/Download sounds
+- Event 023: End screen fanfare
+
+POLISH (If Time Permits):
+- Events 007-008, 011, 017: Typing sounds
+- Events 018-020: UI interaction sounds
+- Event 024: Optional second music track
+- All keyframe ducking
+
+===== END OF EDL =====
