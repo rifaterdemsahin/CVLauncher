@@ -1,0 +1,660 @@
+1
+01:00:00,000 --> 01:00:09,099
+ I send a custom response that
+
+2
+01:00:09,099 --> 01:00:11,033
+ matches the job description.
+
+3
+01:00:11,033 --> 01:00:12,366
+ The recruiters don't
+
+4
+01:00:12,366 --> 01:00:14,000
+ need to find which CV.
+
+5
+01:00:14,466 --> 01:00:15,750
+ I've already done it
+
+6
+01:00:15,750 --> 01:00:18,283
+ for them using my system.
+
+7
+01:00:18,283 --> 01:00:19,483
+ Watch this carefully.
+
+8
+01:00:19,483 --> 01:00:20,766
+ Watch this carefully.
+
+9
+01:00:20,766 --> 01:00:22,983
+ This is my GitHub CV portfolio.
+
+10
+01:00:22,983 --> 01:00:25,599
+ Every role I apply for I use.
+
+11
+01:00:25,599 --> 01:00:27,033
+ Every role I apply
+
+12
+01:00:27,033 --> 01:00:28,966
+ for has its own version.
+
+13
+01:00:28,966 --> 01:00:31,983
+ A data analyst I have a CV for that.
+
+14
+01:00:31,983 --> 01:00:34,133
+ A product manager I got one.
+
+15
+01:00:34,150 --> 01:00:35,466
+ A software engineer,
+
+16
+01:00:35,816 --> 01:00:37,650
+ yep, I have that one too.
+
+17
+01:00:37,650 --> 01:00:40,150
+ Recruiters love this because they can see
+
+18
+01:00:40,150 --> 01:00:42,266
+ I am serious and I'm prepared.
+
+19
+01:00:42,266 --> 01:00:44,833
+ All their questions are answered and the
+
+20
+01:00:44,833 --> 01:00:46,616
+ links are ready to go.
+
+21
+01:00:46,616 --> 01:00:48,199
+ Most people just attach
+
+22
+01:00:48,199 --> 01:00:50,716
+ one CV to every email and
+
+23
+01:00:50,766 --> 01:00:51,766
+ the LinkedIn message.
+
+24
+01:00:52,066 --> 01:00:54,566
+ It is the old boring one-liner.
+
+25
+01:00:54,566 --> 01:00:56,183
+ Recruiters have to dig through
+
+26
+01:00:56,183 --> 01:00:57,533
+ attachments and wonder
+
+27
+01:00:57,533 --> 01:01:01,466
+ if it is current or not.
+
+28
+01:01:02,233 --> 01:01:04,583
+ Worse, they just ignore it because they
+
+29
+01:01:04,583 --> 01:01:06,566
+ have so many CVs and it
+
+30
+01:01:06,566 --> 01:01:08,050
+ is not relevant to them.
+
+31
+01:01:08,050 --> 01:01:10,366
+ You need a system that makes the
+
+32
+01:01:10,366 --> 01:01:12,250
+ recruiters job easier.
+
+33
+01:01:12,250 --> 01:01:14,633
+ Here is how I built for my contracting
+
+34
+01:01:14,633 --> 01:01:16,449
+ journey that helped me make
+
+35
+01:01:16,449 --> 01:01:18,066
+ more than a million pounds.
+
+36
+01:01:18,066 --> 01:01:18,483
+ Step 1.
+
+37
+01:01:18,816 --> 01:01:21,616
+ Generate a tailored CV with chat GPT.
+
+38
+01:01:21,616 --> 01:01:24,400
+ Open chat GPT and paste your current CV
+
+39
+01:01:24,400 --> 01:01:25,750
+ and use this prompt.
+
+40
+01:01:25,750 --> 01:01:26,050
+ Step 2.
+
+41
+01:01:26,050 --> 01:01:29,300
+ Convert this CV to clean markdown format.
+
+42
+01:01:29,516 --> 01:01:33,416
+ Keep all information but structure to its
+
+43
+01:01:33,416 --> 01:01:36,150
+ headers, bullet points and sections.
+
+44
+01:01:36,150 --> 01:01:39,783
+ Save that as your master CV in markdown.
+
+45
+01:01:39,783 --> 01:01:42,216
+ Now target each role you are targeting.
+
+46
+01:01:42,533 --> 01:01:44,416
+ Paste your master CV and
+
+47
+01:01:44,416 --> 01:01:47,183
+ job description into chat GPT.
+
+48
+01:01:47,566 --> 01:01:53,516
+ Step 3.
+
+49
+01:01:53,516 --> 01:01:54,516
+ Use this prompt.
+
+50
+01:01:55,133 --> 01:01:58,183
+ Here is my CV in markdown and
+
+51
+01:01:58,183 --> 01:02:00,050
+ here is the job description.
+
+52
+01:02:00,050 --> 01:02:02,783
+ Rewrite my CV to highlight relevant
+
+53
+01:02:02,783 --> 01:02:05,849
+ experience for the specific role.
+
+54
+01:02:05,849 --> 01:02:07,983
+ Go over it, keep it truthful, but
+
+55
+01:02:07,983 --> 01:02:09,550
+ optimize the language to
+
+56
+01:02:09,550 --> 01:02:10,750
+ match their requirements.
+
+57
+01:02:10,750 --> 01:02:13,250
+ Now you have an output as markdown.
+
+58
+01:02:13,766 --> 01:02:16,083
+ Do this for 5 to 10 different
+
+59
+01:02:16,083 --> 01:02:17,433
+ roles that you are interested.
+
+60
+01:02:17,433 --> 01:02:19,033
+ If you want to go as extreme,
+
+61
+01:02:19,449 --> 01:02:21,150
+ you can go to 50 like I did.
+
+62
+01:02:21,733 --> 01:02:24,050
+ Because I did it for DevOps, AI
+
+63
+01:02:24,183 --> 01:02:26,233
+ engineers, data analysts, product
+
+64
+01:02:26,233 --> 01:02:29,016
+ manager, technical writer, operations
+
+65
+01:02:29,016 --> 01:02:30,550
+ coordinator, software
+
+66
+01:02:30,933 --> 01:02:31,333
+ engineer.
+
+67
+01:02:31,333 --> 01:02:35,216
+ It takes about 30 minutes per role as
+
+68
+01:02:35,216 --> 01:02:37,500
+ your initial investment in the beginning.
+
+69
+01:02:37,500 --> 01:02:38,683
+ Step two, convert
+
+70
+01:02:38,683 --> 01:02:40,599
+ recruiter friendly formats.
+
+71
+01:02:40,599 --> 01:02:44,566
+ Take each Martel CV and AskChat GPT.
+
+72
+01:02:44,566 --> 01:02:46,783
+ Convert this into a professional Word
+
+73
+01:02:46,783 --> 01:02:50,433
+ document with clean formatting, standard
+
+74
+01:02:50,433 --> 01:02:53,400
+ fonts and ATS friendly structure.
+
+75
+01:02:53,400 --> 01:02:57,099
+ Then upload each Word file to Google
+
+76
+01:02:57,099 --> 01:03:00,599
+ Drive and export it as PDF2 because you
+
+77
+01:03:00,599 --> 01:03:02,550
+ want to make sure the recruiter can
+
+78
+01:03:02,550 --> 01:03:05,766
+ download the doc, open it and read the
+
+79
+01:03:05,766 --> 01:03:07,766
+ PDF as easy as possible.
+
+80
+01:03:07,766 --> 01:03:10,083
+ Now you got the both formats ready.
+
+81
+01:03:10,083 --> 01:03:12,133
+ Step three, host them in GitHub.
+
+82
+01:03:12,150 --> 01:03:14,516
+ Create a GitHub account if you don't have
+
+83
+01:03:14,516 --> 01:03:18,016
+ one and use your name as a marker that
+
+84
+01:03:18,016 --> 01:03:20,533
+ shows this is coming from your end.
+
+85
+01:03:20,933 --> 01:03:24,666
+ Make a new repository called CV portfolio
+
+86
+01:03:24,666 --> 01:03:26,516
+ and set it to public.
+
+87
+01:03:26,516 --> 01:03:29,116
+ Turn GitHub pages into settings, upload
+
+88
+01:03:29,116 --> 01:03:32,033
+ your PDF and Word files into GitHub.
+
+89
+01:03:32,033 --> 01:03:34,699
+ GitHub gives you a link to direct
+
+90
+01:03:34,699 --> 01:03:38,250
+ download link for each CV that you have
+
+91
+01:03:38,250 --> 01:03:41,033
+ uploaded in Word as well as in PDF.
+
+92
+01:03:41,033 --> 01:03:42,300
+ Step four, use GitHub
+
+93
+01:03:42,300 --> 01:03:44,500
+ pages as your landing page.
+
+94
+01:03:44,500 --> 01:03:44,566
+ This
+
+95
+01:03:44,566 --> 01:03:48,416
+ In your repository, create a
+
+96
+01:03:48,416 --> 01:03:50,633
+ file name called index HTML.
+
+97
+01:03:50,633 --> 01:03:52,650
+ In GitHub code spaces,
+
+98
+01:03:52,650 --> 01:03:53,849
+ there's a free co-pilot.
+
+99
+01:03:54,116 --> 01:03:54,566
+ Use it.
+
+100
+01:03:55,116 --> 01:03:56,516
+ Ask it to generate a
+
+101
+01:03:56,516 --> 01:03:58,750
+ portfolio page for you.
+
+102
+01:03:58,750 --> 01:04:01,366
+ If not, you can use my basic HTML
+
+103
+01:04:01,366 --> 01:04:02,883
+ template that I provided in
+
+104
+01:04:02,883 --> 01:04:07,433
+ This becomes your portfolio homepage.
+
+105
+01:04:07,433 --> 01:04:10,066
+ Ask co-pilot to list each role with a
+
+106
+01:04:10,066 --> 01:04:11,966
+ search function and the
+
+107
+01:04:11,966 --> 01:04:13,650
+ clipboard to copy buttons.
+
+108
+01:04:17,449 --> 01:04:20,099
+ Here is what mine looks like for a data
+
+109
+01:04:20,099 --> 01:04:23,066
+ analyst role download PDF and download
+
+110
+01:04:23,066 --> 01:04:26,433
+ word is already there the github file
+
+111
+01:04:26,433 --> 01:04:30,466
+ links are there next to each role easy to
+
+112
+01:04:30,466 --> 01:04:32,349
+ download for the recruiter.
+
+113
+01:04:32,349 --> 01:04:36,866
+ Now you got the responses and my
+
+114
+01:04:36,866 --> 01:04:37,783
+ responses have
+
+115
+01:04:37,800 --> 01:04:41,000
+ github.com slash rufa tardem sign.
+
+116
+01:04:41,000 --> 01:04:44,483
+ Put this into every job application from
+
+117
+01:04:44,483 --> 01:04:46,183
+ LinkedIn or in the email.
+
+118
+01:04:46,183 --> 01:04:49,449
+ Recruiters click it read it and see the
+
+119
+01:04:49,449 --> 01:04:52,816
+ tailored CV organized by the roles and
+
+120
+01:04:52,816 --> 01:04:56,083
+ they download whichever they need because
+
+121
+01:04:56,083 --> 01:04:58,050
+ I am filtering before they
+
+122
+01:04:58,050 --> 01:04:59,883
+ are going to do the search.
+
+123
+01:04:59,883 --> 01:05:02,583
+ The results my response rates are going
+
+124
+01:05:02,583 --> 01:05:05,333
+ up if you are getting 2% response rate
+
+125
+01:05:05,333 --> 01:05:07,983
+ it's going to move up to 20% you are
+
+126
+01:05:07,983 --> 01:05:10,750
+ going to 10x your responses because you
+
+127
+01:05:10,750 --> 01:05:12,083
+ became more relevant.
+
+128
+01:05:12,083 --> 01:05:14,633
+ Recruiters started commenting on how
+
+129
+01:05:14,633 --> 01:05:17,733
+ professional and how prepared I seem
+
+130
+01:05:17,783 --> 01:05:21,016
+ that's very very critical even one hiring
+
+131
+01:05:21,016 --> 01:05:24,500
+ manager told me I was only candidate who
+
+132
+01:05:24,500 --> 01:05:26,400
+ made it easy for them.
+
+133
+01:05:26,400 --> 01:05:31,366
+ Here is what you are going to do today
+
+134
+01:05:31,366 --> 01:05:37,583
+ take your current CV and convert it to
+
+135
+01:05:37,583 --> 01:05:39,666
+ markdown in chat GPT.
+
+136
+01:05:39,666 --> 01:05:43,500
+ Generate five tailored versions for
+
+137
+01:05:43,500 --> 01:05:45,216
+ different roles that you are interested.
+
+138
+01:05:45,216 --> 01:05:46,516
+ That is your foundation.
+
+139
+01:05:46,516 --> 01:05:49,099
+ Once you master this you will generate
+
+140
+01:05:49,099 --> 01:05:51,683
+ and upload new CV
+
+141
+01:05:51,683 --> 01:05:53,466
+ versions under two minutes.
+
+142
+01:05:53,466 --> 01:05:57,250
+ You can update the old ones with co-pilot
+
+143
+01:05:57,250 --> 01:05:58,500
+ whenever you need to
+
+144
+01:05:58,500 --> 01:06:00,516
+ because I have the system for it.
+
+145
+01:06:01,533 --> 01:06:03,699
+ Hit subscribe if you don't want to miss
+
+146
+01:06:03,699 --> 01:06:05,233
+ the related content that
+
+147
+01:06:05,233 --> 01:06:06,733
+ I'm releasing in this channel.
+
+148
+01:06:07,000 --> 01:06:08,966
+ I'm using the AI the...
+
+149
+01:06:08,966 --> 01:06:09,483
+ Hit susc...
+
+150
+01:06:09,483 --> 01:06:18,550
+ Hit subscribe so you don't
+
+151
+01:06:18,550 --> 01:06:20,083
+ miss the related content.
+
+152
+01:06:20,083 --> 01:06:22,016
+ I create popular AI
+
+153
+01:06:22,016 --> 01:06:24,300
+ content for your career growth.
+
+154
+01:06:24,300 --> 01:06:27,000
+ If you want my exact GitHub template with
+
+155
+01:06:27,000 --> 01:06:29,583
+ all the formatting and you got questions,
+
+156
+01:06:29,583 --> 01:06:31,366
+ feel free to ask them in the comments.
+
+157
+01:06:31,366 --> 01:06:33,400
+ Feel free to ask them in the comments.
+
+158
+01:06:33,400 --> 01:06:34,800
+ Stop sending attachments,
+
+159
+01:06:35,316 --> 01:06:36,500
+ start sending your portfolio.
+
+160
+01:06:36,550 --> 01:06:43,250
+ By the way, I'm also sharing my complete
+
+161
+01:06:43,250 --> 01:06:45,449
+ IT contractor course for
+
+162
+01:06:45,449 --> 01:06:46,733
+ free in the description.
+
+163
+01:06:46,733 --> 01:06:48,133
+ There's a coupon code there.
+
+164
+01:06:48,433 --> 01:06:49,733
+ See you in the next video.
+
+165
+01:06:49,949 --> 01:06:50,633
+ Bye bye bye bye.
+
