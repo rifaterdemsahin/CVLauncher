@@ -329,6 +329,19 @@
             color: #6c757d;
         }
 
+        .loading-state {
+            padding: 40px;
+            text-align: center;
+            color: #667eea;
+            font-size: 16px;
+            animation: pulse 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -541,7 +554,6 @@
             </div>
         </div>
     </div>
-    </div>
 
     <footer class="container-fluid border-top mt-4 pt-4" style="border-top: 1px solid rgba(255, 255, 255, 0.2) !important; max-width: 1200px;">
         <div class="row g-4">
@@ -591,20 +603,63 @@
     </div>
 
     <script>
+        // CV data with references to actual files
         const cvData = [
-            { id: 'cto', name: 'CTO', desc: 'Chief Technology Officer', tag: 'Leadership', content: 'CHIEF TECHNOLOGY OFFICER\n\nEXPERIENCE:\n• Led engineering teams of 50+ developers\n• Built scalable architecture serving 10M+ users\n• Implemented CI/CD pipelines reducing deploy time by 80%' },
-            { id: 'devops', name: 'DevOps', desc: 'DevOps Engineer', tag: 'Engineering', content: 'DEVOPS ENGINEER\n\nSKILLS:\n• AWS, Azure, GCP\n• Docker, Kubernetes\n• Terraform, Ansible\n• Jenkins, GitLab CI\n\nEXPERIENCE:\n• Automated infrastructure deployment\n• Reduced deployment time by 70%' },
-            { id: 'platform', name: 'Platform Engineer', desc: 'Platform Engineering', tag: 'Engineering', content: 'PLATFORM ENGINEER\n\nSKILLS:\n• Kubernetes, Istio, Envoy, OpenShift\n• AWS (EKS, ECS, Lambda), Azure (AKS), GCP (GKE)\n• Terraform, Pulumi, Crossplane, Backstage\n• Prometheus, Grafana, Jaeger, OpenTelemetry\n\nEXPERIENCE:\n• Built self-service platform serving 200+ developers across 15 teams\n• Reduced onboarding time for new services from 2 weeks to 2 hours\n• Implemented zero-downtime deployments with automated rollback\n• Achieved 99.95% platform availability with comprehensive monitoring\n\nDOWNLOADS:\n📄 DOCX: https://github.com/rifaterdemsahin/CVLauncher/raw/main/5_Symbols/November2025/Platform%20Engineer%202025%20November.docx\n📋 PDF: https://github.com/rifaterdemsahin/CVLauncher/raw/main/5_Symbols/November2025/Platform%20Engineer%202025%20November.pdf' },
-            { id: 'aiengineer', name: 'AI Engineer', desc: 'AI/ML Engineer', tag: 'AI/ML', content: 'AI/ML ENGINEER\n\nSKILLS:\n• Python, TensorFlow, PyTorch\n• NLP, Computer Vision\n• MLOps, Model Deployment\n\nEXPERIENCE:\n• Developed recommendation engine\n• Implemented real-time ML pipelines' },
-            { id: 'frontend', name: 'Frontend', desc: 'Frontend Developer (React)', tag: 'Engineering', content: 'FRONTEND DEVELOPER\n\nSKILLS:\n• React, TypeScript, Next.js\n• Tailwind CSS, Material-UI\n• State Management (Redux, Zustand)\n\nEXPERIENCE:\n• Built responsive web applications\n• Optimized performance (Lighthouse 95+)' },
-            { id: 'backend', name: 'Backend', desc: 'Backend Developer (Node.js)', tag: 'Engineering', content: 'BACKEND DEVELOPER\n\nSKILLS:\n• Node.js, Express, NestJS\n• PostgreSQL, MongoDB, Redis\n• REST APIs, GraphQL\n\nEXPERIENCE:\n• Designed microservices architecture\n• Handled 100k+ requests/minute' },
-            { id: 'fullstack', name: 'Full Stack', desc: 'Full Stack Developer', tag: 'Engineering', content: 'FULL STACK DEVELOPER\n\nSKILLS:\n• Frontend: React, Vue.js\n• Backend: Node.js, Python\n• Database: PostgreSQL, MongoDB\n\nEXPERIENCE:\n• End-to-end feature development\n• Built and deployed production apps' },
-            { id: 'dataengineer', name: 'Data Engineer', desc: 'Data Engineering', tag: 'Data', content: 'DATA ENGINEER\n\nSKILLS:\n• Python, Spark, Airflow\n• Data Warehousing (Snowflake, BigQuery)\n• ETL Pipelines\n\nEXPERIENCE:\n• Built data pipelines processing TB+ daily\n• Designed data lake architecture' },
-            { id: 'productmanager', name: 'Product Manager', desc: 'Product Management', tag: 'Product', content: 'PRODUCT MANAGER\n\nSKILLS:\n• Product Strategy & Roadmapping\n• User Research & Analytics\n• Agile/Scrum\n\nEXPERIENCE:\n• Launched 5+ successful products\n• Increased user engagement by 150%' }
+            { id: 'ai_engineer', name: 'AI Engineer', desc: 'AI/ML Engineer', tag: 'AI/ML', file: 'cvs/cv_ai_engineer.md' },
+            { id: 'ai_platform_engineer', name: 'AI Platform Engineer', desc: 'AI Platform Engineer', tag: 'AI/ML', file: 'cvs/cv_ai_platform_engineer.md' },
+            { id: 'ai_security_engineer', name: 'AI Security Engineer', desc: 'AI Security Engineer', tag: 'AI/Security', file: 'cvs/cv_ai_security_engineer.md' },
+            { id: 'ai_solutions_architect', name: 'AI Solutions Architect', desc: 'AI Solutions Architect', tag: 'AI/Architecture', file: 'cvs/cv_ai_solutions_architect.md' },
+            { id: 'analytics_engineer', name: 'Analytics Engineer', desc: 'Analytics Engineer', tag: 'Data', file: 'cvs/cv_analytics_engineer.md' },
+            { id: 'automation_engineer', name: 'Automation Engineer', desc: 'Automation Engineer', tag: 'Engineering', file: 'cvs/cv_automation_engineer.md' },
+            { id: 'aws_architect', name: 'AWS Architect', desc: 'AWS Solutions Architect', tag: 'Cloud', file: 'cvs/cv_aws_architect.md' },
+            { id: 'azure_architect', name: 'Azure Architect', desc: 'Azure Solutions Architect', tag: 'Cloud', file: 'cvs/cv_azure_architect.md' },
+            { id: 'big_data_engineer', name: 'Big Data Engineer', desc: 'Big Data Engineer', tag: 'Data', file: 'cvs/cv_big_data_engineer.md' },
+            { id: 'cicd_specialist', name: 'CI/CD Specialist', desc: 'CI/CD Specialist', tag: 'DevOps', file: 'cvs/cv_cicd_specialist.md' },
+            { id: 'cloud_architect', name: 'Cloud Architect', desc: 'Cloud Solutions Architect', tag: 'Cloud', file: 'cvs/cv_cloud_architect.md' },
+            { id: 'cloud_consultant', name: 'Cloud Consultant', desc: 'Cloud Consultant', tag: 'Cloud', file: 'cvs/cv_cloud_consultant.md' },
+            { id: 'cloud_devops', name: 'Cloud DevOps', desc: 'Cloud DevOps Engineer', tag: 'DevOps', file: 'cvs/cv_cloud_devops.md' },
+            { id: 'cloud_engineer', name: 'Cloud Engineer', desc: 'Cloud Engineer', tag: 'Cloud', file: 'cvs/cv_cloud_engineer.md' },
+            { id: 'cloud_security_architect', name: 'Cloud Security Architect', desc: 'Cloud Security Architect', tag: 'Security', file: 'cvs/cv_cloud_security_architect.md' },
+            { id: 'compliance_engineer', name: 'Compliance Engineer', desc: 'Compliance Engineer', tag: 'Security', file: 'cvs/cv_compliance_engineer.md' },
+            { id: 'container_engineer', name: 'Container Engineer', desc: 'Container Engineer', tag: 'Engineering', file: 'cvs/cv_container_engineer.md' },
+            { id: 'cybersecurity_engineer', name: 'Cybersecurity Engineer', desc: 'Cybersecurity Engineer', tag: 'Security', file: 'cvs/cv_cybersecurity_engineer.md' },
+            { id: 'data_architect', name: 'Data Architect', desc: 'Data Architect', tag: 'Data', file: 'cvs/cv_data_architect.md' },
+            { id: 'data_engineer', name: 'Data Engineer', desc: 'Data Engineer', tag: 'Data', file: 'cvs/cv_data_engineer.md' },
+            { id: 'data_platform_engineer', name: 'Data Platform Engineer', desc: 'Data Platform Engineer', tag: 'Data', file: 'cvs/cv_data_platform_engineer.md' },
+            { id: 'dataops_engineer', name: 'DataOps Engineer', desc: 'DataOps Engineer', tag: 'Data', file: 'cvs/cv_dataops_engineer.md' },
+            { id: 'defense_contractor', name: 'Defense Contractor', desc: 'Defense Contractor', tag: 'Security', file: 'cvs/cv_defense_contractor.md' },
+            { id: 'devops_architect', name: 'DevOps Architect', desc: 'DevOps Architect', tag: 'DevOps', file: 'cvs/cv_devops_architect.md' },
+            { id: 'devops_consultant', name: 'DevOps Consultant', desc: 'DevOps Consultant', tag: 'DevOps', file: 'cvs/cv_devops_consultant.md' },
+            { id: 'devops_engineer', name: 'DevOps Engineer', desc: 'DevOps Engineer', tag: 'DevOps', file: 'cvs/cv_devops_engineer.md' },
+            { id: 'devsecops_engineer', name: 'DevSecOps Engineer', desc: 'DevSecOps Engineer', tag: 'Security', file: 'cvs/cv_devsecops_engineer.md' },
+            { id: 'etl_developer', name: 'ETL Developer', desc: 'ETL Developer', tag: 'Data', file: 'cvs/cv_etl_developer.md' },
+            { id: 'gcp_architect', name: 'GCP Architect', desc: 'Google Cloud Architect', tag: 'Cloud', file: 'cvs/cv_gcp_architect.md' },
+            { id: 'genai_consultant', name: 'GenAI Consultant', desc: 'Generative AI Consultant', tag: 'AI/ML', file: 'cvs/cv_genai_consultant.md' },
+            { id: 'iac_specialist', name: 'IaC Specialist', desc: 'Infrastructure as Code Specialist', tag: 'DevOps', file: 'cvs/cv_iac_specialist.md' },
+            { id: 'infrastructure_architect', name: 'Infrastructure Architect', desc: 'Infrastructure Architect', tag: 'Architecture', file: 'cvs/cv_infrastructure_architect.md' },
+            { id: 'infrastructure_engineer', name: 'Infrastructure Engineer', desc: 'Infrastructure Engineer', tag: 'Engineering', file: 'cvs/cv_infrastructure_engineer.md' },
+            { id: 'kubernetes_engineer', name: 'Kubernetes Engineer', desc: 'Kubernetes Engineer', tag: 'Engineering', file: 'cvs/cv_kubernetes_engineer.md' },
+            { id: 'llm_engineer', name: 'LLM Engineer', desc: 'Large Language Model Engineer', tag: 'AI/ML', file: 'cvs/cv_llm_engineer.md' },
+            { id: 'ml_data_engineer', name: 'ML Data Engineer', desc: 'ML Data Engineer', tag: 'AI/ML', file: 'cvs/cv_ml_data_engineer.md' },
+            { id: 'ml_ops_engineer', name: 'MLOps Engineer', desc: 'MLOps Engineer', tag: 'AI/ML', file: 'cvs/cv_ml_ops_engineer.md' },
+            { id: 'ml_research_engineer', name: 'ML Research Engineer', desc: 'ML Research Engineer', tag: 'AI/ML', file: 'cvs/cv_ml_research_engineer.md' },
+            { id: 'multicloud_architect', name: 'Multi-Cloud Architect', desc: 'Multi-Cloud Architect', tag: 'Cloud', file: 'cvs/cv_multicloud_architect.md' },
+            { id: 'network_engineer', name: 'Network Engineer', desc: 'Network Engineer', tag: 'Engineering', file: 'cvs/cv_network_engineer.md' },
+            { id: 'platform_engineer', name: 'Platform Engineer', desc: 'Platform Engineer', tag: 'Engineering', file: 'cvs/cv_platform_engineer.md' },
+            { id: 'prompt_engineer', name: 'Prompt Engineer', desc: 'Prompt Engineer', tag: 'AI/ML', file: 'cvs/cv_prompt_engineer.md' },
+            { id: 'rag_architect', name: 'RAG Architect', desc: 'RAG Architect', tag: 'AI/ML', file: 'cvs/cv_rag_architect.md' },
+            { id: 'release_engineer', name: 'Release Engineer', desc: 'Release Engineer', tag: 'DevOps', file: 'cvs/cv_release_engineer.md' },
+            { id: 'security_architect', name: 'Security Architect', desc: 'Security Architect', tag: 'Security', file: 'cvs/cv_security_architect.md' },
+            { id: 'security_devops', name: 'Security DevOps', desc: 'Security DevOps Engineer', tag: 'Security', file: 'cvs/cv_security_devops.md' },
+            { id: 'security_engineer', name: 'Security Engineer', desc: 'Security Engineer', tag: 'Security', file: 'cvs/cv_security_engineer.md' },
+            { id: 'senior_devops', name: 'Senior DevOps', desc: 'Senior DevOps Engineer', tag: 'DevOps', file: 'cvs/cv_senior_devops.md' },
+            { id: 'sre_engineer', name: 'SRE Engineer', desc: 'Site Reliability Engineer', tag: 'Engineering', file: 'cvs/cv_sre_engineer.md' },
+            { id: 'systems_engineer', name: 'Systems Engineer', desc: 'Systems Engineer', tag: 'Engineering', file: 'cvs/cv_systems_engineer.md' }
         ];
 
         let selectedCV = null;
         let filteredCVs = cvData;
+        const loadedContent = new Map(); // Cache for loaded CV content
 
         const searchInput = document.getElementById('searchInput');
         const cvList = document.getElementById('cvList');
@@ -614,6 +669,26 @@
         const editBtn = document.getElementById('editBtn');
         const notification = document.getElementById('notification');
         const cvCount = document.getElementById('cvCount');
+
+        async function loadCVContent(cv) {
+            if (loadedContent.has(cv.id)) {
+                return loadedContent.get(cv.id);
+            }
+
+            try {
+                const response = await fetch(cv.file);
+                if (response.ok) {
+                    const content = await response.text();
+                    loadedContent.set(cv.id, content || `# ${cv.desc}\n\n*CV content for ${cv.desc} is being prepared...*`);
+                } else {
+                    loadedContent.set(cv.id, `# ${cv.desc}\n\n*CV file not found. Using fallback content.*\n\nPosition: ${cv.desc}\nCategory: ${cv.tag}\n\n[Content will be available soon]`);
+                }
+            } catch (error) {
+                loadedContent.set(cv.id, `# ${cv.desc}\n\n*Error loading CV content.*\n\nPosition: ${cv.desc}\nCategory: ${cv.tag}\n\nPlease try again later.`);
+            }
+            
+            return loadedContent.get(cv.id);
+        }
 
         function renderCVList() {
             cvList.innerHTML = '';
@@ -638,12 +713,20 @@
             cvCount.textContent = `${filteredCVs.length} CV${filteredCVs.length !== 1 ? 's' : ''}`;
         }
 
-        function selectCV(cv) {
+        async function selectCV(cv) {
             selectedCV = cv;
             renderCVList();
             previewTitle.textContent = cv.desc;
-            previewBox.textContent = cv.content;
-            previewBox.style.fontFamily = "'Courier New', monospace";
+            
+            // Show loading state
+            previewBox.innerHTML = '<div class="loading-state">📄 Loading CV content...</div>';
+            
+            // Load and display content
+            const content = await loadCVContent(cv);
+            if (selectedCV && selectedCV.id === cv.id) { // Check if still selected
+                previewBox.textContent = content;
+                previewBox.style.fontFamily = "'Courier New', monospace";
+            }
         }
 
         function filterCVs(query) {
@@ -657,9 +740,11 @@
             renderCVList();
         }
 
-        function copyToClipboard() {
+        async function copyToClipboard() {
             if (!selectedCV) return;
-            navigator.clipboard.writeText(selectedCV.content).then(() => {
+            
+            const content = await loadCVContent(selectedCV);
+            navigator.clipboard.writeText(content).then(() => {
                 showNotification();
             });
         }
@@ -671,5 +756,64 @@
             }, 2000);
         }
 
-        function editCV() {
-            if (!
+        async function editCV() {
+            if (!selectedCV) return;
+
+            const currentContent = await loadCVContent(selectedCV);
+            const newContent = prompt('Edit CV content:', currentContent);
+            if (newContent !== null) {
+                loadedContent.set(selectedCV.id, newContent); // Update cache
+                previewBox.textContent = newContent;
+                showNotification();
+            }
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', (e) => filterCVs(e.target.value));
+        copyBtn.addEventListener('click', copyToClipboard);
+        editBtn.addEventListener('click', editCV);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+K to focus search
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+                searchInput.select();
+            }
+
+            // Ctrl+Enter to copy
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                copyToClipboard();
+            }
+
+            // Arrow navigation
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                const currentIndex = filteredCVs.findIndex(cv => cv.id === selectedCV?.id);
+                let newIndex;
+
+                if (e.key === 'ArrowDown') {
+                    newIndex = currentIndex < filteredCVs.length - 1 ? currentIndex + 1 : 0;
+                } else {
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : filteredCVs.length - 1;
+                }
+
+                if (filteredCVs[newIndex]) {
+                    selectCV(filteredCVs[newIndex]);
+                }
+            }
+        });
+
+        // Initialize
+        renderCVList();
+        if (cvData.length > 0) {
+            selectCV(cvData[0]);
+        }
+    </script>
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
