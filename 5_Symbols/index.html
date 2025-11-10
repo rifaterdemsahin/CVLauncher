@@ -44,9 +44,82 @@
             flex-shrink: 0;
             width: 100%;
             padding: 30px 20px 20px 20px;
-            background: rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95), rgba(118, 75, 162, 0.95));
+            color: white;
         }
         footer .container-fluid { max-width: 1200px; margin:0 auto; }
+        
+        /* Social Links */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Support Button */
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .support-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .support-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* GitHub Badge */
+        .github-badge {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .github-badge:hover {
+            transform: translateY(-2px);
+        }
+        .github-badge img {
+            height: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Footer border override */
+        footer.border-top {
+            border-top: 1px solid rgba(255,255,255,0.2) !important;
+        }
 
         /* ---------- ORIGINAL STYLES (unchanged) ---------- */
         .sidebar { background:#f8f9fa; border-right:1px solid #e9ecef; display:flex; flex-direction:column; }
@@ -164,7 +237,7 @@
     </div>
 
     <!-- FOOTER – ALWAYS AT BOTTOM -->
-    <footer class="border-top" style="border-top:1px solid rgba(255,255,255,.2)!important;">
+    <footer class="border-top">
         <div class="container-fluid">
             <div class="row g-4">
                 <div class="col-md-6 col-12">
@@ -184,7 +257,7 @@
                 <div class="col-md-6 col-12 text-md-end text-center">
                     <div class="mb-3">
                         <a href="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml" target="_blank" rel="noopener noreferrer" title="GitHub Actions Build Status" class="github-badge">
-                            <img alt="Build Status" src="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml/badge.svg?branch=main" class="img-fluid" style="height:30px;opacity:.9;">
+                            <img alt="Build Status" src="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml/badge.svg?branch=main" class="img-fluid">
                         </a>
                     </div>
                     <div class="mb-3">
