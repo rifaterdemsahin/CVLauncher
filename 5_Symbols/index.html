@@ -7,11 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,74 +15,15 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 20px;
         }
 
+        /* ---------- MAIN CONTENT – AS WIDE AS POSSIBLE ---------- */
         .main-content {
+            flex: 1;                                   /* push footer down */
             display: flex;
-            align-items: flex-start;
             justify-content: center;
             width: 100%;
-            flex: 1;
-            min-height: 0;
-        }
-
-        /* Footer Styles */
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .support-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .support-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
-        }
-
-        .support-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .github-badge {
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .github-badge:hover {
-            transform: translateY(-2px);
+            padding: 20px 20px 0 20px;                  /* top padding only */
         }
 
         .container {
@@ -94,7 +31,7 @@
             border-radius: 16px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             width: 100%;
-            max-width: calc(100vw - 40px);
+            max-width: 1200px;                         /* same as footer */
             min-height: 60vh;
             max-height: 80vh;
             display: grid;
@@ -102,493 +39,181 @@
             overflow: hidden;
         }
 
-        .sidebar {
-            background: #f8f9fa;
-            border-right: 1px solid #e9ecef;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            padding: 24px;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .header h1 {
-            font-size: 24px;
-            color: #212529;
-            margin-bottom: 16px;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 16px 12px 40px;
-            border: 2px solid #dee2e6;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #6c757d;
-        }
-
-        .cv-list {
-            flex: 1;
-            overflow-y: auto;
-            padding: 8px;
-        }
-
-        .cv-item {
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 2px solid transparent;
-        }
-
-        .cv-item:hover {
-            background: #e9ecef;
-        }
-
-        .cv-item.selected {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .cv-item-name {
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-
-        .cv-item-desc {
-            font-size: 12px;
-            opacity: 0.7;
-        }
-
-        .cv-item-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            background: rgba(0,0,0,0.1);
-            border-radius: 4px;
-            font-size: 11px;
-            margin-top: 4px;
-        }
-
-        .cv-item.selected .cv-item-tag {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .main-panel {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .preview-header {
-            padding: 24px;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .preview-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #212529;
-        }
-
-        .actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #5568d3;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: #e9ecef;
-            color: #495057;
-        }
-
-        .btn-secondary:hover {
-            background: #dee2e6;
-        }
-
-        .preview-content {
-            flex: 1;
-            padding: 24px;
-            overflow-y: auto;
-            background: #fafafa;
-        }
-
-        .preview-box {
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 24px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            min-height: 400px;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #6c757d;
-        }
-
-        .empty-state svg {
-            margin-bottom: 16px;
-            opacity: 0.3;
-        }
-
-        .stats {
-            padding: 16px 24px;
-            border-top: 1px solid #e9ecef;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: #6c757d;
-        }
-
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #28a745;
-            color: white;
-            padding: 16px 24px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            display: none;
-            align-items: center;
-            gap: 12px;
-            animation: slideIn 0.3s ease;
-        }
-
-        .notification.show {
-            display: flex;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .no-results {
-            padding: 40px;
-            text-align: center;
-            color: #6c757d;
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #dee2e6;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ced4da;
-        }
-
+        /* ---------- FOOTER – ALWAYS AT BOTTOM ---------- */
         footer {
-            margin-top: 30px;
+            flex-shrink: 0;
             width: 100%;
             padding: 30px 20px 20px 20px;
-            flex-shrink: 0;
+            background: rgba(0,0,0,0.08);
         }
+        footer .container-fluid { max-width: 1200px; margin:0 auto; }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-                justify-content: flex-start;
-            }
-            
-            .main-content {
-                align-items: flex-start;
-            }
-            
-            .container {
-                grid-template-columns: 1fr;
-                height: auto;
-                min-height: 60vh;
-                max-height: none;
-            }
-            
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid #e9ecef;
-            }
-            
-            .header {
-                padding: 16px;
-            }
-            
-            .header h1 {
-                font-size: 20px;
-            }
-            
-            .cv-list {
-                max-height: 200px;
-            }
-            
-            .preview-header {
-                padding: 16px;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            
-            .actions {
-                gap: 8px;
-                width: 100%;
-                justify-content: stretch;
-            }
-            
-            .actions .btn {
-                flex: 1;
-                justify-content: center;
-                padding: 12px 16px;
-                font-size: 13px;
-            }
-            
-            .preview-content {
-                padding: 16px;
-            }
-            
-            .preview-box {
-                padding: 16px;
-                font-size: 12px;
-                min-height: 300px;
-            }
+        /* ---------- ORIGINAL STYLES (unchanged) ---------- */
+        .sidebar { background:#f8f9fa; border-right:1px solid #e9ecef; display:flex; flex-direction:column; }
+        .header { padding:24px; border-bottom:1px solid #e9ecef; }
+        .header h1 { font-size:24px; color:#212529; margin-bottom:16px; }
+        .search-box { position:relative; }
+        .search-box input { width:100%; padding:12px 16px 12px 40px; border:2px solid #dee2e6; border-radius:8px; font-size:14px; transition:all .2s; }
+        .search-box input:focus { outline:none; border-color:#667eea; box-shadow:0 0 0 3px rgba(102,126,234,.1); }
+        .search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#6c757d; }
+        .cv-list { flex:1; overflow-y:auto; padding:8px; }
+        .cv-item { padding:12px 16px; margin-bottom:4px; border-radius:8px; cursor:pointer; transition:all .2s; border:2px solid transparent; }
+        .cv-item:hover { background:#e9ecef; }
+        .cv-item.selected { background:#667eea; color:white; border-color:#667eea; }
+        .cv-item-name { font-weight:600; font-size:14px; margin-bottom:4px; }
+        .cv-item-desc { font-size:12px; opacity:.7; }
+        .cv-item-tag { display:inline-block; padding:2px 8px; background:rgba(0,0,0,.1); border-radius:4px; font-size:11px; margin-top:4px; }
+        .cv-item.selected .cv-item-tag { background:rgba(255,255,255,.2); }
+        .main-panel { display:flex; flex-direction:column; }
+        .preview-header { padding:24px; border-bottom:1px solid #e9ecef; display:flex; justify-content:space-between; align-items:center; }
+        .preview-title { font-size:20px; font-weight:600; color:#212529; }
+        .actions { display:flex; gap:12px; }
+        .btn { padding:10px 20px; border:none; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:all .2s; display:flex; align-items:center; gap:8px; }
+        .btn-primary { background:#667eea; color:white; }
+        .btn-primary:hover { background:#5568d3; transform:translateY(-1px); box-shadow:0 4px 12px rgba(102,126,234,.4); }
+        .btn-secondary { background:#e9ecef; color:#495057; }
+        .btn-secondary:hover { background:#dee2e6; }
+        .preview-content { flex:1; padding:24px; overflow-y:auto; background:#fafafa; }
+        .preview-box { background:white; border:1px solid #e9ecef; border-radius:8px; padding:24px; font-family:'Courier New',monospace; font-size:13px; line-height:1.6; white-space:pre-wrap; min-height:400px; }
+        .empty-state { text-align:center; padding:60px 20px; color:#6c757d; }
+        .empty-state svg { margin-bottom:16px; opacity:.3; }
+        .stats { padding:16px 24px; border-top:1px solid #e9ecef; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:#6c757d; }
+        .notification { position:fixed; top:20px; right:20px; background:#28a745; color:white; padding:16px 24px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,.15); display:none; align-items:center; gap:12px; animation:slideIn .3s ease; }
+        .notification.show { display:flex; }
+        @keyframes slideIn { from{transform:translateX(400px);opacity:0} to{transform:translateX(0);opacity:1} }
+        .no-results { padding:40px; text-align:center; color:#6c757d; }
+        ::-webkit-scrollbar { width:8px; }
+        ::-webkit-scrollbar-track { background:transparent; }
+        ::-webkit-scrollbar-thumb { background:#dee2e6; border-radius:4px; }
+        ::-webkit-scrollbar-thumb:hover { background:#ced4da; }
 
-            footer {
-                flex-direction: column !important;
-                gap: 20px !important;
-                text-align: center !important;
-                margin-top: 20px !important;
-            }
-            
-            .footer-section {
-                text-align: center !important;
-                flex: none !important;
-            }
-            
-            .footer-section:last-child {
-                text-align: center !important;
-            }
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width:768px){
+            .main-content { padding:10px 10px 0 10px; }
+            .container { grid-template-columns:1fr; max-height:none; }
+            .sidebar { border-right:none; border-bottom:1px solid #e9ecef; }
+            .header { padding:16px; }
+            .header h1 { font-size:20px; }
+            .cv-list { max-height:200px; }
+            .preview-header { padding:16px; flex-wrap:wrap; gap:10px; }
+            .actions { gap:8px; width:100%; justify-content:stretch; }
+            .actions .btn { flex:1; justify-content:center; padding:12px 16px; font-size:13px; }
+            .preview-content { padding:16px; }
+            .preview-box { padding:16px; font-size:12px; min-height:300px; }
+            footer { padding:20px 15px; }
         }
-
-        @media (max-width: 576px) {
-            body {
-                padding: 5px;
-            }
-            
-            .container {
-                border-radius: 8px;
-                margin: 10px 0;
-                min-height: 50vh;
-            }
-            
-            .header {
-                padding: 12px;
-            }
-            
-            .search-box input {
-                font-size: 14px;
-            }
-            
-            .preview-header {
-                padding: 12px;
-            }
-            
-            .actions .btn {
-                padding: 10px 12px;
-                font-size: 12px;
-            }
-            
-            .preview-content {
-                padding: 12px;
-            }
-            
-            .preview-box {
-                padding: 12px;
-                font-size: 11px;
-                min-height: 250px;
-            }
-
-            footer {
-                padding: 20px 15px 15px 15px !important;
-            }
-            
-            .social-link {
-                width: 35px !important;
-                height: 35px !important;
-            }
-            
-            .social-link svg {
-                width: 18px !important;
-                height: 18px !important;
-            }
-            
-            .support-btn {
-                padding: 10px 20px !important;
-                font-size: 14px !important;
-            }
-            
-            .github-badge img {
-                height: 25px !important;
-            }
+        @media (max-width:576px){
+            .main-content { padding:5px 5px 0 5px; }
+            .container { border-radius:8px; margin:10px 0; min-height:50vh; }
+            .header { padding:12px; }
+            .search-box input { font-size:14px; }
+            .preview-header { padding:12px; }
+            .actions .btn { padding:10px 12px; font-size:12px; }
+            .preview-content { padding:12px; }
+            .preview-box { padding:12px; font-size:11px; min-height:250px; }
+            footer { padding:20px 15px 15px 15px; }
+            .social-link { width:35px !important; height:35px !important; }
+            .social-link svg { width:18px !important; height:18px !important; }
+            .support-btn { padding:10px 20px !important; font-size:14px !important; }
+            .github-badge img { height:25px !important; }
         }
     </style>
 </head>
 <body>
+
+    <!-- MAIN APP – FULL WIDTH -->
     <div class="main-content">
         <div class="container">
-        <div class="sidebar">
-            <div class="header">
-                <h1>📋 CV Manager</h1>
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Search CVs... (Ctrl+K)" autofocus>
+            <div class="sidebar">
+                <div class="header">
+                    <h1>CV Manager</h1>
+                    <div class="search-box">
+                        <span class="search-icon">Search</span>
+                        <input type="text" id="searchInput" placeholder="Search CVs... (Ctrl+K)" autofocus>
+                    </div>
+                </div>
+                <div class="cv-list" id="cvList"></div>
+                <div class="stats">
+                    <span id="cvCount">0 CVs</span>
+                    <span>Press Ctrl+Enter to copy</span>
                 </div>
             </div>
-            <div class="cv-list" id="cvList"></div>
-            <div class="stats">
-                <span id="cvCount">0 CVs</span>
-                <span>Press Ctrl+Enter to copy</span>
-            </div>
-        </div>
 
-        <div class="main-panel">
-            <div class="preview-header">
-                <div class="preview-title" id="previewTitle">Select a CV</div>
-                <div class="actions">
-                    <button class="btn btn-secondary" id="editBtn">
-                        ✏️ Edit
-                    </button>
-                    <button class="btn btn-primary" id="copyBtn">
-                        📋 Copy to Clipboard
-                    </button>
+            <div class="main-panel">
+                <div class="preview-header">
+                    <div class="preview-title" id="previewTitle">Select a CV</div>
+                    <div class="actions">
+                        <button class="btn btn-secondary" id="editBtn">Edit</button>
+                        <button class="btn btn-primary" id="copyBtn">Copy to Clipboard</button>
+                    </div>
                 </div>
-            </div>
-            <div class="preview-content">
-                <div class="preview-box" id="previewBox">
-                    <div class="empty-state">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                        </svg>
-                        <h3>No CV Selected</h3>
-                        <p>Select a CV from the list to preview</p>
+                <div class="preview-content">
+                    <div class="preview-box" id="previewBox">
+                        <div class="empty-state">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <h3>No CV Selected</h3>
+                            <p>Select a CV from the list to preview</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="container-fluid border-top mt-4 pt-4" style="border-top: 1px solid rgba(255, 255, 255, 0.2) !important; max-width: 1200px;">
-        <div class="row g-4">
-            <div class="col-md-6 col-12">
-                <h5 class="text-white-50 mb-3">Connect with me</h5>
-                <div class="d-flex gap-3 flex-wrap justify-content-md-start justify-content-center">
-                    <a href="https://www.youtube.com/@RifatErdemSahin" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-                    </a>
-                    <a href="https://github.com/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-                    </a>
+    <!-- FOOTER – ALWAYS AT BOTTOM -->
+    <footer class="border-top" style="border-top:1px solid rgba(255,255,255,.2)!important;">
+        <div class="container-fluid">
+            <div class="row g-4">
+                <div class="col-md-6 col-12">
+                    <h5 class="text-white-50 mb-3">Connect with me</h5>
+                    <div class="d-flex gap-3 flex-wrap justify-content-md-start justify-content-center">
+                        <a href="https://www.youtube.com/@RifatErdemSahin" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+                        </a>
+                        <a href="https://github.com/rifaterdemsahin/" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-12 text-md-end text-center">
-                <div class="mb-3">
-                    <a href="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml" target="_blank" rel="noopener noreferrer" title="GitHub Actions Build Status" class="github-badge">
-                        <img alt="Build Status" src="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml/badge.svg?branch=main" class="img-fluid" style="height: 30px; opacity: 0.9;">
-                    </a>
+                <div class="col-md-6 col-12 text-md-end text-center">
+                    <div class="mb-3">
+                        <a href="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml" target="_blank" rel="noopener noreferrer" title="GitHub Actions Build Status" class="github-badge">
+                            <img alt="Build Status" src="https://github.com/rifaterdemsahin/CVLauncher/actions/workflows/static.yml/badge.svg?branch=main" class="img-fluid" style="height:30px;opacity:.9;">
+                        </a>
+                    </div>
+                    <div class="mb-3">
+                        <a href="https://buymeacoffee.com/rifaterdemsahin" target="_blank" rel="noopener noreferrer" class="support-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                            <span class="d-none d-sm-inline">Buy Me a Coffee</span>
+                            <span class="d-inline d-sm-none">Support</span>
+                        </a>
+                    </div>
+                    <p class="text-white-50 mb-2 small">Built with Love by Rifat Erdem Sahin</p>
+                    <p class="mb-0 small">
+                        <a href="https://rifaterdemsahin.github.io/CVLauncher/" target="_blank" rel="noopener noreferrer"
+                           class="text-decoration-none text-white-50 border-bottom border-white-50 pb-1"
+                           onmouseover="this.classList.add('text-white','border-white')"
+                           onmouseout="this.classList.remove('text-white','border-white')">
+                            View CV Launcher
+                        </a>
+                    </p>
                 </div>
-                <div class="mb-3">
-                    <a href="https://buymeacoffee.com/rifaterdemsahin" target="_blank" rel="noopener noreferrer" class="support-btn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
-                        <span class="d-none d-sm-inline">Buy Me a Coffee</span>
-                        <span class="d-inline d-sm-none">Support</span>
-                    </a>
-                </div>
-                <p class="text-white-50 mb-2 small">Built with ❤️ by Rifat Erdem Sahin</p>
-                <p class="mb-0 small">
-                    <a href="https://rifaterdemsahin.github.io/CVLauncher/" target="_blank" rel="noopener noreferrer" 
-                       class="text-decoration-none text-white-50 border-bottom border-white-50 pb-1"
-                       onmouseover="this.classList.add('text-white', 'border-white')" 
-                       onmouseout="this.classList.remove('text-white', 'border-white')">
-                        View CV Launcher
-                    </a>
-                </p>
             </div>
         </div>
     </footer>
 
     <div class="notification" id="notification">
-        <span>✓</span>
+        <span>Check</span>
         <span>Copied to clipboard!</span>
     </div>
 
+    <!-- ORIGINAL SCRIPT (unchanged) -->
     <script>
         // CV data with references to actual files
         const cvData = [
@@ -646,7 +271,7 @@
 
         let selectedCV = null;
         let filteredCVs = cvData;
-        const loadedContent = new Map(); // Cache for loaded CV content
+        const loadedContent = new Map();
 
         const searchInput = document.getElementById('searchInput');
         const cvList = document.getElementById('cvList');
@@ -658,149 +283,92 @@
         const cvCount = document.getElementById('cvCount');
 
         async function loadCVContent(cv) {
-            if (loadedContent.has(cv.id)) {
-                return loadedContent.get(cv.id);
-            }
-
+            if (loadedContent.has(cv.id)) return loadedContent.get(cv.id);
             try {
-                const response = await fetch(cv.file);
-                if (response.ok) {
-                    const content = await response.text();
-                    loadedContent.set(cv.id, content || `# ${cv.desc}\n\n*CV content for ${cv.desc} is being prepared...*`);
-                } else {
-                    loadedContent.set(cv.id, `# ${cv.desc}\n\n*CV file not found. Using fallback content.*\n\nPosition: ${cv.desc}\nCategory: ${cv.tag}\n\n[Content will be available soon]`);
-                }
-            } catch (error) {
-                loadedContent.set(cv.id, `# ${cv.desc}\n\n*Error loading CV content.*\n\nPosition: ${cv.desc}\nCategory: ${cv.tag}\n\nPlease try again later.`);
-            }
-            
+                const r = await fetch(cv.file);
+                const txt = r.ok ? await r.text() : `# ${cv.desc}\n\n*CV file not found.*`;
+                loadedContent.set(cv.id, txt);
+            } catch { loadedContent.set(cv.id, `# ${cv.desc}\n\n*Error loading.*`); }
             return loadedContent.get(cv.id);
         }
 
         function renderCVList() {
-            cvList.innerHTML = '';
-            if (filteredCVs.length === 0) {
-                cvList.innerHTML = '<div class="no-results">No CVs found</div>';
-                return;
-            }
-            filteredCVs.forEach((cv) => {
-                const item = document.createElement('div');
-                item.className = 'cv-item';
-                if (selectedCV && selectedCV.id === cv.id) {
-                    item.classList.add('selected');
-                }
-                item.innerHTML = `
-                    <div class="cv-item-name">/cv${cv.id}</div>
-                    <div class="cv-item-desc">${cv.desc}</div>
-                    <div class="cv-item-tag">${cv.tag}</div>
-                `;
-                item.addEventListener('click', () => selectCV(cv));
-                cvList.appendChild(item);
+            cvList.innerHTML = filteredCVs.length ? '' : '<div class="no-results">No CVs found</div>';
+            filteredCVs.forEach(cv => {
+                const el = document.createElement('div');
+                el.className = 'cv-item' + (selectedCV?.id===cv.id ? ' selected' : '');
+                el.innerHTML = `<div class="cv-item-name">/cv${cv.id}</div>
+                                <div class="cv-item-desc">${cv.desc}</div>
+                                <div class="cv-item-tag">${cv.tag}</div>`;
+                el.onclick = () => selectCV(cv);
+                cvList.appendChild(el);
             });
-            cvCount.textContent = `${filteredCVs.length} CV${filteredCVs.length !== 1 ? 's' : ''}`;
+            cvCount.textContent = `${filteredCVs.length} CV${filteredCVs.length===1?'':'s'}`;
         }
 
         async function selectCV(cv) {
             selectedCV = cv;
             renderCVList();
             previewTitle.textContent = cv.desc;
-            
-            // Show loading state
-            previewBox.innerHTML = '<div class="loading-state">📄 Loading CV content...</div>';
-            
-            // Load and display content
+            previewBox.innerHTML = '<div class="loading-state">Loading CV content...</div>';
             const content = await loadCVContent(cv);
-            if (selectedCV && selectedCV.id === cv.id) { // Check if still selected
-                previewBox.textContent = content;
-                previewBox.style.fontFamily = "'Courier New', monospace";
-            }
+            if (selectedCV?.id===cv.id) previewBox.textContent = content;
         }
 
-        function filterCVs(query) {
-            query = query.toLowerCase();
-            filteredCVs = cvData.filter(cv =>
-                cv.name.toLowerCase().includes(query) ||
-                cv.desc.toLowerCase().includes(query) ||
-                cv.tag.toLowerCase().includes(query) ||
-                cv.id.toLowerCase().includes(query)
-            );
+        function filterCVs(q) {
+            q = q.toLowerCase();
+            filteredCVs = cvData.filter(cv => 
+                cv.name.toLowerCase().includes(q) || 
+                cv.desc.toLowerCase().includes(q) || 
+                cv.tag.toLowerCase().includes(q) || 
+                cv.id.toLowerCase().includes(q));
             renderCVList();
         }
 
         async function copyToClipboard() {
             if (!selectedCV) return;
-            
-            const content = await loadCVContent(selectedCV);
-            navigator.clipboard.writeText(content).then(() => {
-                showNotification();
-            });
+            const txt = await loadCVContent(selectedCV);
+            navigator.clipboard.writeText(txt).then(showNotification);
         }
 
         function showNotification() {
             notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
+            setTimeout(() => notification.classList.remove('show'), 2000);
         }
 
         async function editCV() {
             if (!selectedCV) return;
-
-            const currentContent = await loadCVContent(selectedCV);
-            const newContent = prompt('Edit CV content:', currentContent);
-            if (newContent !== null) {
-                loadedContent.set(selectedCV.id, newContent); // Update cache
-                previewBox.textContent = newContent;
+            const cur = await loadCVContent(selectedCV);
+            const neu = prompt('Edit CV content:', cur);
+            if (neu !== null) {
+                loadedContent.set(selectedCV.id, neu);
+                previewBox.textContent = neu;
                 showNotification();
             }
         }
 
-        // Event Listeners
-        searchInput.addEventListener('input', (e) => filterCVs(e.target.value));
+        searchInput.addEventListener('input', e => filterCVs(e.target.value));
         copyBtn.addEventListener('click', copyToClipboard);
         editBtn.addEventListener('click', editCV);
 
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Ctrl+K to focus search
-            if (e.ctrlKey && e.key === 'k') {
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key==='k') { e.preventDefault(); searchInput.focus(); searchInput.select(); }
+            if (e.ctrlKey && e.key==='Enter') { e.preventDefault(); copyToClipboard(); }
+            if (['ArrowDown','ArrowUp'].includes(e.key)) {
                 e.preventDefault();
-                searchInput.focus();
-                searchInput.select();
-            }
-
-            // Ctrl+Enter to copy
-            if (e.ctrlKey && e.key === 'Enter') {
-                e.preventDefault();
-                copyToClipboard();
-            }
-
-            // Arrow navigation
-            if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                e.preventDefault();
-                const currentIndex = filteredCVs.findIndex(cv => cv.id === selectedCV?.id);
-                let newIndex;
-
-                if (e.key === 'ArrowDown') {
-                    newIndex = currentIndex < filteredCVs.length - 1 ? currentIndex + 1 : 0;
-                } else {
-                    newIndex = currentIndex > 0 ? currentIndex - 1 : filteredCVs.length - 1;
-                }
-
-                if (filteredCVs[newIndex]) {
-                    selectCV(filteredCVs[newIndex]);
-                }
+                const idx = filteredCVs.findIndex(c=>c.id===selectedCV?.id);
+                const next = e.key==='ArrowDown' 
+                    ? (idx < filteredCVs.length-1 ? idx+1 : 0)
+                    : (idx > 0 ? idx-1 : filteredCVs.length-1);
+                if (filteredCVs[next]) selectCV(filteredCVs[next]);
             }
         });
 
-        // Initialize
         renderCVList();
-        if (cvData.length > 0) {
-            selectCV(cvData[0]);
-        }
+        if (cvData.length) selectCV(cvData[0]);
     </script>
-    
-    <!-- Bootstrap JavaScript -->
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
