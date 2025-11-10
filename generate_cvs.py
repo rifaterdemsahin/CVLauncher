@@ -119,82 +119,182 @@ https://rifaterdemsahin.com/wp-content/uploads/2025/02/rifaterdemsahinprofilepre
 
 *References and detailed project portfolios available upon request*"""
 
-# CV role definitions
+# Comprehensive CV role definitions
 cv_roles = {
-    "cv_ai_platform_engineer.md": {
-        "title": "AI Platform Engineer",
-        "subtitle": "ML Infrastructure Specialist", 
-        "summary": "Senior AI Platform Engineer specializing in **MLOps, AI infrastructure, and scalable machine learning platforms**. Deep expertise in designing and implementing production-scale AI/ML platforms supporting enterprise AI initiatives. Proven track record building AI platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in bridging ML research and production deployment through robust AI infrastructure.",
-        "competencies": """🤖 **AI/ML Platform Engineering**
-- End-to-end ML platform design and implementation
-- MLOps pipelines with automated model training and deployment
-- AI infrastructure scaling and performance optimization
-- Model versioning, monitoring, and lifecycle management
+    "cv_aws_architect.md": {
+        "title": "AWS Architect",
+        "subtitle": "Amazon Web Services Solutions Expert", 
+        "summary": "Senior AWS Architect specializing in **cloud architecture design, migration strategies, and AWS-native solutions**. Deep expertise in designing and implementing enterprise-scale AWS infrastructure supporting mission-critical applications. Proven track record building AWS platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in AWS Well-Architected Framework and cloud-native architectures.",
+        "competencies": """☁️ **AWS Cloud Architecture**
+- End-to-end AWS solution design and implementation
+- Multi-region and multi-account AWS architectures
+- Serverless and container-based AWS architectures
+- Cost optimization and AWS resource governance
 
-🔧 **ML Infrastructure & Automation** 
-- Kubernetes-based ML workload orchestration
-- GPU cluster management and resource optimization
-- Automated feature engineering and data pipeline construction
-- CI/CD for machine learning with automated testing frameworks""",
+🔧 **AWS Migration & Modernization**
+- AWS migration strategies and implementation (6 Rs framework)
+- Legacy application modernization on AWS
+- Database migration with AWS DMS and SCT
+- Hybrid cloud integration with AWS Direct Connect""",
         "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
-**Enterprise AI Platform for Financial Analytics**
-- **Challenge:** Build scalable AI platform for real-time financial risk assessment and trading algorithms
-- **Solution:** Architected comprehensive MLOps platform with automated model deployment and monitoring
+**Enterprise AWS Financial Platform**
+- **Challenge:** Design resilient, compliant AWS architecture for global financial operations
+- **Solution:** Architected multi-region AWS platform with automated disaster recovery and compliance
 - **Impact:** 
-  - 300% increase in model deployment frequency through automated ML pipelines
-  - 30% reduction in infrastructure costs via intelligent resource optimization
-  - Real-time model inference supporting millions of daily transactions
-- **Technologies:** Kubernetes, MLflow, Kubeflow, TensorFlow Serving, Prometheus, Grafana"""
+  - 300% improvement in system reliability through redundant AWS architecture
+  - 30% reduction in operational costs via AWS cost optimization
+  - 99.99% uptime achievement with automated AWS failover
+- **Technologies:** AWS EKS, Lambda, RDS, S3, CloudFormation, API Gateway, Route53"""
     },
-    "cv_data_engineer.md": {
-        "title": "Data Engineer", 
-        "subtitle": "Big Data & Analytics Specialist",
-        "summary": "Senior Data Engineer specializing in **big data processing, data pipeline architecture, and analytics platforms**. Deep expertise in designing and implementing scalable data infrastructure supporting enterprise analytics and AI initiatives. Proven track record building data platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in real-time data processing and cloud-native data architectures.",
-        "competencies": """📊 **Data Pipeline Engineering**
-- Large-scale data pipeline design and implementation
-- Real-time streaming data processing with Apache Kafka and Spark
-- ETL/ELT automation and orchestration
-- Data quality monitoring and automated validation frameworks
+    "cv_azure_architect.md": {
+        "title": "Azure Architect",
+        "subtitle": "Microsoft Azure Solutions Expert",
+        "summary": "Senior Azure Architect specializing in **Azure cloud solutions, hybrid architectures, and enterprise integration**. Deep expertise in designing and implementing comprehensive Azure infrastructure supporting enterprise digital transformation. Proven track record building Azure platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in Azure Well-Architected Framework and Microsoft cloud ecosystem.",
+        "competencies": """☁️ **Azure Cloud Architecture**
+- Comprehensive Azure solution design and implementation
+- Hybrid cloud architectures with Azure Arc and Stack
+- Azure-native microservices and serverless architectures
+- Azure governance, security, and compliance frameworks
 
-☁️ **Cloud Data Architecture**
-- Cloud-native data lakes and data warehouses
-- Multi-cloud data integration and synchronization  
-- Serverless data processing and auto-scaling architectures
-- Cost optimization strategies for cloud data storage and compute""",
+🔧 **Azure Migration & Integration**
+- Azure migration strategies and assessment frameworks
+- Legacy system modernization with Azure PaaS services
+- Azure DevOps and CI/CD pipeline implementation
+- Microsoft 365 and Azure AD integration""",
         "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
-**Real-time Financial Data Processing Platform**
-- **Challenge:** Build scalable data platform for real-time financial market data processing and analytics
-- **Solution:** Architected streaming data platform with automated data validation and real-time analytics
+**Enterprise Azure Financial Platform**
+- **Challenge:** Design secure, compliant Azure architecture for financial services operations
+- **Solution:** Architected comprehensive Azure platform with advanced security and compliance controls
 - **Impact:**
-  - 300% improvement in data processing speed through optimized pipeline architecture
+  - 300% improvement in deployment efficiency through Azure automation
+  - 30% reduction in infrastructure costs via Azure optimization
+  - Regulatory compliance achievement with Azure security frameworks
+- **Technologies:** Azure AKS, Functions, Cosmos DB, Key Vault, Monitor, Synapse Analytics"""
+    },
+    "cv_gcp_architect.md": {
+        "title": "GCP Architect",
+        "subtitle": "Google Cloud Platform Solutions Expert",
+        "summary": "Senior GCP Architect specializing in **Google Cloud solutions, data analytics, and AI/ML platforms**. Deep expertise in designing and implementing scalable GCP infrastructure supporting data-driven applications and machine learning workloads. Proven track record building GCP platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in Google Cloud's AI/ML services and data analytics capabilities.",
+        "competencies": """☁️ **GCP Cloud Architecture**
+- End-to-end Google Cloud solution design and implementation
+- Multi-region GCP architectures with global load balancing
+- GCP-native data analytics and AI/ML platforms
+- Cloud-native application development with GCP services
+
+📊 **GCP Data & AI Platforms**
+- BigQuery data warehouse and analytics implementations
+- AI Platform and AutoML model deployment
+- Real-time data processing with Dataflow and Pub/Sub
+- GCP security and identity management""",
+        "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
+**GCP Data Analytics Platform**
+- **Challenge:** Build scalable GCP platform for financial data analytics and ML workloads
+- **Solution:** Architected comprehensive GCP data platform with real-time analytics and AI services
+- **Impact:**
+  - 300% improvement in data processing speed through GCP optimization
+  - 30% reduction in data platform costs via intelligent resource management
+  - Real-time insights enabling faster financial decision making
+- **Technologies:** BigQuery, Dataflow, AI Platform, GKE, Cloud SQL, Pub/Sub"""
+    },
+    "cv_infrastructure_engineer.md": {
+        "title": "Infrastructure Engineer",
+        "subtitle": "System Infrastructure & Automation Specialist",
+        "summary": "Senior Infrastructure Engineer specializing in **system infrastructure design, automation, and performance optimization**. Deep expertise in designing and implementing robust infrastructure supporting enterprise applications and services. Proven track record building infrastructure solutions that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in infrastructure automation and monitoring.",
+        "competencies": """🏗️ **Infrastructure Design & Implementation**
+- Enterprise infrastructure architecture and design
+- High availability and disaster recovery implementations
+- Performance tuning and capacity planning
+- Infrastructure security and hardening
+
+⚙️ **Infrastructure Automation**
+- Infrastructure as Code with Terraform and Ansible
+- Automated provisioning and configuration management
+- Monitoring and alerting automation
+- Infrastructure testing and validation frameworks""",
+        "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
+**Enterprise Infrastructure Automation Platform**
+- **Challenge:** Modernize infrastructure management for financial services environment
+- **Solution:** Implemented automated infrastructure platform with self-service capabilities
+- **Impact:**
+  - 300% improvement in infrastructure provisioning speed
+  - 30% reduction in operational overhead via automation
+  - 99.9% infrastructure availability through automated monitoring
+- **Technologies:** Terraform, Ansible, Kubernetes, Prometheus, Grafana, ELK Stack"""
+    },
+    "cv_platform_engineer.md": {
+        "title": "Platform Engineer", 
+        "subtitle": "Developer Platform & Tooling Specialist",
+        "summary": "Senior Platform Engineer specializing in **developer platforms, internal tooling, and developer experience optimization**. Deep expertise in designing and implementing platforms that enable development teams to build, deploy, and operate applications efficiently. Proven track record building platform solutions that delivered 300% productivity improvements and 30% reduction in development cycle time across financial services, healthcare, and real estate sectors. Expert in self-service platforms and developer productivity.",
+        "competencies": """🛠️ **Developer Platform Engineering**
+- Self-service developer platform design and implementation
+- Internal tooling and automation for development workflows
+- Platform APIs and service catalogs
+- Developer experience optimization and productivity metrics
+
+⚙️ **Platform Operations & Automation**
+- GitOps and continuous deployment platforms
+- Monitoring and observability for platform services
+- Platform security and compliance frameworks
+- Multi-tenant platform architecture""",
+        "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
+**Developer Platform for Financial Services**
+- **Challenge:** Build self-service platform enabling rapid application development and deployment
+- **Solution:** Architected comprehensive developer platform with automated workflows and tooling
+- **Impact:**
+  - 300% improvement in development velocity through platform automation
+  - 30% reduction in operational overhead for development teams
+  - Self-service capabilities reducing time-to-market by 50%
+- **Technologies:** Kubernetes, GitLab, ArgoCD, Backstage, Prometheus, Grafana"""
+    },
+    "cv_sre_engineer.md": {
+        "title": "SRE Engineer",
+        "subtitle": "Site Reliability & Performance Engineering Specialist", 
+        "summary": "Senior SRE Engineer specializing in **site reliability engineering, performance optimization, and operational excellence**. Deep expertise in designing and implementing reliable, scalable systems with focus on automation and monitoring. Proven track record building SRE practices that delivered 300% improvement in system reliability and 30% reduction in operational toil across financial services, healthcare, and real estate sectors. Expert in SLI/SLO frameworks and incident management.",
+        "competencies": """📊 **Site Reliability Engineering**
+- SLI/SLO definition and implementation
+- Error budget management and reliability governance
+- Incident management and post-mortem processes
+- Reliability and performance testing frameworks
+
+⚙️ **SRE Automation & Monitoring**
+- Automated monitoring and alerting systems
+- Chaos engineering and reliability testing
+- Toil reduction and automation strategies
+- Capacity planning and performance optimization""",
+        "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
+**Enterprise SRE Platform for Financial Systems**
+- **Challenge:** Implement SRE practices for critical financial trading and risk management systems
+- **Solution:** Built comprehensive SRE platform with automated monitoring and incident response
+- **Impact:**
+  - 300% improvement in system reliability through SRE practices
+  - 30% reduction in operational toil via automation
+  - 99.99% uptime achievement for critical financial systems
+- **Technologies:** Prometheus, Grafana, PagerDuty, Kubernetes, Terraform, Chaos Monkey"""
+    },
+    "cv_data_architect.md": {
+        "title": "Data Architect",
+        "subtitle": "Enterprise Data Strategy & Architecture Specialist",
+        "summary": "Senior Data Architect specializing in **enterprise data architecture, data governance, and analytics platforms**. Deep expertise in designing and implementing comprehensive data strategies supporting business intelligence and AI initiatives. Proven track record building data architectures that delivered 300% improvement in data accessibility and 30% reduction in data processing costs across financial services, healthcare, and real estate sectors. Expert in modern data stack and data mesh architectures.",
+        "competencies": """📊 **Enterprise Data Architecture**
+- End-to-end data architecture design and implementation
+- Data lake and data warehouse architectures
+- Real-time data processing and streaming architectures
+- Data governance and quality frameworks
+
+🔄 **Modern Data Stack Implementation**
+- Cloud-native data platforms and services
+- Data mesh and domain-driven data architectures
+- Self-service analytics and data democratization
+- Data security and privacy compliance""",
+        "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
+**Enterprise Data Architecture for Financial Analytics**
+- **Challenge:** Design comprehensive data architecture for real-time financial analytics and reporting
+- **Solution:** Architected modern data platform with real-time processing and self-service analytics
+- **Impact:**
+  - 300% improvement in data processing speed through optimized architecture
   - 30% reduction in data infrastructure costs via cloud optimization
-  - Real-time insights enabling faster trading decisions and risk management
-- **Technologies:** Apache Kafka, Apache Spark, Azure Synapse, Data Factory, Power BI"""
-    },
-    "cv_security_engineer.md": {
-        "title": "Security Engineer",
-        "subtitle": "Cybersecurity & Infrastructure Protection Specialist", 
-        "summary": "Senior Security Engineer specializing in **cybersecurity, infrastructure protection, and security automation**. Deep expertise in designing and implementing comprehensive security frameworks for enterprise environments. Proven track record building security solutions that delivered 300% improvement in threat detection and 30% reduction in security incidents across financial services, healthcare, and real estate sectors. Expert in zero-trust architectures and automated security operations.",
-        "competencies": """🔒 **Security Architecture & Design**
-- Zero-trust security framework implementation
-- Security-first infrastructure design and hardening
-- Identity and access management with multi-factor authentication
-- Compliance frameworks for regulated industries (SOC2, PCI DSS, GDPR)
-
-🛡️ **Security Operations & Automation**
-- Automated threat detection and incident response
-- Security scanning and vulnerability management
-- SIEM/SOAR implementation and optimization
-- Security testing and penetration testing frameworks""",
-        "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
-**Enterprise Security Framework for Financial Services**
-- **Challenge:** Implement comprehensive security framework for global financial operations
-- **Solution:** Architected zero-trust security platform with automated threat detection and response
-- **Impact:**
-  - 300% improvement in threat detection speed through automated security operations
-  - 30% reduction in security incidents via proactive threat hunting
-  - Compliance achievement for SOC2, PCI DSS, and regulatory requirements
-- **Technologies:** Azure Sentinel, Splunk, CrowdStrike, HashiCorp Vault, Zero Trust Architecture"""
+  - Real-time analytics enabling faster regulatory reporting
+- **Technologies:** Azure Synapse, Data Factory, Power BI, Databricks, Delta Lake"""
     }
 }
 
@@ -209,9 +309,12 @@ def create_cv_file(filename, role_config):
     )
     
     filepath = f"/Users/rifaterdemsahin/projects/CVLauncher/5_Symbols/cvs/{filename}"
-    with open(filepath, 'w') as f:
-        f.write(content)
-    print(f"Created: {filename}")
+    try:
+        with open(filepath, 'w') as f:
+            f.write(content)
+        print(f"Created: {filename}")
+    except Exception as e:
+        print(f"Error creating {filename}: {e}")
 
 # Create CV files
 for filename, config in cv_roles.items():
