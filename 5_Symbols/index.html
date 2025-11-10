@@ -215,63 +215,27 @@
 
     <!-- ORIGINAL SCRIPT (unchanged) -->
     <script>
-        // CV data with references to actual files
-        const cvData = [
-            { id: 'ai_engineer', name: 'AI Engineer', desc: 'AI/ML Engineer', tag: 'AI/ML', file: 'cvs/cv_ai_engineer.md' },
-            { id: 'ai_platform_engineer', name: 'AI Platform Engineer', desc: 'AI Platform Engineer', tag: 'AI/ML', file: 'cvs/cv_ai_platform_engineer.md' },
-            { id: 'ai_security_engineer', name: 'AI Security Engineer', desc: 'AI Security Engineer', tag: 'AI/Security', file: 'cvs/cv_ai_security_engineer.md' },
-            { id: 'ai_solutions_architect', name: 'AI Solutions Architect', desc: 'AI Solutions Architect', tag: 'AI/Architecture', file: 'cvs/cv_ai_solutions_architect.md' },
-            { id: 'analytics_engineer', name: 'Analytics Engineer', desc: 'Analytics Engineer', tag: 'Data', file: 'cvs/cv_analytics_engineer.md' },
-            { id: 'automation_engineer', name: 'Automation Engineer', desc: 'Automation Engineer', tag: 'Engineering', file: 'cvs/cv_automation_engineer.md' },
-            { id: 'aws_architect', name: 'AWS Architect', desc: 'AWS Solutions Architect', tag: 'Cloud', file: 'cvs/cv_aws_architect.md' },
-            { id: 'azure_architect', name: 'Azure Architect', desc: 'Azure Solutions Architect', tag: 'Cloud', file: 'cvs/cv_azure_architect.md' },
-            { id: 'big_data_engineer', name: 'Big Data Engineer', desc: 'Big Data Engineer', tag: 'Data', file: 'cvs/cv_big_data_engineer.md' },
-            { id: 'cicd_specialist', name: 'CI/CD Specialist', desc: 'CI/CD Specialist', tag: 'DevOps', file: 'cvs/cv_cicd_specialist.md' },
-            { id: 'cloud_architect', name: 'Cloud Architect', desc: 'Cloud Solutions Architect', tag: 'Cloud', file: 'cvs/cv_cloud_architect.md' },
-            { id: 'cloud_consultant', name: 'Cloud Consultant', desc: 'Cloud Consultant', tag: 'Cloud', file: 'cvs/cv_cloud_consultant.md' },
-            { id: 'cloud_devops', name: 'Cloud DevOps', desc: 'Cloud DevOps Engineer', tag: 'DevOps', file: 'cvs/cv_cloud_devops.md' },
-            { id: 'cloud_engineer', name: 'Cloud Engineer', desc: 'Cloud Engineer', tag: 'Cloud', file: 'cvs/cv_cloud_engineer.md' },
-            { id: 'cloud_security_architect', name: 'Cloud Security Architect', desc: 'Cloud Security Architect', tag: 'Security', file: 'cvs/cv_cloud_security_architect.md' },
-            { id: 'compliance_engineer', name: 'Compliance Engineer', desc: 'Compliance Engineer', tag: 'Security', file: 'cvs/cv_compliance_engineer.md' },
-            { id: 'container_engineer', name: 'Container Engineer', desc: 'Container Engineer', tag: 'Engineering', file: 'cvs/cv_container_engineer.md' },
-            { id: 'cybersecurity_engineer', name: 'Cybersecurity Engineer', desc: 'Cybersecurity Engineer', tag: 'Security', file: 'cvs/cv_cybersecurity_engineer.md' },
-            { id: 'data_architect', name: 'Data Architect', desc: 'Data Architect', tag: 'Data', file: 'cvs/cv_data_architect.md' },
-            { id: 'data_engineer', name: 'Data Engineer', desc: 'Data Engineer', tag: 'Data', file: 'cvs/cv_data_engineer.md' },
-            { id: 'data_platform_engineer', name: 'Data Platform Engineer', desc: 'Data Platform Engineer', tag: 'Data', file: 'cvs/cv_data_platform_engineer.md' },
-            { id: 'dataops_engineer', name: 'DataOps Engineer', desc: 'DataOps Engineer', tag: 'Data', file: 'cvs/cv_dataops_engineer.md' },
-            { id: 'defense_contractor', name: 'Defense Contractor', desc: 'Defense Contractor', tag: 'Security', file: 'cvs/cv_defense_contractor.md' },
-            { id: 'devops_architect', name: 'DevOps Architect', desc: 'DevOps Architect', tag: 'DevOps', file: 'cvs/cv_devops_architect.md' },
-            { id: 'devops_consultant', name: 'DevOps Consultant', desc: 'DevOps Consultant', tag: 'DevOps', file: 'cvs/cv_devops_consultant.md' },
-            { id: 'devops_engineer', name: 'DevOps Engineer', desc: 'DevOps Engineer', tag: 'DevOps', file: 'cvs/cv_devops_engineer.md' },
-            { id: 'devsecops_engineer', name: 'DevSecOps Engineer', desc: 'DevSecOps Engineer', tag: 'Security', file: 'cvs/cv_devsecops_engineer.md' },
-            { id: 'etl_developer', name: 'ETL Developer', desc: 'ETL Developer', tag: 'Data', file: 'cvs/cv_etl_developer.md' },
-            { id: 'gcp_architect', name: 'GCP Architect', desc: 'Google Cloud Architect', tag: 'Cloud', file: 'cvs/cv_gcp_architect.md' },
-            { id: 'genai_consultant', name: 'GenAI Consultant', desc: 'Generative AI Consultant', tag: 'AI/ML', file: 'cvs/cv_genai_consultant.md' },
-            { id: 'iac_specialist', name: 'IaC Specialist', desc: 'Infrastructure as Code Specialist', tag: 'DevOps', file: 'cvs/cv_iac_specialist.md' },
-            { id: 'infrastructure_architect', name: 'Infrastructure Architect', desc: 'Infrastructure Architect', tag: 'Architecture', file: 'cvs/cv_infrastructure_architect.md' },
-            { id: 'infrastructure_engineer', name: 'Infrastructure Engineer', desc: 'Infrastructure Engineer', tag: 'Engineering', file: 'cvs/cv_infrastructure_engineer.md' },
-            { id: 'kubernetes_engineer', name: 'Kubernetes Engineer', desc: 'Kubernetes Engineer', tag: 'Engineering', file: 'cvs/cv_kubernetes_engineer.md' },
-            { id: 'llm_engineer', name: 'LLM Engineer', desc: 'Large Language Model Engineer', tag: 'AI/ML', file: 'cvs/cv_llm_engineer.md' },
-            { id: 'ml_data_engineer', name: 'ML Data Engineer', desc: 'ML Data Engineer', tag: 'AI/ML', file: 'cvs/cv_ml_data_engineer.md' },
-            { id: 'ml_ops_engineer', name: 'MLOps Engineer', desc: 'MLOps Engineer', tag: 'AI/ML', file: 'cvs/cv_ml_ops_engineer.md' },
-            { id: 'ml_research_engineer', name: 'ML Research Engineer', desc: 'ML Research Engineer', tag: 'AI/ML', file: 'cvs/cv_ml_research_engineer.md' },
-            { id: 'multicloud_architect', name: 'Multi-Cloud Architect', desc: 'Multi-Cloud Architect', tag: 'Cloud', file: 'cvs/cv_multicloud_architect.md' },
-            { id: 'network_engineer', name: 'Network Engineer', desc: 'Network Engineer', tag: 'Engineering', file: 'cvs/cv_network_engineer.md' },
-            { id: 'platform_engineer', name: 'Platform Engineer', desc: 'Platform Engineer', tag: 'Engineering', file: 'cvs/cv_platform_engineer.md' },
-            { id: 'prompt_engineer', name: 'Prompt Engineer', desc: 'Prompt Engineer', tag: 'AI/ML', file: 'cvs/cv_prompt_engineer.md' },
-            { id: 'rag_architect', name: 'RAG Architect', desc: 'RAG Architect', tag: 'AI/ML', file: 'cvs/cv_rag_architect.md' },
-            { id: 'release_engineer', name: 'Release Engineer', desc: 'Release Engineer', tag: 'DevOps', file: 'cvs/cv_release_engineer.md' },
-            { id: 'security_architect', name: 'Security Architect', desc: 'Security Architect', tag: 'Security', file: 'cvs/cv_security_architect.md' },
-            { id: 'security_devops', name: 'Security DevOps', desc: 'Security DevOps Engineer', tag: 'Security', file: 'cvs/cv_security_devops.md' },
-            { id: 'security_engineer', name: 'Security Engineer', desc: 'Security Engineer', tag: 'Security', file: 'cvs/cv_security_engineer.md' },
-            { id: 'senior_devops', name: 'Senior DevOps', desc: 'Senior DevOps Engineer', tag: 'DevOps', file: 'cvs/cv_senior_devops.md' },
-            { id: 'sre_engineer', name: 'SRE Engineer', desc: 'Site Reliability Engineer', tag: 'Engineering', file: 'cvs/cv_sre_engineer.md' },
-            { id: 'systems_engineer', name: 'Systems Engineer', desc: 'Systems Engineer', tag: 'Engineering', file: 'cvs/cv_systems_engineer.md' }
-        ];
-
+        // CV data will be loaded from JSON file
+        let cvData = [];
         let selectedCV = null;
-        let filteredCVs = cvData;
+        let filteredCVs = [];
         const loadedContent = new Map();
+
+        // Load CV data from JSON file
+        async function loadCVData() {
+            try {
+                const response = await fetch('cvData.json');
+                cvData = await response.json();
+                filteredCVs = cvData;
+                renderCVList();
+                if (cvData.length) selectCV(cvData[0]);
+            } catch (error) {
+                console.error('Error loading CV data:', error);
+                cvData = [];
+                filteredCVs = [];
+                renderCVList();
+            }
+        }
 
         const searchInput = document.getElementById('searchInput');
         const cvList = document.getElementById('cvList');
@@ -364,8 +328,8 @@
             }
         });
 
-        renderCVList();
-        if (cvData.length) selectCV(cvData[0]);
+        // Initialize the application
+        loadCVData();
     </script>
 
     <!-- Bootstrap JS -->
