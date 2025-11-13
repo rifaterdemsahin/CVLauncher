@@ -2,6 +2,7 @@
 Practical CV Responses for Recruiters
 
 > Watch : https://www.youtube.com/watch?v=bsH-vBGNERE
+> 
 > Browse : https://rifaterdemsahin.github.io/CVLauncher
 
 ## Overview
