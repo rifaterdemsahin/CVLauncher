@@ -1,7 +1,9 @@
 # CVLauncher
 Practical CV Responses for Recruiters
 
-> https://rifaterdemsahin.github.io/CVLauncher
+> Watch : https://www.youtube.com/watch?v=bsH-vBGNERE
+> 
+> Browse : https://rifaterdemsahin.github.io/CVLauncher
 
 ## Overview
 CVLauncher is a web application that helps job seekers quickly copy different CV variations to their clipboard for job applications. The application provides an easy-to-use interface with one-click copy functionality for various professional profiles.
