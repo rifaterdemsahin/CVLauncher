@@ -13,6 +13,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`get_workflow_details.js`**: Fetches the full JSON definition of the "Respond to Job Offers" workflow and saves it locally as `workflow_dump.json`.
 - **`add_sticky_notes.js`**: Programmatically adds explanatory sticky notes to the visual workflow editor to document the stages directly in the canvas.
 - **`add_version_tag.js`**: Adds a "Version Info" sticky note to the workflow with the current Git commit hash, date, and repository link.
+- **`update_cv_map.js`**: Updates the "Select Best CV" Code node with a comprehensive map of CVs based on the actual PDF files in `5_Symbols/cvs` matching keywords like AWS, Azure, AI, etc.
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
