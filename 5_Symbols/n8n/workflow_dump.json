@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-23T21:30:20.000Z",
+  "updatedAt": "2026-01-23T21:39:13.382Z",
   "createdAt": "2026-01-23T19:18:26.224Z",
   "id": "CVD1ecv1GNe9uF4a",
   "name": "Respond to Job Offers",
@@ -176,6 +176,54 @@
       "id": "866f7f20-8724-4903-af93-445599d0cbae",
       "name": "Webhook",
       "webhookId": "529443ed-ff68-4b54-bab2-6fa41275e81f"
+    },
+    {
+      "parameters": {
+        "content": "## 1. Monitor Inbox & Filter\nTrigger on unread emails from primary category. Check for recruiter keywords like 'opportunity', 'hiring', 'rate'.",
+        "height": 240,
+        "width": 380,
+        "color": 2
+      },
+      "id": "c2865565-6341-474d-b684-095f30c8725e",
+      "name": "Sticky Note 1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        -550
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 2. Decision & Action\nAnalyze email text to detect tech stack (Azure/AWS/GCP). Select correct CV PDF and download from GitHub.",
+        "height": 240,
+        "width": 350,
+        "color": 4
+      },
+      "id": "04ef4844-b7b5-4170-ad61-59496ff09f8d",
+      "name": "Sticky Note 2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -550
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 3. Response & Notification\nReply with CV attachment, mark email as read, and send summary to Telegram.",
+        "height": 240,
+        "width": 450,
+        "color": 5
+      },
+      "id": "5a56aaf2-baf6-4acc-ab50-16ef5af7c189",
+      "name": "Sticky Note 3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        450,
+        -550
+      ]
     }
   ],
   "connections": {
@@ -259,7 +307,8 @@
   },
   "settings": {
     "executionOrder": "v1",
-    "availableInMCP": true
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": {
     "node:Gmail Trigger": {
@@ -270,9 +319,9 @@
     "templateCredsSetupCompleted": true
   },
   "pinData": {},
-  "versionId": "c9f03759-7eb7-4021-a99e-aeb9dfacee08",
-  "activeVersionId": "c9f03759-7eb7-4021-a99e-aeb9dfacee08",
-  "versionCounter": 11,
+  "versionId": "59ec096d-9b5f-4764-9fb6-b63d81c83723",
+  "activeVersionId": "59ec096d-9b5f-4764-9fb6-b63d81c83723",
+  "versionCounter": 13,
   "triggerCount": 2,
   "shared": [
     {
@@ -349,9 +398,9 @@
     }
   ],
   "activeVersion": {
-    "updatedAt": "2026-01-23T21:30:20.113Z",
-    "createdAt": "2026-01-23T21:30:20.113Z",
-    "versionId": "c9f03759-7eb7-4021-a99e-aeb9dfacee08",
+    "updatedAt": "2026-01-23T21:39:13.365Z",
+    "createdAt": "2026-01-23T21:39:13.365Z",
+    "versionId": "59ec096d-9b5f-4764-9fb6-b63d81c83723",
     "workflowId": "CVD1ecv1GNe9uF4a",
     "nodes": [
       {
@@ -523,6 +572,54 @@
         "id": "866f7f20-8724-4903-af93-445599d0cbae",
         "name": "Webhook",
         "webhookId": "529443ed-ff68-4b54-bab2-6fa41275e81f"
+      },
+      {
+        "parameters": {
+          "content": "## 1. Monitor Inbox & Filter\nTrigger on unread emails from primary category. Check for recruiter keywords like 'opportunity', 'hiring', 'rate'.",
+          "height": 240,
+          "width": 380,
+          "color": 2
+        },
+        "id": "c2865565-6341-474d-b684-095f30c8725e",
+        "name": "Sticky Note 1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -500,
+          -550
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## 2. Decision & Action\nAnalyze email text to detect tech stack (Azure/AWS/GCP). Select correct CV PDF and download from GitHub.",
+          "height": 240,
+          "width": 350,
+          "color": 4
+        },
+        "id": "04ef4844-b7b5-4170-ad61-59496ff09f8d",
+        "name": "Sticky Note 2",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          0,
+          -550
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## 3. Response & Notification\nReply with CV attachment, mark email as read, and send summary to Telegram.",
+          "height": 240,
+          "width": 450,
+          "color": 5
+        },
+        "id": "5a56aaf2-baf6-4acc-ab50-16ef5af7c189",
+        "name": "Sticky Note 3",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          450,
+          -550
+        ]
       }
     ],
     "connections": {
