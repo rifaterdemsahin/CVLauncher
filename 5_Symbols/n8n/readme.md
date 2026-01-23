@@ -22,6 +22,8 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`add_david_sticky_note.js`**: Adds an acknowledgement sticky note for David Gilchrist to the workflow canvas.
 - **`debug_references.js`**: Aggressively scans and fixes any remaining nodes that reference "Gmail Trigger" (which fails in manual testing) by re-pointing them to "Select Best CV".
 - **`fix_error_handling.js`**: Enables "Continue On Fail" on Gmail nodes. This allows manual tests with fake IDs ("mock-id") to bypass Gmail errors and verify the full flow (including Telegram).
+- **`fix_self_reply.js`**: Adds logic to the "Check for Recruiter Keywords" filter to explicitly ignore emails from the user's own name/email (e.g., "rifaterdemsahin"), preventing the bot from replying to test emails sent to oneself.
+- **`broaden_trigger_scope.js`**: Expands the Gmail Trigger query to capture ALL job-related emails (removing "primary" category and "-from:me" restrictions) and updates keyword regex to catch simple phrases like "send cv".
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
