@@ -46,6 +46,7 @@ All scripts are now located in the `fixes/` subdirectory. To run them, navigate 
 - **`connect.js`**: Verifies n8n connectivity.
 - **`get_workflow_details.js`**: Dumps raw workflow JSON.
 - **`add_sticky_notes.js`** / **`add_david_sticky_note.js`** / **`add_version_tag.js`**: Canvas annotation tools.
+- **`rearrange_canvas.js`**: Programmatically organizes the workflow nodes into a clean, left-to-right logic flow with proper spacing and functional grouping, significantly improving readability and UX.
 
 ## ⚙️ Configuration
 - **`.env`**: Stores `N8N_API_KEY`, `N8N_HOST` (GitIgnored).
