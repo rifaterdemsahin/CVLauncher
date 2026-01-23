@@ -38,6 +38,8 @@ All scripts are now located in the `fixes/` subdirectory. To run them, navigate 
 - **`fix_node_references.js`** / **`debug_references.js`**: Repoints node variables to the correct upstream sources.
 - **`fix_manual_trigger.js`**: Adds Mock Data for manual testing.
 - **`fix_self_reply.js`**: Legacy script for self-exclusion logic.
+- **`ensure_blacklist_resilience.js`**: Hardens the "Check Blacklist" node by enabling "Continue On Fail" and "Always Output Data", preventing workflow crashes if Google Sheets credentials are invalid.
+- **`inject_debug_nodes.js`**: Inserts "Do Nothing" Code nodes with console logs at critical junctions. This aids debugging by creating visible checkpoints in the execution history to trace where the flow might be stalling.
 
 ### Utilities
 - **`backup_workflow.js`**: Saves a snapshot of the current workflow to `backups/`.
