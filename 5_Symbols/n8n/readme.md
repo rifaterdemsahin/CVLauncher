@@ -18,6 +18,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`update_workflow_generic.js`**: Adds a "Manual Trigger" for testing and updates the email template to strictly use the detected tech stack/role.
 - **`fix_manual_trigger.js`**: Enhances the manual test flow by adding a "Set Mock Data" node, which injects a dummy email (Azure DevOps role) so the workflow can fully execute from Trigger to Telegram without sending a real email.
 - **`backup_workflow.js`**: Fetches the current workflow from n8n and saves it to a `backups/` directory with a timestamped filename (e.g., `workflow_backup_2026-01-23_21-57-23.json`).
+- **`fix_node_references.js`**: Updates references in downstream nodes (Reply, Telegram) to point to "Select Best CV" instead of "Gmail Trigger", fixing "unexecuted node" errors during manual testing.
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
