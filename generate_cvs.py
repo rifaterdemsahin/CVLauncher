@@ -677,6 +677,169 @@ cv_roles = {
   - Validated system stability under 100k concurrent users.
   - Reduced API response time p95 latency by 45% through optimization recommendations."""
     },
+    "cv_frontend_developer.md": {
+        "title": "Frontend Developer", 
+        "subtitle": "UI/UX & Modern Web Specialist",
+        "summary": "Senior Frontend Developer specializing in **creating responsive, accessible, and high-performance user interfaces**. Deep expertise in React ecosystem, state management, and modern CSS architecture. Proven track record in translating complex design systems into pixel-perfect code and optimizing front-end performance for global scale.",
+        "competencies": """🎨 **Frontend Architecture**
+- React, Vue.js, Angular Ecosystems
+- State Management (Redux Toolkit, MobX, TanStack Query)
+- Micro-frontends & Component Libraries (Storybook)
+- Web Performance Optimization (Lighthouse, Core Web Vitals)
+
+📱 **UI/UX Engineering**
+- Responsive & Adaptive Design
+- Accessibility (WCAG 2.1 AA/AAA)
+- CSS Architecture (Tailwind, CSS Modules, SASS)
+- Testing (Jest, React Testing Library, Cypress)""",
+        "accomplishments": """### 🏆 2024 | Media Streaming | London
+**Video Player UI Overhaul**
+- **Challenge:** Modernize the video player interface to improve viewer engagement and accessibility.
+- **Solution:** Rebuilt the player controls using React and a custom state machine for playback logic.
+- **Impact:**
+  - Increased average watch time by 15%.
+  - Achieved 100% WCAG 2.1 AA compliance.
+  - Reduced player load time by 30%.
+
+### 🏆 2023 | E-commerce | Remote
+**Design System Implementation**
+- **Challenge:** inconsistent UI components across 5 different product teams.
+- **Solution:** Created a centralized component library using React, TypeScript, and Storybook.
+- **Impact:**
+  - Reduced UI development time by 40%.
+  - Ensured brand consistency across all digital touchpoints.
+  - Improved collaboration between designers and developers."""
+    },
+    "cv_mobile_app_developer.md": {
+        "title": "Mobile App Developer",
+        "subtitle": "iOS & Android Cross-Platform Specialist",
+        "summary": "Senior Mobile Developer specializing in **building high-performance native and cross-platform mobile applications**. Deep expertise in React Native, Flutter, and native iOS (Swift) development. Proven track record in delivering 5-star apps to App Store and Play Store, optimizing battery/memory usage, and integrating with complex device hardware.",
+        "competencies": """📱 **Mobile Development**
+- Cross-Platform: React Native, Flutter
+- Native: iOS (Swift/SwiftUI), Android (Kotlin/Jetpack Compose)
+- State Management (Redux, Bloc, Riverpod)
+- Offline-first Architecture & Sync
+
+⚙️ **Mobile Ops**
+- CI/CD for Mobile (Fastlane, Bitrise)
+- App Store & Play Store Deployment Guidelines
+- Performance Profiling (Instruments, Android Profiler)
+- Native Module Development (Bridging)""",
+        "accomplishments": """### 🏆 2024 | FinTech Neobank | London
+**Mobile Banking App 2.0**
+- **Challenge:** Rewrite legacy app to support new crypto trading features.
+- **Solution:** Built a modular React Native architecture with native bridges for cryptographic operations.
+- **Impact:**
+  - 4.8/5 star rating with 500k+ downloads.
+  - Crash-free rate of 99.9%.
+  - Shared 80% of code between iOS and Android.
+
+### 🏆 2023 | Travel Tech | Remote
+**Travel Companion App**
+- **Challenge:** Enable offline access to itineraries and maps for travelers.
+- **Solution:** Implemented offline-first usage using RxDB and background sync.
+- **Impact:**
+  - Increased daily active users by 25% due to reliable offline access.
+  - Reduced data usage by 50% for users roaming abroad."""
+    },
+    "cv_embedded_systems_engineer.md": {
+        "title": "Embedded Systems Engineer",
+        "subtitle": "Firmware & IoT Specialist",
+        "summary": "Senior Embedded Systems Engineer specializing in **firmware development, RTOS, and hardware-software integration**. Deep expertise in C/C++, ARM Cortex architectures, and low-power IoT devices. Proven track record in developing reliable firmware for medical devices and industrial automation systems with strict real-time constraints.",
+        "competencies": """🔌 **Embedded Software**
+- Bare-metal C/C++ & Assembly
+- RTOS (FreeRTOS, Zephyr, ThreadX)
+- Driver Development (I2C, SPI, UART, CAN)
+- Low-power Design & Optimization
+
+📟 **Hardware Integration**
+- Microcontrollers (STM32, Nordic, ESP32, AVR)
+- Board Bring-up & Debugging (JTAG, Oscilloscopes)
+- IoT Protocols (MQTT, CoAP, BLE, LoRaWAN)
+- Safety Standards (MISRA C, ISO 26262)""",
+        "accomplishments": """### 🏆 2024 | Smart Home IoT | Cambridge
+**Energy Monitor Firmware**
+- **Challenge:** Develop firmware for a battery-operated energy monitor requiring 5-year battery life.
+- **Solution:** Optimized FreeRTOS tasks and implemented deep sleep modes using erratic interrupts.
+- **Impact:**
+  - Achieved 5+ years battery life on a single coin cell.
+  - Reliable data transmission over Zigbee.
+  - Secured firmware updates over-the-air (OTA).
+
+### 🏆 2023 | Automotive Tier-1 | Germany
+**ECU Communication Gateway**
+- **Challenge:** Handle high-speed CAN FD messages with <100us latency.
+- **Solution:** Implemented DMA-based drivers and optimized interrupt service routines in C++.
+- **Impact:**
+  - zero packet loss at 100% bus load.
+  - Compliant with ISO 26262 ASIL-B safety standards."""
+    },
+    "cv_api_developer.md": {
+        "title": "API Developer",
+        "subtitle": "Integration & Backend Services Specialist",
+        "summary": "Senior API Developer specializing in **designing, documenting, and building scalable API ecosystems**. Deep expertise in REST, GraphQL, and gRPC architectural styles. Proven track record in creating developer-friendly APIs, implementing robust security (OAuth2/OIDC), and managing API lifecycles via gateways (Apigee, Kong).",
+        "competencies": """🔗 **API Engineering**
+- API Design (OpenAPI/Swagger, RAML)
+- Gateway Management (Kong, Apigee, AWS API Gateway)
+- Security (OAuth2, OIDC, JWT, Rate Limiting)
+- Protocols: REST, GraphQL, gRPC, WebSockets
+
+📚 **Developer Experience**
+- API Documentation & Portals
+- SDK Generation & Maintenance
+- Versioning Strategies
+- Mocking & Virtualization""",
+        "accomplishments": """### 🏆 2024 | Payment Gateway | London
+**Public API Platform Launch**
+- **Challenge:** Open up internal payment services to 3rd party developers.
+- **Solution:** Designed a developer-first public API with comprehensive documentation and a self-service sandbox.
+- **Impact:**
+  - Onboarded 500+ developers in the first 3 months.
+  - Reduced integration time from weeks to hours.
+  - Handled 10M+ daily API calls with 99.99% availability.
+
+### 🏆 2023 | SaaS Enterprise | Remote
+**GraphQL Federation**
+- **Challenge:** Unified data access across 20+ microservices.
+- **Solution:** Implemented Apollo Federation to create a single supergraph for client applications.
+- **Impact:**
+  - Eliminated over-fetching, reducing network traffic by 40%.
+  - Simplified frontend data logic significantly.
+  - Centralized schema governance."""
+    },
+    "cv_cloud_security_engineer.md": {
+        "title": "Cloud Security Engineer",
+        "subtitle": "Cloud Security Posture & Compliance Specialist",
+        "summary": "Senior Cloud Security Engineer specializing in **securing multi-cloud environments (AWS/Azure/GCP) and automating compliance**. Deep expertise in IAM, CSPM (Cloud Security Posture Management), and Infrastructure as Code security scanning. Proven track record in implementing zero-trust architectures and hardening cloud infrastructure against advanced threats.",
+        "competencies": """☁️ **Cloud Security**
+- Cloud Security Services (AWS GuardDuty, Azure Sentinel, GCP SCC)
+- IAM & Least Privilege Architecture
+- Container & Kubernetes Security
+- Encryption & Key Management (KMS, HSM)
+
+🛡️ **DevSecOps**
+- IaC Scanning (Checkov, Tfsec, Terrascan)
+- Pipeline Security Integration
+- Automated Remediation (Lambda, Cloud Functions)
+- Compliance Frameworks (CIS Benchmarks, PCI-DSS, SOC2)""",
+        "accomplishments": """### 🏆 2024 | Digital Bank | London
+**Cloud Security Posture Hardening**
+- **Challenge:** Remediate 500+ security misconfigurations across a sprawling AWS footprint.
+- **Solution:** Implemented a CSPM tool and automated remediation bots for common issues (open S3 buckets, SG rules).
+- **Impact:**
+  - Improved security score from 65% to 98%.
+  - Achieved continuous compliance with PCI-DSS.
+  - Reduced time-to-fix critical issues to <1 hour.
+
+### 🏆 2023 | Enterprise Retail | Remote
+**Kubernetes Security Overhaul**
+- **Challenge:** Secure a large-scale EKS environment handling PII data.
+- **Solution:** Implemented OPA Gatekeeper for policy enforcement and Falco for runtime security.
+- **Impact:**
+  - Blocked 100% of non-compliant deployments.
+  - Real-time detection of container escape attempts.
+  - Seamless integration with existing SIEM."""
+    },
     "cv_sre_engineer.md": {
         "title": "SRE Engineer",
         "subtitle": "Site Reliability & Performance Engineering Specialist", 
