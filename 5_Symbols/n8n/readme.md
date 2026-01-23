@@ -32,6 +32,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`update_default_cv.js`**: Updates the "Select Best CV" logic to default to the AI Engineer CV (`cv_ai_engineer.pdf`) if no specific keywords are matched. Also reinforces safe variable references in the Blocked Notification node.
 - **`fix_telegram_rate_limit.js`**: Enables "Retry On Fail" (3 attempts, 2s delay) for Telegram nodes to gracefully handle "Too Many Requests" (429) errors during rapid manual testing.
 - **`enforce_rate_limits.js`**: Re-architects the workflow into a Loop (SplitInBatches + Loopback) with a "Wait" node. This guarantees email requests are processed sequentially (1 at a time) with a 2-second delay between them, preventing API flooding.
+- **`refactor_workflow_optimal.js`**: Re-orders the workflow logic to "Triggers -> Blacklist Check -> CV Selection" for efficiency. It consolidates data merging into a single node ("Restore Context") that handles both Allowed and Blocked paths, ensuring robust data availability and clean logic.
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
