@@ -30,6 +30,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`add_merge_node_for_context.js`**: Adds a "Merge" node to the workflow to recombine the original data (from "Select Best CV") with the blacklist check result. This ensures downstream nodes (Telegram, Reply) have access to all necessary variables (`from`, `techStack`, etc.), fixing "unexecuted node" errors.
 - **`fix_blocked_context.js`**: Similar to the above, adds a "Restore Context Blocked" Merge node for the *blocked* path. This ensures failure notifications (for blacklisted users) also have access to the original email details (Subject/From).
 - **`update_default_cv.js`**: Updates the "Select Best CV" logic to default to the AI Engineer CV (`cv_ai_engineer.pdf`) if no specific keywords are matched. Also reinforces safe variable references in the Blocked Notification node.
+- **`fix_telegram_rate_limit.js`**: Enables "Retry On Fail" (3 attempts, 2s delay) for Telegram nodes to gracefully handle "Too Many Requests" (429) errors during rapid manual testing.
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
