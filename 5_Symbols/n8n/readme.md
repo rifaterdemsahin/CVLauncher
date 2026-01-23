@@ -28,6 +28,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`update_notifications_layout.js`**: Reorganizes the workflow canvas (sticky notes) for clarity and adds a "Notify Blocked" Telegram node to alert admins when a blacklisted user attempts to contact.
 - **`fix_download_failure.js`**: Fixes logic breaks by enabling "Always Output Data" on the Google Sheets node, ensuring that even if no blacklist match is found, the workflow continues to the "Download CV" step with the correct context.
 - **`add_merge_node_for_context.js`**: Adds a "Merge" node to the workflow to recombine the original data (from "Select Best CV") with the blacklist check result. This ensures downstream nodes (Telegram, Reply) have access to all necessary variables (`from`, `techStack`, etc.), fixing "unexecuted node" errors.
+- **`fix_blocked_context.js`**: Similar to the above, adds a "Restore Context Blocked" Merge node for the *blocked* path. This ensures failure notifications (for blacklisted users) also have access to the original email details (Subject/From).
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
