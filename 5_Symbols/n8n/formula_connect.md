@@ -44,3 +44,24 @@ Verified connection on 2026-01-23.
 - **Target Workflow**: "Respond to Job Offers" (ID: CVD1ecv1GNe9uF4a)
 - **Status**: Active
 - **URL**: [https://n8n.rifaterdemsahin.com/workflow/CVD1ecv1GNe9uF4a](https://n8n.rifaterdemsahin.com/workflow/CVD1ecv1GNe9uF4a)
+
+## 5. Workflow Stages
+
+The "Respond to Job Offers" workflow consists of the following automated stages:
+
+1.  **Trigger (Gmail/Webhook)**:
+    *   Monitors the inbox for unread emails not from self, categorized as primary.
+    *   Can also be triggered manually via Webhook.
+2.  **Filter (Check for Recruiter Keywords)**:
+    *   Analyzes email subject/body for keywords like "opportunity", "hiring", "rate", "salary" to identify potential job offers.
+3.  **Decision (Select Best CV)**:
+    *   Executes JavaScript to detect tech stack (Azure, GCP, AWS) from the email content.
+    *   Selects the appropriate PDF filename and constructs the GitHub download URL.
+4.  **Action (Download from GitHub)**:
+    *   Fetches the selected CV PDF from the `CVLauncher` repository.
+5.  **Response (Reply with CV)**:
+    *   Sends an automated reply to the recruiter with the specific CV attached.
+6.  **Cleanup (Mark as Read)**:
+    *   Removes the "UNREAD" label to prevent reprocessing.
+7.  **Notification (Telegram Notify)**:
+    *   Alerts the admin via Telegram with details of the sent reply (Recipient, Tech Stack, CV Name).
