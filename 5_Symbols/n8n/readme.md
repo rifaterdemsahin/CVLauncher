@@ -24,6 +24,9 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`fix_error_handling.js`**: Enables "Continue On Fail" on Gmail nodes. This allows manual tests with fake IDs ("mock-id") to bypass Gmail errors and verify the full flow (including Telegram).
 - **`fix_self_reply.js`**: Adds logic to the "Check for Recruiter Keywords" filter to explicitly ignore emails from the user's own name/email (e.g., "rifaterdemsahin"), preventing the bot from replying to test emails sent to oneself.
 - **`broaden_trigger_scope.js`**: Expands the Gmail Trigger query to capture ALL job-related emails (removing "primary" category and "-from:me" restrictions) and updates keyword regex to catch simple phrases like "send cv".
+- **`add_blacklist_check.js`**: Integrates a "Check Blacklist" Google Sheets node into the workflow. It checks incoming email addresses against a specified sheet and stops the workflow if a match is found, preventing replies to blacklisted recipients.
+- **`update_notifications_layout.js`**: Reorganizes the workflow canvas (sticky notes) for clarity and adds a "Notify Blocked" Telegram node to alert admins when a blacklisted user attempts to contact.
+- **`fix_download_failure.js`**: Fixes logic breaks by enabling "Always Output Data" on the Google Sheets node, ensuring that even if no blacklist match is found, the workflow continues to the "Download CV" step with the correct context.
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
