@@ -17,7 +17,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`update_email_template.js`**: Updates the "Reply with CV" Gmail node with a professional, rich-text HTML email template containing a CV summary, key accomplishments, and contact links.
 - **`update_workflow_generic.js`**: Adds a "Manual Trigger" for testing and updates the email template to strictly use the detected tech stack/role.
 - **`fix_manual_trigger.js`**: Enhances the manual test flow by adding a "Set Mock Data" node, which injects a dummy email (Azure DevOps role) so the workflow can fully execute from Trigger to Telegram without sending a real email.
-- **`backup_workflow.js`**: Fetches the current workflow from n8n and saves it to a `backups/` directory with a timestamped filename (e.g., `workflow_backup_2026-01-23_21-57-23.json`).
+- **`backup_workflow.js`**: Fetches the current workflow from n8n and saves it to a `backups/` directory with a full timestamped filename (e.g., `workflow_backup_YYYY-MM-DD_HH-mm-ss.json`).
 - **`fix_node_references.js`**: Updates references in downstream nodes (Reply, Telegram) to point to "Select Best CV" instead of "Gmail Trigger", fixing "unexecuted node" errors during manual testing.
 - **`add_david_sticky_note.js`**: Adds an acknowledgement sticky note for David Gilchrist to the workflow canvas.
 - **`debug_references.js`**: Aggressively scans and fixes any remaining nodes that reference "Gmail Trigger" (which fails in manual testing) by re-pointing them to "Select Best CV".
@@ -27,6 +27,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`add_blacklist_check.js`**: Integrates a "Check Blacklist" Google Sheets node into the workflow. It checks incoming email addresses against a specified sheet and stops the workflow if a match is found, preventing replies to blacklisted recipients.
 - **`update_notifications_layout.js`**: Reorganizes the workflow canvas (sticky notes) for clarity and adds a "Notify Blocked" Telegram node to alert admins when a blacklisted user attempts to contact.
 - **`fix_download_failure.js`**: Fixes logic breaks by enabling "Always Output Data" on the Google Sheets node, ensuring that even if no blacklist match is found, the workflow continues to the "Download CV" step with the correct context.
+- **`add_merge_node_for_context.js`**: Adds a "Merge" node to the workflow to recombine the original data (from "Select Best CV") with the blacklist check result. This ensures downstream nodes (Telegram, Reply) have access to all necessary variables (`from`, `techStack`, etc.), fixing "unexecuted node" errors.
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
