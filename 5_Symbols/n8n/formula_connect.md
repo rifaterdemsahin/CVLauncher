@@ -7,9 +7,9 @@ This directory contains a setup to connect to your n8n instance using environmen
 Ensure your `.env` file has the following variables:
 
 ```ini
-N8N_PROTOCOL=https
-N8N_HOST=n8n.rifaterdemsahin.com
-N8N_API_KEY=your_actual_api_key_here
+N8N_WORKFLOW_ID_CVD=CVD1ecv1GNe9uF4a
+N8N_HOST=https://n8n.rifaterdemsahin.com/
+N8N_API_KEY=... (your actual key)
 ```
 
 ## 2. Install Dependencies
@@ -36,3 +36,11 @@ The script performs the following:
 2.  Constructs the API URL.
 3.  Makes a GET request to `/api/v1/workflows` to verify credentials.
 4.  Logs the success or error message.
+
+## 4. Verification Results
+
+Verified connection on 2026-01-23.
+- **Connection Status**: Successful
+- **Target Workflow**: "Respond to Job Offers" (ID: CVD1ecv1GNe9uF4a)
+- **Status**: Active
+- **URL**: [https://n8n.rifaterdemsahin.com/workflow/CVD1ecv1GNe9uF4a](https://n8n.rifaterdemsahin.com/workflow/CVD1ecv1GNe9uF4a)

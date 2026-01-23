@@ -1,21 +1,24 @@
 require('dotenv').config();
 const axios = require('axios');
 
-const protocol = process.env.N8N_PROTOCOL || 'https';
-const host = process.env.N8N_HOST || 'localhost:5678';
+let protocol = process.env.N8N_PROTOCOL || 'https';
+let host = process.env.N8N_HOST || 'n8n.rifaterdemsahin.com';
 const apiKey = process.env.N8N_API_KEY;
 const targetWorkflowId = 'CVD1ecv1GNe9uF4a';
 
 if (!apiKey || apiKey === 'your_api_key_here') {
-    console.error('Error: N8N_API_KEY is missing or default in .env file');
-    process.exit(1);
+    console.warn('Warning: N8N_API_KEY appears to be the default placeholder.');
+     // proceed specifically to debug the connection URL even if auth fails
 }
+
+// Clean up host (remove protocol if present)
+host = host.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
 const baseUrl = `${protocol}://${host}/api/v1`;
 
 async function testConnection() {
     try {
-        console.log(`Connecting to n8n at ${baseUrl}...`);
+        console.log(`Target Base URL: ${baseUrl}`);
         
         // 1. Test basic connection (list workflows)
         console.log('Verifying authentication...');
@@ -47,6 +50,8 @@ async function testConnection() {
         if (error.response) {
             console.error('Status:', error.response.status);
             console.error('Data:', JSON.stringify(error.response.data, null, 2));
+        } else if (error.code === 'ENOTFOUND') {
+             console.error('Hostname not found. Check N8N_HOST in .env');
         }
         process.exit(1);
     }
