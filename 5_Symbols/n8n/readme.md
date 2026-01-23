@@ -15,6 +15,7 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`add_version_tag.js`**: Adds a "Version Info" sticky note to the workflow with the current Git commit hash, date, and repository link.
 - **`update_cv_map.js`**: Updates the "Select Best CV" Code node with a comprehensive map of CVs based on the actual PDF files in `5_Symbols/cvs` matching keywords like AWS, Azure, AI, etc.
 - **`update_email_template.js`**: Updates the "Reply with CV" Gmail node with a professional, rich-text HTML email template containing a CV summary, key accomplishments, and contact links.
+- **`update_workflow_generic.js`**: Adds a "Manual Trigger" for testing and updates the email template to strictly use the detected tech stack/role (e.g., "Thank you for reaching out regarding the Azure opportunity").
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
