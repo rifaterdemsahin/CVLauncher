@@ -40,6 +40,7 @@ All scripts are now located in the `fixes/` subdirectory. To run them, navigate 
 - **`fix_self_reply.js`**: Legacy script for self-exclusion logic.
 - **`ensure_blacklist_resilience.js`**: Hardens the "Check Blacklist" node by enabling "Continue On Fail" and "Always Output Data", preventing workflow crashes if Google Sheets credentials are invalid.
 - **`inject_debug_nodes.js`**: Inserts "Do Nothing" Code nodes with console logs at critical junctions. This aids debugging by creating visible checkpoints in the execution history to trace where the flow might be stalling.
+- **`fix_debug_wiring.js`**: Ensures the connection branching around Debug nodes and the Merge node is correctly configured, preventing "hanging" executions where parallel paths fail to synchronize.
 
 ### Utilities
 - **`backup_workflow.js`**: Saves a snapshot of the current workflow to `backups/`.
@@ -47,6 +48,7 @@ All scripts are now located in the `fixes/` subdirectory. To run them, navigate 
 - **`get_workflow_details.js`**: Dumps raw workflow JSON.
 - **`add_sticky_notes.js`** / **`add_david_sticky_note.js`** / **`add_version_tag.js`**: Canvas annotation tools.
 - **`rearrange_canvas.js`**: Programmatically organizes the workflow nodes into a clean, left-to-right logic flow with proper spacing and functional grouping, significantly improving readability and UX.
+- **`remove_rate_limits.js`**: Removes the "Split In Batches" and "Wait" nodes, reverting the workflow to parallel/immediate execution mode (simplifying the graph but removing flood protection).
 
 ## ⚙️ Configuration
 - **`.env`**: Stores `N8N_API_KEY`, `N8N_HOST` (GitIgnored).
