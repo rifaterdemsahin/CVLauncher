@@ -20,6 +20,8 @@ This directory contains scripts and documentation for managing the "Respond to J
 - **`backup_workflow.js`**: Fetches the current workflow from n8n and saves it to a `backups/` directory with a timestamped filename (e.g., `workflow_backup_2026-01-23_21-57-23.json`).
 - **`fix_node_references.js`**: Updates references in downstream nodes (Reply, Telegram) to point to "Select Best CV" instead of "Gmail Trigger", fixing "unexecuted node" errors during manual testing.
 - **`add_david_sticky_note.js`**: Adds an acknowledgement sticky note for David Gilchrist to the workflow canvas.
+- **`debug_references.js`**: Aggressively scans and fixes any remaining nodes that reference "Gmail Trigger" (which fails in manual testing) by re-pointing them to "Select Best CV".
+- **`fix_error_handling.js`**: Enables "Continue On Fail" on Gmail nodes. This allows manual tests with fake IDs ("mock-id") to bypass Gmail errors and verify the full flow (including Telegram).
 
 ### ⚙️ Configuration & Data
 - **`.env`**: (GitIgnored) Stores sensitive connection details `N8N_API_KEY`, `N8N_HOST`, etc.
