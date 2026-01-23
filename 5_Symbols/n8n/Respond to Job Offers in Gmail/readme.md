@@ -12,6 +12,7 @@ We have reorganized the project structure to improve clarity and scalability:
 
 ## 📄 Documentation
 - **`formula_connect.md`**: Guide for connecting to the n8n instance and verification details.
+- **`workflow_visual_guide.md`**: Visual walkthrough of the workflow logic and execution.
 - **`readme.md`**: This file.
 
 ## 🛠️ Maintenance Scripts (`/fixes`)
@@ -41,6 +42,7 @@ All scripts are now located in the `fixes/` subdirectory. To run them, navigate 
 - **`ensure_blacklist_resilience.js`**: Hardens the "Check Blacklist" node by enabling "Continue On Fail" and "Always Output Data", preventing workflow crashes if Google Sheets credentials are invalid.
 - **`inject_debug_nodes.js`**: Inserts "Do Nothing" Code nodes with console logs at critical junctions. This aids debugging by creating visible checkpoints in the execution history to trace where the flow might be stalling.
 - **`fix_debug_wiring.js`**: Ensures the connection branching around Debug nodes and the Merge node is correctly configured, preventing "hanging" executions where parallel paths fail to synchronize.
+- **`fix_merge_mode.js`**: Updates the Merge node configuration to use the modern "combine" mode (instead of deprecated "mergeByPosition"), resolving compatibility errors with newer n8n versions.
 
 ### Utilities
 - **`backup_workflow.js`**: Saves a snapshot of the current workflow to `backups/`.
