@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CVLauncher Workflow Tester</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; color: #333; padding: 20px; text-align: center; }
+        h1 { margin-bottom: 20px; color: #444; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        button.all-tests { background-color: #28a745; margin-top: 20px; font-weight: bold; }
+        button.all-tests:hover { background-color: #218838; }
+        #status { margin-top: 20px; padding: 10px; border-radius: 4px; display: none; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚀 CVLauncher Workflow Tests</h1>
+        <p>Trigger tests directly to verify the n8n workflow logic.</p>
+
+        <button onclick="runTest('test_specific_email.js')">TEST: Specific Job Offer (Cloud DevOps)</button>
+        <button onclick="runTest('test_security_cleared_confirmation.js')">TEST: Confirmation Email (SecurityCleared)</button>
+        <button onclick="runTest('test_jobserve_confirmation.js')">TEST: Confirmation Email (JobServe)</button>
+        <button onclick="runTest('test_webhook.js')">TEST: Generic Webhook</button>
+
+        <button class="all-tests" onclick="runAllTests()">✅ RUN ALL TESTS</button>
+
+        <div id="status"></div>
+    </div>
+
+    <script>
+        // Note: This HTML file assumes a backend server is running to execute node commands.
+        // Since we are just generating the file for the user to use locally (likely via VS Code Live Server or similar),
+        // we will simulate the "Action" via console logs or assume a simple local server if they have one.
+        
+        // HOWEVER, to make this truly functional right now in the User's environment without a backend,
+        // we can't directly execute 'node script.js' from the browser for security reasons.
+        //
+        // OPTION 1: We create a simple Node.js server script to serve this and run commands.
+        // OPTION 2: We just provide this UI, and the user must run a small server we provide.
+        
+        async function runTest(scriptName) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.style.display = 'block';
+            statusDiv.className = '';
+            statusDiv.innerText = `⏳ Running ${scriptName}...`;
+
+            try {
+                // Fetch to our local test runner server (which we will create next)
+                const response = await fetch('http://localhost:3000/run-test', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ script: scriptName })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    statusDiv.className = 'success';
+                    statusDiv.innerHTML = `✅ <strong>${scriptName}</strong> triggered successfully!<br><small>${data.message}</small>`;
+                } else {
+                    statusDiv.className = 'error';
+                    statusDiv.innerText = `❌ Error: ${data.message}`;
+                }
+            } catch (err) {
+                statusDiv.className = 'error';
+                statusDiv.innerText = `❌ Connection Failed. Ensure the Test Runner Server is running (node test_server.js).`;
+            }
+        }
+
+        async function runAllTests() {
+            const tests = ['test_specific_email.js', 'test_security_cleared_confirmation.js', 'test_jobserve_confirmation.js', 'test_webhook.js'];
+            for (const test of tests) {
+                await runTest(test);
+                // simple wait between tests
+                await new Promise(r => setTimeout(r, 2000));
+            }
+        }
+    </script>
+</body>
+</html>
