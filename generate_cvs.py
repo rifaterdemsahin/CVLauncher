@@ -840,6 +840,402 @@ cv_roles = {
   - Real-time detection of container escape attempts.
   - Seamless integration with existing SIEM."""
     },
+    "cv_data_scientist.md": {
+        "title": "Senior Data Scientist",
+        "subtitle": "Machine Learning & Predictive Analytics Specialist",
+        "summary": "Senior Data Scientist specializing in **translating complex data into actionable business insights and predictive models**. Deep expertise in statistical modeling, machine learning algorithms, and A/B testing. Proven track record in driving revenue growth and operational efficiency through data-driven decision-making across e-commerce, finance, and marketing sectors.",
+        "competencies": """📊 **Data Science & Statistics**
+- Predictive Modeling & Forecasting (Time Series, Regression)
+- Machine Learning (Scikit-learn, XGBoost, LightGBM)
+- Hypothesis Testing & A/B Experimentation
+- Data Visualization (Tableau, PowerBI, Matplotlib)
+
+💻 **Technical Skills**
+- Python, SQL (Advanced), R
+- Big Data (Spark, Databricks, Hive)
+- Feature Store & Model Versioning
+- Natural Language Processing (Basic)""",
+        "accomplishments": """### 2024 | Retail Giant | London
+**Pricing Optimization Engine**
+- **Challenge:** Optimize product pricing to maximize margin without sacrificing sales volume.
+- **Solution:** Developed a dynamic pricing model using elasticity demand modeling and competitor data.
+- **Impact:**
+  - Increased gross margin by 12% ($5M/year).
+  - Automated pricing updates for 50k SKUs.
+  - Reduced manual pricing effort by 90%.
+
+### 2023 | FinTech | Remote
+**Credit Risk Scoring Model**
+- **Challenge:** Improve default prediction for thin-file customers.
+- **Solution:** Built an XGBoost model utilizing alternative data sources (telco, utility data).
+- **Impact:**
+  - Improved Gini coefficient by 15 points.
+  - Reduced default rate by 20%.
+  - Enabled 30% more loan approvals with same risk profile."""
+    },
+    "cv_nlp_engineer.md": {
+        "title": "NLP Engineer",
+        "subtitle": "Natural Language Processing & LLM Specialist",
+        "summary": "Senior NLP Engineer specializing in **building intelligent text processing systems and Large Language Model (LLM) applications**. Deep expertise in semantic search, sentiment analysis, and conversational AI. Proven track record in fine-tuning transformer models (BERT, GPT) for domain-specific tasks and deploying them effectively in production.",
+        "competencies": """🗣️ **Natural Language Processing**
+- LLM Integration (OpenAI, Anthropic, Llama 2)
+- Vector Databases (Pinecone, Weaviate, Milvus)
+- RAG (Retrieval-Augmented Generation) Architectures
+- Named Entity Recognition (NER) & Classification
+
+⚙️ **ML Engineering**
+- Hugging Face Ecosystem (Transformers, Datasets)
+- Prompt Engineering & Chain-of-Thought
+- Model Fine-Tuning (PEFT, LoRA)
+- NLP Pipelines (Spacy, NLTK)""",
+        "accomplishments": """### 2024 | Legal Tech | London
+**Contract Analysis Assistant**
+- **Challenge:** automate the review of complex legal contracts to identify high-risk clauses.
+- **Solution:** Built a RAG pipeline using GPT-4 and a vector database of legal precedents.
+- **Impact:**
+  - Reduced contract review time by 75%.
+  - Achieved 95% accuracy in identifying risk clauses compared to human lawyers.
+  - Deployed as a secure, private instance for enterprise clients.
+
+### 2023 | Customer Support AI | Remote
+**Multilingual Chatbot**
+- **Challenge:** Deflect L1 support tickets for a global user base speaking 10+ languages.
+- **Solution:** Fine-tuned a multilingual BERT model for intent classification and entity extraction.
+- **Impact:**
+  - Deflected 40% of incoming tickets automatically.
+  - Supported 12 languages with a single model.
+  - Improved CSAT scores by providing instant responses."""
+    },
+    "cv_computer_vision_engineer.md": {
+        "title": "Computer Vision Engineer",
+        "subtitle": "Image Processing & Visual AI Specialist",
+        "summary": "Senior Computer Vision Engineer specializing in **developing algorithms for image classification, object detection, and segmentation**. Deep expertise in OpenCV and deep learning frameworks (PyTorch/TensorFlow). Proven track record in deploying vision systems for medical imaging, manufacturing QA, and security surveillance.",
+        "competencies": """👁️ **Computer Vision**
+- Object Detection (YOLO, Faster R-CNN)
+- Semantic & Instance Segmentation (U-Net, Mask R-CNN)
+- Classical CV (OpenCV, filters, edge detection)
+- OCR (Optical Character Recognition)
+
+⚙️ **Deployment & Edge AI**
+- Model Optimization (TensorRT, OpenVINO)
+- Edge Deployment (Jetson, Raspberry Pi)
+- Video Stream Processing (GStreamer, FFmpeg)
+- Synthetic Data Generation""",
+        "accomplishments": """### 2024 | Manufacturing Tech | Manchester
+**Automated Quality Inspection**
+- **Challenge:** Detect microscopic defects on assembly line products at high speed.
+- **Solution:** Developed a custom CNN architecture deployed on edge devices for real-time inference.
+- **Impact:**
+  - Improved defect detection rate from 85% to 99.5%.
+  - Reduced manual inspection costs by £200k/year.
+  - Processed 50 items per second with <10ms latency.
+
+### 2023 | Security Systems | Remote
+**Facial Recognition Access Control**
+- **Challenge:** Secure building access with touchless biometric authentication.
+- **Solution:** Implemented a liveness detection module to prevent spoofing attacks using depth sensors.
+- **Impact:**
+  - Reduced false acceptance rate (FAR) to 0.001%.
+  - Enabled entry time of <1 second per person.
+  - Privacy-compliant architecture processing data locally."""
+    },
+    "cv_soc_analyst.md": {
+        "title": "SOC Analyst",
+        "subtitle": "Security Operations & Threat Analysis Specialist",
+        "summary": "Senior SOC Analyst specializing in **security monitoring, incident triage, and threat hunting**. Deep expertise in SIEM technologies (Splunk, Microsoft Sentinel) and EDR tools. Proven track record in reducing mean time to detect (MTTD) and respond (MTTR) by refining correlation rules and automating investigation workflows.",
+        "competencies": """🛡️ **Security Operations**
+- Log Analysis & Correlation (Splunk SPL, KQL)
+- Incident Triage & Investigation
+- Threat Intelligence (TIP) Integration
+- Phishing Analysis & Malware Sandbox
+
+⚙️ **Tools & Automation**
+- SIEM (Splunk, Sentinel, ELK)
+- SOAR (Tines, Palo Alto XSOAR)
+- EDR using (CrowdStrike, SentinelOne)
+- Network Traffic Analysis (Wireshark, Zeek)""",
+        "accomplishments": """### 2024 | Global MSP | London
+**SOC Maturity Improvement**
+- **Challenge:** High volume of false positives causing alert fatigue for analysts.
+- **Solution:** Tuned SIEM correlation rules and implemented SOAR playbooks for initial triage.
+- **Impact:**
+  - Reduced false positives by 60%.
+  - Improved analyst efficiency, allowing 2x investigation volume.
+  - Reduced MTTR for critical incidents to <30 minutes.
+
+### 2023 | Financial Services | London
+**Insider Threat Detection**
+- **Challenge:** Detect anomalous data exfiltration attempts by employees.
+- **Solution:** Created UEBA (User and Entity Behavior Analytics) rules based on login patterns and data transfer volumes.
+- **Impact:**
+  - Detected and stopped a reliable data leak incident.
+  - Established a baseline of normal user behavior.
+  - integrated alerts with HR systems for context."""
+    },
+    "cv_penetration_tester.md": {
+        "title": "Penetration Tester",
+        "subtitle": "Ethical Hacker & Offensive Security Specialist",
+        "summary": "Senior Penetration Tester specializing in **web application security, network testing, and red team engagements**. Deep expertise in identifying vulnerabilities (OWASP Top 10) and exploiting system weaknesses to improve organizational security posture. Proven track record in delivering actionable remediation reports and conducting post-remediation verification.",
+        "competencies": """🔓 **Offensive Security**
+- Web App Pentesting (Burp Suite, OWASP ZAP)
+- Network Infrastructure Testing (Nmap, Metasploit)
+- Cloud Security Assessment (Pacu, ScoutSuite)
+- Social Engineering & Phishing Simulations
+
+📝 **Reporting & Compliance**
+- Vulnerability Assessment Reporting
+- CVSS Scoring & Risk Prioritization
+- Remediation Guidance
+- Compliance Audits (PCI-DSS)""",
+        "accomplishments": """### 2024 | Cyber Security Consultancy | London
+**Red Team Engagement**
+- **Challenge:** Simulate a sophisticated ransomware attack on a FTSE 100 client.
+- **Solution:** Executed a multi-vector attack simulation involving phishing, pivot, and domain dominance.
+- **Impact:**
+  - Exposed critical gaps in the client's EDR configuration.
+  - Validated the effectiveness of the blue team's response.
+  - Led to a £1M investment in security upgrades.
+
+### 2023 | Start-up | Remote
+**Product Security Launch**
+- **Challenge:** Ensure a new Fintech banking app is secure before public launch.
+- **Solution:** Conducted a comprehensive gray-box penetration test of the mobile app and backend API.
+- **Impact:**
+  - Identified 5 critical vulnerabilities (IDOR, SQLi) prior to launch.
+  - Verified fixes within 48 hours to meet launch deadline.
+  - Helped achieve ISO 27001 certification."""
+    },
+    "cv_grc_analyst.md": {
+        "title": "GRC Analyst",
+        "subtitle": "Governance, Risk & Compliance Specialist",
+        "summary": "Senior GRC Analyst specializing in **IT risk management, regulatory compliance, and security policy frameworks**. Deep expertise in ISO 27001, NIST, and GDPR compliance. Proven track record in preparing organizations for external audits, managing third-party risk, and aligning IT controls with business objectives.",
+        "competencies": """📜 **Governance & Compliance**
+- Frameworks: ISO 27001, NIST CSF, SOC2, GDPR
+- Policy Development & Maintenance
+- Audit Management & Preparation
+- Regulatory Reporting
+
+⚖️ **Risk Management**
+- IT Risk Assessment & Treatment
+- Third-Party Risk Management (TPRM)
+- Business Continuity Planning (BCP)
+- Threat Modeling facilitation""",
+        "accomplishments": """### 2024 | Healthcare Provider | London
+**ISO 27001 Certification**
+- **Challenge:** Achieve ISO 27001 certification to bid for NHS contracts.
+- **Solution:** Led the gap analysis, implemented required ISMS controls, and managed the external audit process.
+- **Impact:**
+  - Achieved certification with zero major non-conformities.
+  - Unlocked £5M in new business opportunities.
+  - Standardized security processes across 5 departments.
+
+### 2023 | SaaS Scale-up | Remote
+**Vendor Risk Program**
+- **Challenge:** Manage security risks from an exploding number of SaaS vendors.
+- **Solution:** Implemented a centralized TPRM platform and automated vendor assessment workflows.
+- **Impact:**
+  - Reduced vendor onboarding time by 50%.
+  - Identified and mitigated risks in 3 critical sub-processors.
+  - Established continuous monitoring for key vendors."""
+    },
+    "cv_solutions_engineer.md": {
+        "title": "Solutions Engineer",
+        "subtitle": "Pre-Sales & Technical Consulting Specialist",
+        "summary": "Senior Solutions Engineer specializing in **technical pre-sales, solution architecture, and client problem solving**. Deep expertise in bridging the gap between complex technical products and business value. Proven track record in closing high-value enterprise deals by delivering compelling demonstrations, proof of concepts (PoCs), and answering RFPs effectively.",
+        "competencies": """💼 **Sales Engineering**
+- Technical Discovery & Needs Analysis
+- Custom Demo Creation & Presentation
+- RFP/RFI Response Management
+- ROI & Business Value Justification
+
+🛠️ **Technical Implementation**
+- Proof of Concept (PoC) Architecting
+- Solution Integration Design
+- Client Onboarding & Implementation Support
+- Technical Workshop Facilitation""",
+        "accomplishments": """### 2024 | Enterprise SaaS | London
+**Strategic Deal Support**
+- **Challenge:** Secure a £2M contract with a Tier-1 bank requiring complex on-premise integration.
+- **Solution:** Designed a custom hybrid architecture and led a 3-week successful PoC demonstrating security compliance.
+- **Impact:**
+  - Closed the company's largest deal of the year.
+  - Reduced the typical sales cycle from 9 months to 6 months.
+  - Created a reusable "Banking Integration Kit" for future deals.
+
+### 2023 | Cloud Infrastructure | Remote
+**Technical Win Rate Improvement**
+- **Challenge:** Low conversion rate from demo to PoC stages.
+- **Solution:** Revamped the standard demo environment to be industry-specific and data-rich.
+- **Impact:**
+  - Increased Demo-to-PoC conversion rate by 35%.
+  - Systematized the RFP response process, saving 10 hours per week.
+  - Mentored 3 junior SEs to quota attainment."""
+    },
+    "cv_agile_coach.md": {
+        "title": "Agile Coach",
+        "subtitle": "Enterprise Agile Transformation Specialist",
+        "summary": "Senior Agile Coach specializing in **organizational transformation, scaling agile frameworks, and fostering high-performance culture**. Deep expertise in SAFe, LeSS, and Scrum at scale. Proven track record in guiding executive leadership and multiple teams through the shift from waterfall to agile, improving delivery flow and business agility.",
+        "competencies": """🔄 **Agile Transformation**
+- Business Agility & Value Stream Mapping
+- Scaling Frameworks (SAFe, LeSS, Spotify Model)
+- Executive & Leadership Coaching
+- Change Management Strategy
+
+👥 **Team Enablement**
+- Scrum Master Mentorship
+- Community of Practice (CoP) Facilitation
+- Agile Maturity Assessment
+- OKR Definition & Alignment""",
+        "accomplishments": """### 2024 | Insurance Corp | London
+**Enterprise Agility Program**
+- **Challenge:** Siloed departments and slow time-to-market due to rigid waterfall processes.
+- **Solution:** Designed and rolled out a customized Agile scaling model across 200+ staff (25 teams).
+- **Impact:**
+  - Reduced feature lead time by 50% (from 6 months to 3 months).
+  - Increased employee engagement scores by 20%.
+  - Established a sustainable "Agile Center of Excellence".
+
+### 2023 | Digital Agency | Remote
+**Delivery Process Modernization**
+- **Challenge:** Inconsistent delivery standards leading to client dissatisfaction.
+- **Solution:** Standardized the "Way of Working" and coached teams on Kanban flow metrics.
+- **Impact:**
+  - improved delivery predictability by 40%.
+  - Reduced average cycle time by 25%.
+  - Fostered a culture of continuous improvement via effective retrospectives."""
+    },
+    "cv_product_owner.md": {
+        "title": "Product Owner",
+        "subtitle": "Agile Product Management Specialist",
+        "summary": "Certified Product Owner specializing in **backlog management, stakeholder alignment, and maximizing product value**. Deep expertise in translating business vision into actionable user stories and acceptance criteria. Proven track record in working closely with engineering teams to deliver high-quality software features iteratively and on schedule.",
+        "competencies": """📦 **Product Ownership**
+- Backlog Grooming & Prioritization
+- User Story Writing & Acceptance Criteria (BDD)
+- Roadmap Planning & Release Management
+- Stakeholder Management & Communication
+
+🔍 **Product Discovery**
+- User Research & Persona Definition
+- MVP Definition & Scope Management
+- Data-Driven Decision Making
+- Competitor Analysis""",
+        "accomplishments": """### 2024 | EdTech Platform | London
+**Learning Management System Revamp**
+- **Challenge:** Modernize the student dashboard to improve course completion rates.
+- **Solution:** Led the product squad to iteratively release a gamified dashboard based on user feedback.
+- **Impact:**
+  - Increased course completion rates by 15%.
+  - Achieved a Net Promoter Score (NPS) increase of 10 points.
+  - Delivered the project on time and under budget.
+
+### 2023 | Retail App | Remote
+**Mobile Checkout Optimization**
+- **Challenge:** High drop-off rate at the payment stage of the mobile app.
+- **Solution:** Prioritized Apple/Google Pay integration and streamlined the guest checkout flow.
+- **Impact:**
+  - Reduced checkout time by 90 seconds.
+  - Increased mobile conversion rate by 8%.
+  - Generated an estimated £500k incremental revenue annually."""
+    },
+    "cv_product_manager.md": {
+        "title": "Product Manager",
+        "subtitle": "Product Strategy & Lifecycle Management Specialist",
+        "summary": "Senior Product Manager specializing in **product strategy, market fit, and end-to-end product lifecycle management**. Deep expertise in identifying market opportunities, defining product vision, and leading cross-functional teams to launch successful digital products. Proven track record in driving user growth and monetization strategies.",
+        "competencies": """🚀 **Product Strategy**
+- Market Research & Opportunity Analysis
+- Product Vision & Roadmap Definition
+- Go-to-Market (GTM) Strategy
+- Business Model Generation & Pricing
+
+📊 **Product Operations**
+- KPI Definition & Analytics Tracking
+- A/B Testing & Conversion Optimization
+- Customer Journey Mapping
+- Cross-functional Leadership (Eng, Design, Sales)""",
+        "accomplishments": """### 2024 | SaaS B2B | London
+**New Market Expansion**
+- **Challenge:** Launch the existing UK product into the US market.
+- **Solution:** Conducted deep market research, adapted the product feature set for US compliance, and coordinated the GTM launch.
+- **Impact:**
+  - Acquired 100+ US enterprise customers in the first 6 months.
+  - Generated $1M ARR in the first year of expansion.
+  - Successfully positioned the product against local competitors.
+
+### 2023 | Consumer Social | Remote
+**Engagement Growth Initiative**
+- **Challenge:** Reverse a trend of declining daily active users (DAU).
+- **Solution:** Conceptualized and launched a "Social Streaks" feature to gamify daily usage.
+- **Impact:**
+  - Increased DAU by 25% within 3 months.
+  - Improved Day-30 retention by 15%.
+  - Feature became a core differentiator in marketing campaigns."""
+    },
+    "cv_systems_analyst.md": {
+        "title": "Systems Analyst",
+        "subtitle": "Technical Requirements & System Design Specialist",
+        "summary": "Senior Systems Analyst specializing in **analyzing complex business requirements and designing technical system solutions**. Deep expertise in bridging the gap between business needs and IT capabilities. Proven track record in documenting detailed system specifications, modeling data flows, and ensuring successful system integration and implementation.",
+        "competencies": """💻 **System Analysis**
+- Requirement Gathering & Elicitation
+- Functional & Non-Functional Specification
+- Data Modeling (ERD) & Process Mapping (BPMN)
+- System Architecture Diagramming (UML)
+
+🔧 **Technical Implementation**
+- API Specification (Swagger/OpenAPI)
+- Database Schema Design
+- Legacy System Analysis & Migration
+- User Acceptance Testing (UAT) Coordination""",
+        "accomplishments": """### 2024 | Logistics Corp | Manchester
+**Warehouse Management Integration**
+- **Challenge:** Integrate a new 3rd party WMS with the legacy ERP system.
+- **Solution:** Mapped all data flows, defined API contracts, and managed the technical implementation plan.
+- **Impact:**
+  - Enabled real-time inventory visibility across 10 warehouses.
+  - Reduced order processing errors by 95%.
+  - Delivered the project with zero downtime during switchover.
+
+### 2023 | Public Sector | Remote
+**Case Management System Migration**
+- **Challenge:** Migrate sensitive case data from a 15-year-old on-premise system to the cloud.
+- **Solution:** Conducted a comprehensive data audit, designed the migration scripts, and validated data integrity.
+- **Impact:**
+  - Successfully migrated 5M+ records with 100% data accuracy.
+  - Improved system query performance by 80%.
+  - Ensured full compliance with GDPR data retention policies."""
+    },
+    "cv_data_analyst.md": {
+        "title": "Data Analyst",
+        "subtitle": "Business Intelligence & Data Storytelling Specialist",
+        "summary": "Senior Data Analyst specializing in **transforming raw data into meaningful business intelligence and visualizations**. Deep expertise in SQL, data visualization tools (Tableau, PowerBI), and analytical problem solving. Proven track record in helping stakeholders understand trends, identify inefficiencies, and make data-informed strategic decisions.",
+        "competencies": """📊 **Data Analytics**
+- Advanced SQL (Window Functions, CTEs)
+- Data Visualization (Tableau, PowerBI, Looker)
+- Data Cleaning & Preparation (Python/Pandas, Excel)
+- Statistical Analysis & Reporting
+
+🗣️ **Communication**
+- Dashboard Design & User Experience
+- Business KPI Definition
+- Stakeholder Presentation & Storytelling
+- Ad-hoc Analysis & Query Optimization""",
+        "accomplishments": """### 2024 | Retail Chain | London
+**Sales Performance Dashboard**
+- **Challenge:** Regional managers lacked visibility into store performance and inventory levels.
+- **Solution:** Designed and built a suite of interactive Tableau dashboards connecting to the data warehouse.
+- **Impact:**
+  - Empowered 50+ managers with self-service analytics.
+  - Identified underperforming product lines, leading to a stock adjustment saving £500k.
+  - Reduced time spent on manual reporting by 20 hours/week.
+
+### 2023 | Marketing Agency | Remote
+**Campaign ROI Analysis**
+- **Challenge:** Determine the most effective marketing channels for client spend.
+- **Solution:** aggregated data from Google Ads, Facebook, and CRM to calculate true ROAS (Return on Ad Spend).
+- **Impact:**
+  - Reallocated budget to high-performing channels, increasing overall leads by 30%.
+  - Provided clear attribution modeling for client reporting.
+  - Automated weekly performance reports sent to clients."""
+    },
     "cv_sre_engineer.md": {
         "title": "SRE Engineer",
         "subtitle": "Site Reliability & Performance Engineering Specialist", 
