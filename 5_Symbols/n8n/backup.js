@@ -30,7 +30,8 @@ async function backupWorkflow() {
 
         const workflowData = response.data;
         const workflowName = workflowData.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        const filename = `${workflowName}_${workflowId}.json`;
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+        const filename = `${workflowName}_${workflowId}_${timestamp}.json`;
         const filePath = path.join(backupDir, filename);
 
         fs.writeFileSync(filePath, JSON.stringify(workflowData, null, 2));
