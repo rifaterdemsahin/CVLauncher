@@ -59,7 +59,7 @@ async function updateWorkflow() {
             connections: workflow.connections,
             settings: workflow.settings,
             staticData: workflow.staticData,
-            tags: workflow.tags
+            // tags: workflow.tags // API says read-only
         };
 
         console.log(`Pushing updates to ${url}...`);
