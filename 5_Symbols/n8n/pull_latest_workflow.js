@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, 'Respond to Job Offers in Gmail', '.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 const n8nHost = process.env.N8N_HOST;
 const n8nApiKey = process.env.N8N_API_KEY;
