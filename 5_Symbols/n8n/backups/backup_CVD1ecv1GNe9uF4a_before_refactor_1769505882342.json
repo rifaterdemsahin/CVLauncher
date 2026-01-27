@@ -1,0 +1,1872 @@
+{
+  "updatedAt": "2026-01-27T09:15:03.217Z",
+  "createdAt": "2026-01-23T19:18:26.224Z",
+  "id": "CVD1ecv1GNe9uF4a",
+  "name": "Respond to Job Offers in Gmail",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ ($json.subject || $json.body?.subject || '').toLowerCase() }} {{ ($json.snippet || $json.body?.snippet || '').toLowerCase() }}",
+              "operation": "regex",
+              "value2": "/opportunity|role|contract|position|hiring|remote|hybrid|inside ir35|outside ir35|job|work|project|requirement|vacancy/i"
+            },
+            {
+              "value1": "={{ ($json.text || $json.body?.body || ($json.body && typeof $json.body === 'string' ? $json.body : '') || '').toLowerCase() }} {{ ($json.snippet || $json.body?.snippet || '').toLowerCase() }}",
+              "operation": "regex",
+              "value2": "/rate|salary|per day|day rate|cv|resume|referral fee|send cv|share cv|attach cv|forward cv/i"
+            }
+          ]
+        }
+      },
+      "name": "Check for Recruiter Keywords",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        256,
+        -144
+      ],
+      "id": "976db379-16f1-46a6-a2c1-f4b46d7f25f6"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// 📄 Auto-generated CV Map from 5_Symbols/cvs\nconst cvMap = {\n  \"azure\": \"cv_azure_architect.pdf\",\n  \"aws\": \"cv_aws_architect.pdf\",\n  \"gcp\": \"cv_gcp_architect.pdf\",\n  \"google\": \"cv_gcp_architect.pdf\",\n  \"kubernetes\": \"cv_kubernetes_engineer.pdf\",\n  \"k8s\": \"cv_kubernetes_engineer.pdf\",\n  \"devops\": \"cv_devops_engineer.pdf\",\n  \"platform\": \"cv_platform_engineer.pdf\",\n  \"security\": \"cv_security_engineer.pdf\",\n  \"cyber\": \"cv_cybersecurity_engineer.pdf\",\n  \"data\": \"cv_data_engineer.pdf\",\n  \"ai\": \"cv_ai_engineer.pdf\",\n  \"llm\": \"cv_llm_engineer.pdf\",\n  \"ml\": \"cv_ml_engineer.pdf\",\n  \"sre\": \"cv_sre_engineer.pdf\",\n  \"architect\": \"cv_cloud_architect.pdf\",\n  \"consultant\": \"cv_cloud_consultant.pdf\",\n  \"default\": \"cv_ai_engineer.pdf\"\n};\n\nconst text = ($json.subject + \" \" + $json.snippet).toLowerCase();\nlet selectedCV = cvMap.default;\nlet techStack = \"AI Engineering\";\n\n// 🧠 Smart Selection Logic\n// Iterate through keys to find the first match in the text\nfor (const key in cvMap) {\n    if (key !== 'default' && text.includes(key)) {\n        selectedCV = cvMap[key];\n        techStack = key.toUpperCase();\n        break; \n    }\n}\n\n// Construct the Raw GitHub URL\nconst baseUrl = \"https://raw.githubusercontent.com/rifaterdemsahin/CVLauncher/main/5_Symbols/cvs/\";\n\nreturn {\n  json: {\n    downloadUrl: baseUrl + selectedCV,\n    fileName: selectedCV,\n    techStack: techStack,\n    ...$json // Keep original email data\n  }\n};\n"
+      },
+      "name": "Select Best CV",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        656,
+        64
+      ],
+      "id": "f26308ec-c750-43f1-b1fe-e92287409306"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json[\"downloadUrl\"] }}",
+        "options": {}
+      },
+      "name": "Download from GitHub",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1600,
+        64
+      ],
+      "id": "6249857b-5687-4ea4-9c33-f884b20abbba"
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $node[\"Select Best CV\"].json[\"id\"] }}",
+        "message": "\n<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n    <p>Thank you for reaching out regarding the <strong>{{ $node[\"Select Best CV\"].json[\"techStack\"] }}</strong> opportunity.</p>\n    <p>I’ve linked my relevant CV and related documents for your review. If you’d prefer to communicate directly or find email inconvenient, feel free to call me.</p>\n\n    <div style=\"margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #007bff;\">\n        <p><strong>📄 <a href=\"{{ $json.downloadUrl }}\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">View CV (PDF)</a></strong></p>\n        <p><strong>🔗 <a href=\"{{ $json.downloadUrl }}\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">Download CV (Word)</a></strong></p>\n        <p><strong>🖥️ <a href=\"https://rifaterdemsahin.com/presentation\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">Presentation (PDF)</a></strong></p>\n        <p><strong>📅 <a href=\"https://calendly.com/rifaterdem/schedule\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">Schedule on Calendly</a></strong></p>\n        <p><strong>📞 <a href=\"tel:+447848024173\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">+44 7848 024173</a></strong></p>\n    </div>\n\n    <h2 style=\"color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;\">CV Summary</h2>\n    <p><strong>Erdem Sahin — CV Summary</strong></p>\n    \n    <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\n        <tr>\n            <td style=\"padding: 5px 0;\">🇬🇧 <strong>Citizenship:</strong> British</td>\n            <td style=\"padding: 5px 0;\">📍 <strong>Location:</strong> London, United Kingdom</td>\n        </tr>\n        <tr>\n            <td style=\"padding: 5px 0;\">✉️ <strong>Email:</strong> <a href=\"mailto:contact@rifaterdemsahin.com\">contact@rifaterdemsahin.com</a></td>\n            <td style=\"padding: 5px 0;\">📞 <strong>Phone:</strong> +44 7848 024173</td>\n        </tr>\n        <tr>\n            <td style=\"padding: 5px 0;\">🔗 <strong>LinkedIn:</strong> <a href=\"https://linkedin.com/in/rifaterdemsahin\">rifaterdemsahin</a></td>\n            <td style=\"padding: 5px 0;\">🐙 <strong>GitHub:</strong> <a href=\"https://github.com/rifaterdemsahin\">rifaterdemsahin</a></td>\n        </tr>\n    </table>\n\n    <h3 style=\"color: #2c3e50;\">Professional Profile</h3>\n    <p>An experienced engineer with deep expertise in CI/CD, DevOps, and AI-based architectures, with a proven track record in optimizing and automating enterprise systems. Focused on automation, scalability, and security across both cloud and on-premise solutions.</p>\n\n    <h3 style=\"color: #2c3e50;\">Core Competencies</h3>\n    <ul style=\"list-style-type: none; padding: 0;\">\n        <li style=\"margin-bottom: 8px;\">🤖 Deep expertise in building and deploying Generative AI solutions; extensive hands-on experience developing LLM applications.</li>\n        <li style=\"margin-bottom: 8px;\">🔄 Advanced implementation of RAG architectures, vector databases, and modern LLM frameworks.</li>\n        <li style=\"margin-bottom: 8px;\">🔒 Expert-level AI security practices: prompt-injection prevention, data privacy controls, secure model deployment.</li>\n        <li style=\"margin-bottom: 8px;\">🏗️ Enterprise architecture leadership with focus on scalable, maintainable AI solutions.</li>\n        <li style=\"margin-bottom: 8px;\">🧪 Mastery of testing across unit, integration, and end-to-end, ensuring robust AI deployments.</li>\n        <li style=\"margin-bottom: 8px;\">👥 Collaborative team player with agile delivery of complex AI projects.</li>\n    </ul>\n\n    <h3 style=\"color: #2c3e50;\">Key Accomplishments</h3>\n    <ul style=\"list-style-type: none; padding: 0;\">\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2024:</strong> AI-driven CI/CD framework for Goldman Sachs (Muscat, Oman), 300% higher deployment frequency and 30% cost reduction.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2023:</strong> IoT migrations and workflow optimization at Ypsomed (Switzerland); 40% fewer versioning conflicts.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2022:</strong> Automated ETL for Cushman & Wakefield (London, UK); 50% faster data processing.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2021:</strong> Kubernetes + GPU containers for Emerson (USA); 45% efficiency improvement.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2016:</strong> Enterprise Transformation Architect at Microsoft; 50% increase in technology utilization.</li>\n    </ul>\n\n    <h3 style=\"color: #2c3e50;\">Skills & Certifications</h3>\n    <p><strong>Core Skills:</strong> DevOps, Transformation Specialist, SRE, Security Clearance, AI Consultant.</p>\n    <p><strong>Technical Expertise:</strong> CI/CD, AI Integration, Cloud Computing, Infrastructure as Code, Kubernetes, Docker, Data Engineering.</p>\n    <p><strong>Certifications:</strong> Microsoft Certified Architect in Cloud Solutions (70-532)</p>\n    <p><strong>Security Clearances:</strong> UK SC (2028), NATO (2029)</p>\n\n    <p style=\"margin-top: 20px; font-size: 0.9em; color: #7f8c8d;\">\n        <em>Availability: Open for scheduling through <a href=\"https://calendly.com/rifaterdem/schedule\">Calendly</a>.</em>\n    </p>\n</div>\n",
+        "options": {}
+      },
+      "name": "Reply with CV",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        1856,
+        64
+      ],
+      "id": "75579fc6-34cf-42cb-a81e-c7b63e1f6af2",
+      "webhookId": "38b1e22d-42c8-4a29-9fca-10d60b9b6660",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "removeLabels",
+        "messageId": "={{ $node[\"Select Best CV\"].json[\"id\"] }}",
+        "labelIds": [
+          "UNREAD"
+        ]
+      },
+      "name": "Mark as Read",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        2112,
+        64
+      ],
+      "id": "ec269a5e-fd7e-4a92-adce-a9e895ffea73",
+      "webhookId": "8ba32744-feb9-462d-ae98-2c797a891a52",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "chatId": "-1002793496878",
+        "text": "✅ <b>Auto-Reply Sent!</b>\n\n<b>To:</b> {{ ($node[\"Select Best CV\"].json.from?.text || $node[\"Select Best CV\"].json.from || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>Tech Stack:</b> {{ ($node[\"Select Best CV\"].json[\"techStack\"] || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>CV:</b> {{ ($node[\"Select Best CV\"].json[\"fileName\"] || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n\nStatus: Sent Successfully\n🔗 <a href=\"https://mail.google.com/mail/u/0/#inbox/{{ $node[\"Select Best CV\"].json[\"threadId\"] }}\">Open in Gmail</a>",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "name": "Telegram Notify",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [
+        2352,
+        64
+      ],
+      "id": "99b90949-d009-4bef-96bf-e4f6cb4dbebc",
+      "webhookId": "f3f28087-605e-45b5-9a72-87537a1c5883",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "telegramApi": {
+          "id": "FNhCBbEpIegop14Z",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "529443ed-ff68-4b54-bab2-6fa41275e81f",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -800,
+        -448
+      ],
+      "id": "866f7f20-8724-4903-af93-445599d0cbae",
+      "name": "Webhook",
+      "webhookId": "529443ed-ff68-4b54-bab2-6fa41275e81f"
+    },
+    {
+      "parameters": {
+        "content": "## 1. Monitor Inbox & Filter\nTrigger on unread emails from primary category. Check for recruiter keywords like 'opportunity', 'hiring', 'rate'.",
+        "height": 240,
+        "width": 380,
+        "color": 2
+      },
+      "id": "c2865565-6341-474d-b684-095f30c8725e",
+      "name": "Sticky Note 1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        -752
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 2. Decision & Action\nAnalyze email text to detect tech stack (Azure/AWS/GCP). Select correct CV PDF and download from GitHub.",
+        "height": 240,
+        "width": 350,
+        "color": 4
+      },
+      "id": "04ef4844-b7b5-4170-ad61-59496ff09f8d",
+      "name": "Sticky Note 2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        208,
+        -656
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 3. Response & Notification\nReply with CV attachment, mark email as read, and send summary to Telegram.",
+        "height": 240,
+        "width": 450,
+        "color": 5
+      },
+      "id": "5a56aaf2-baf6-4acc-ab50-16ef5af7c189",
+      "name": "Sticky Note 3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        -656
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## 🚀 Version Info\n**Deployed**: 2026-01-23\n**Repo**: [CVLauncher](https://github.com/rifaterdemsahin/CVLauncher)\n**Commit**: [d73c402](https://github.com/rifaterdemsahin/CVLauncher/commit/d73c402eaba56539df5767abe5993867d4aa684c)",
+        "height": 200,
+        "width": 300,
+        "color": 7
+      },
+      "id": "e0ad5c2d-eef5-4668-84bf-b093f1636cdb",
+      "name": "Version Tag",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## TEST TRIGGER\n\n**Always click 'Test Workflow' after updates!**\n\nEnsures credentials and expressions are valid.",
+        "height": 240,
+        "width": 380,
+        "color": 2
+      },
+      "id": "0751d4d2-6646-4891-9716-b580a69f5395",
+      "name": "Sticky Note ",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1152,
+        -672
+      ]
+    },
+    {
+      "parameters": {},
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        64
+      ],
+      "id": "manual-trigger-node-id"
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "subject",
+              "value": "Immediate Requirement: Azure DevOps Engineer needed"
+            },
+            {
+              "name": "snippet",
+              "value": "We have a new contract opportunity for an Azure expert."
+            },
+            {
+              "name": "body",
+              "value": "Hello, we are looking for someone with strong Terraform and Azure skills. Rate is competitive."
+            },
+            {
+              "name": "from",
+              "value": "recruiter@example.com"
+            },
+            {
+              "name": "id",
+              "value": "mock-email-id-123"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Set Mock Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        -608,
+        48
+      ],
+      "id": "set-mock-data-node-id"
+    },
+    {
+      "parameters": {
+        "content": "## 🤝 Acknowledgement\n**David Gilchrist**\nWe worked together.\n[LinkedIn Profile](https://www.linkedin.com/in/david-gilchrist-61b158301/)",
+        "height": 200,
+        "width": 300,
+        "color": 3
+      },
+      "id": "3517beeb-eea7-4a4b-95c8-8ab531e329c5",
+      "name": "Acknowledgement",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        -1056
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1inzRAo0s1ov4Pz155QwiST7wpYBvjNYSPsU4ag-4Mok",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "all",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1inzRAo0s1ov4Pz155QwiST7wpYBvjNYSPsU4ag-4Mok/edit#gid=0"
+        },
+        "options": {}
+      },
+      "name": "Check Blacklist",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        656,
+        -256
+      ],
+      "id": "ac0cf507-8143-4842-8c90-59693a3c42f6",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nR5sxsdC53TDpXoB",
+          "name": "Google Sheets account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ !!$json[\"email\"] }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "name": "Is Blacklisted?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        -96
+      ],
+      "id": "1395f463-808c-4571-bc22-d467796c8272"
+    },
+    {
+      "parameters": {
+        "content": "## ⚠️ Action Required\n**Configure Google Sheets Credentials** for 'Check Blacklist' node.\n\nSheet ID: `1inzRAo0s1ov4Pz155QwiST7wpYBvjNYSPsU4ag-4Mok`\n\nhttps://rifaterdemsahin.github.io/contractormarketing-email-helper/blacklist.html",
+        "height": 352,
+        "width": 492,
+        "color": 6
+      },
+      "id": "55a266f0-e36b-4bff-895c-02d1b7e3eed8",
+      "name": "Credential Warning",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        656,
+        -640
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "-1002793496878",
+        "text": "🚫 <b>BLOCKED: Blacklisted Email Attempt</b>\n\n<b>From:</b> {{ ($json.from?.text || $json.from || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>Subject:</b> {{ ($json[\"subject\"] || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n\n<b>Action:</b> No CV sent.\n\n🔗 <a href=\"https://mail.google.com/mail/u/0/#inbox/{{ $json[\"threadId\"] }}\">Open in Gmail</a>",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "name": "Notify Blocked",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        -304
+      ],
+      "id": "c50af6ee-6909-4799-bb1c-da301dfeecd8",
+      "webhookId": "2d5f5541-0b90-40f0-9557-bdaa0d30de11",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "credentials": {
+        "telegramApi": {
+          "id": "FNhCBbEpIegop14Z",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "name": "Restore Context",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [
+        960,
+        -96
+      ],
+      "id": "b6ba3f95-5328-4b27-b6aa-30eaf77176b3"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        448
+      ],
+      "id": "fa8ebea8-99cc-4797-b655-5f8e147d5457",
+      "name": "Limit1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        480,
+        96
+      ],
+      "id": "4ab6b2db-f627-4581-8d55-746d0b51cdef",
+      "name": "Limit2"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('🔹 DEBUG: Reached Start of Loop');\nreturn items;"
+      },
+      "name": "Debug: Start",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -224,
+        -96
+      ],
+      "id": "79a6bcdd-7fa6-4eaf-abc1-0eb2d325c2d5"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('🔹 DEBUG: Reached Keywords Matched');\nreturn items;"
+      },
+      "name": "Debug: Keywords Passed",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        496,
+        -160
+      ],
+      "id": "10c398dd-5261-433c-bdfa-0275e3f6f54d"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('🔹 DEBUG: Reached Data Merged');\nreturn items;"
+      },
+      "name": "Debug: Context Restored",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1152,
+        -96
+      ],
+      "id": "f1cd699c-b52b-4539-9748-4d0688643208"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "labelIds": [
+            "Label_4716836601042464671"
+          ],
+          "q": "is:unread (cv OR resume OR job OR contract OR opportunity OR hiring OR \"send cv\" OR role OR position OR architect)"
+        },
+        "options": {}
+      },
+      "name": "Gmail Trigger Follow Through",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -128
+      ],
+      "id": "3859dcc3-37fd-4363-9ff0-b37590257dfc",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "labelIds": [
+            "INBOX"
+          ],
+          "q": "is:unread (cv OR resume OR job OR contract OR opportunity OR hiring OR \"send cv\" OR role OR position OR architect)"
+        },
+        "options": {}
+      },
+      "name": "Gmail Trigger Inbox",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        -304
+      ],
+      "id": "48c75abc-9c88-4008-a669-b5e00968db19",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Folder Check\n\n> https://mail.google.com/mail/u/0/#label/1_borrow_followup",
+        "height": 128,
+        "width": 460,
+        "color": 5
+      },
+      "id": "7e2d48ac-c05e-4bc7-944a-bcd7b1d9160d",
+      "name": "Sticky Note 4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1328,
+        -144
+      ]
+    },
+    {
+      "parameters": {
+        "content": "# Project\nhttps://github.com/rifaterdemsahin/CVLauncher/tree/main/5_Symbols/n8n/Respond%20to%20Job%20Offers%20in%20Gmail\n\nC:\\projects\\CVLauncher\\5_Symbols\\n8n\\Respond to Job Offers in Gmail\\.env\n\nin obsidiain",
+        "height": 480,
+        "width": 732,
+        "color": 5
+      },
+      "id": "043fa2fa-3b49-48a9-a48e-923aad595ea9",
+      "name": "Sticky Note 5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1680,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconsole.log('❌ DEBUG: Keywords Failed Node Hit');\nreturn items.map(item => {\n    return {\n        json: {\n            debugMessage: \"❌ FAILURE: Reached False Branch of 'Check Recruiter Keywords'\",\n            originalData: item.json\n        }\n    }\n});"
+      },
+      "name": "Debug: Keywords Failed",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        496,
+        96
+      ],
+      "id": "debug-keywords-failed-node-id"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ ($json.from?.text || $json.from || $json.body?.from || '').toLowerCase() }} {{ ($json.subject || $json.body?.subject || '').toLowerCase() }}",
+              "operation": "regex",
+              "value2": "/(no[-_.]?reply|do[-_.]?not[-_.]?reply|auto(mated)?|notification|alert|confirm(ation)?|receipt|invoice|subscriptions?|mailer[-_.]?daemon|postmaster|daemon|updates?@|news(letter)?)/i"
+            }
+          ]
+        }
+      },
+      "name": "Is Automated?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -96
+      ],
+      "id": "node-is-automated-check"
+    },
+    {
+      "parameters": {
+        "chatId": "-1002793496878",
+        "text": "🔕 <b>Ignored Automated Email</b>\n\n<b>From:</b> {{ ($json.from?.text || $json.from || $json.body?.from || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>Subject:</b> {{ ($json.subject || $json.body?.subject || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n\n<i>Reason: Detected as non-human/no-reply system.</i>",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "name": "Notify Ignored",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        -352
+      ],
+      "id": "node-notify-ignored",
+      "webhookId": "69443040-acd3-43ce-b22f-5370f52315a5",
+      "credentials": {
+        "telegramApi": {
+          "id": "FNhCBbEpIegop14Z",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Check for Recruiter Keywords": {
+      "main": [
+        [
+          {
+            "node": "Debug: Keywords Passed",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Debug: Keywords Failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Best CV": {
+      "main": [
+        [
+          {
+            "node": "Download from GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download from GitHub": {
+      "main": [
+        [
+          {
+            "node": "Limit2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply with CV": {
+      "main": [
+        [
+          {
+            "node": "Mark as Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark as Read": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Debug: Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Mock Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Mock Data": {
+      "main": [
+        [
+          {
+            "node": "Debug: Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Blacklist": {
+      "main": [
+        [
+          {
+            "node": "Restore Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Blacklisted?": {
+      "main": [
+        [
+          {
+            "node": "Notify Blocked",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Select Best CV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Restore Context": {
+      "main": [
+        [
+          {
+            "node": "Debug: Context Restored",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit2": {
+      "main": [
+        [
+          {
+            "node": "Reply with CV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Notify": {
+      "main": [
+        []
+      ]
+    },
+    "Notify Blocked": {
+      "main": [
+        []
+      ]
+    },
+    "Debug: Start": {
+      "main": [
+        [
+          {
+            "node": "Is Automated?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Debug: Keywords Passed": {
+      "main": [
+        [
+          {
+            "node": "Check Blacklist",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Restore Context",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Debug: Context Restored": {
+      "main": [
+        [
+          {
+            "node": "Is Blacklisted?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger Follow Through": {
+      "main": [
+        [
+          {
+            "node": "Debug: Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger Inbox": {
+      "main": [
+        [
+          {
+            "node": "Debug: Start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Automated?": {
+      "main": [
+        [
+          {
+            "node": "Notify Ignored",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check for Recruiter Keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Ignored": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "timezone": "Europe/London",
+    "errorWorkflow": "zRFQnpO2QT9rRvOZ"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1769420228,
+      "possibleDuplicates": [
+        "19bf9aa0ca905fd4",
+        "19bf9a7e11f0a0b7"
+      ]
+    },
+    "node:Gmail Trigger Follow Through": {
+      "lastTimeChecked": 1769501243,
+      "possibleDuplicates": [
+        "19bfe7e4143fdbb5"
+      ]
+    },
+    "node:Gmail Trigger Inbox": {
+      "lastTimeChecked": 1769503796,
+      "possibleDuplicates": [
+        "19bfea530104f4f7"
+      ]
+    }
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "pinData": {},
+  "versionId": "70c4db60-abcc-4fe4-969f-6792cc297bd6",
+  "activeVersionId": "70c4db60-abcc-4fe4-969f-6792cc297bd6",
+  "versionCounter": 403,
+  "triggerCount": 3,
+  "shared": [
+    {
+      "updatedAt": "2026-01-23T19:18:26.227Z",
+      "createdAt": "2026-01-23T19:18:26.227Z",
+      "role": "workflow:owner",
+      "workflowId": "CVD1ecv1GNe9uF4a",
+      "projectId": "4nEgmf8M2lAyh0Zk",
+      "project": {
+        "updatedAt": "2025-09-19T08:03:51.961Z",
+        "createdAt": "2025-07-05T14:01:34.998Z",
+        "id": "4nEgmf8M2lAyh0Zk",
+        "name": "Rifat Sahin <contact@rifaterdemsahin.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "projectRelations": [
+          {
+            "updatedAt": "2025-07-05T14:01:34.998Z",
+            "createdAt": "2025-07-05T14:01:34.998Z",
+            "userId": "93ff5385-5afa-4cdc-8c66-5b2292979f88",
+            "projectId": "4nEgmf8M2lAyh0Zk",
+            "user": {
+              "updatedAt": "2026-01-27T06:35:18.000Z",
+              "createdAt": "2025-07-05T14:01:34.150Z",
+              "id": "93ff5385-5afa-4cdc-8c66-5b2292979f88",
+              "email": "contact@rifaterdemsahin.com",
+              "firstName": "Rifat",
+              "lastName": "Sahin",
+              "personalizationAnswers": {
+                "version": "v4",
+                "personalization_survey_submitted_at": "2025-07-05T14:03:17.446Z",
+                "personalization_survey_n8n_version": "1.100.1",
+                "companySize": "<20",
+                "companyType": "ecommerce",
+                "role": "customer-support",
+                "reportedSource": "twitter"
+              },
+              "settings": {
+                "userActivated": true,
+                "easyAIWorkflowOnboarded": true,
+                "firstSuccessfulWorkflowId": "nkOOIPIYGBiJreZw",
+                "userActivatedAt": 1756321208077,
+                "npsSurvey": {
+                  "responded": true,
+                  "lastShownAt": 1756650487563
+                },
+                "dismissedCallouts": {
+                  "aiAgentStarterCallout": true
+                }
+              },
+              "disabled": false,
+              "mfaEnabled": true,
+              "lastActiveAt": "2026-01-27",
+              "isPending": false
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tags": [
+    {
+      "updatedAt": "2026-01-23T19:18:50.241Z",
+      "createdAt": "2026-01-23T19:18:50.241Z",
+      "id": "j3zX0bmklJitBpb1",
+      "name": "gmail"
+    },
+    {
+      "updatedAt": "2025-09-10T08:10:18.185Z",
+      "createdAt": "2025-09-10T08:10:18.185Z",
+      "id": "xKVTUGx7z0yPrnOM",
+      "name": "contracting"
+    }
+  ],
+  "activeVersion": {
+    "updatedAt": "2026-01-27T09:15:03.192Z",
+    "createdAt": "2026-01-27T09:15:03.192Z",
+    "versionId": "70c4db60-abcc-4fe4-969f-6792cc297bd6",
+    "workflowId": "CVD1ecv1GNe9uF4a",
+    "nodes": [
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ ($json.subject || $json.body?.subject || '').toLowerCase() }} {{ ($json.snippet || $json.body?.snippet || '').toLowerCase() }}",
+                "operation": "regex",
+                "value2": "/opportunity|role|contract|position|hiring|remote|hybrid|inside ir35|outside ir35|job|work|project|requirement|vacancy/i"
+              },
+              {
+                "value1": "={{ ($json.text || $json.body?.body || ($json.body && typeof $json.body === 'string' ? $json.body : '') || '').toLowerCase() }} {{ ($json.snippet || $json.body?.snippet || '').toLowerCase() }}",
+                "operation": "regex",
+                "value2": "/rate|salary|per day|day rate|cv|resume|referral fee|send cv|share cv|attach cv|forward cv/i"
+              }
+            ]
+          }
+        },
+        "name": "Check for Recruiter Keywords",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          256,
+          -144
+        ],
+        "id": "976db379-16f1-46a6-a2c1-f4b46d7f25f6"
+      },
+      {
+        "parameters": {
+          "jsCode": "\n// 📄 Auto-generated CV Map from 5_Symbols/cvs\nconst cvMap = {\n  \"azure\": \"cv_azure_architect.pdf\",\n  \"aws\": \"cv_aws_architect.pdf\",\n  \"gcp\": \"cv_gcp_architect.pdf\",\n  \"google\": \"cv_gcp_architect.pdf\",\n  \"kubernetes\": \"cv_kubernetes_engineer.pdf\",\n  \"k8s\": \"cv_kubernetes_engineer.pdf\",\n  \"devops\": \"cv_devops_engineer.pdf\",\n  \"platform\": \"cv_platform_engineer.pdf\",\n  \"security\": \"cv_security_engineer.pdf\",\n  \"cyber\": \"cv_cybersecurity_engineer.pdf\",\n  \"data\": \"cv_data_engineer.pdf\",\n  \"ai\": \"cv_ai_engineer.pdf\",\n  \"llm\": \"cv_llm_engineer.pdf\",\n  \"ml\": \"cv_ml_engineer.pdf\",\n  \"sre\": \"cv_sre_engineer.pdf\",\n  \"architect\": \"cv_cloud_architect.pdf\",\n  \"consultant\": \"cv_cloud_consultant.pdf\",\n  \"default\": \"cv_ai_engineer.pdf\"\n};\n\nconst text = ($json.subject + \" \" + $json.snippet).toLowerCase();\nlet selectedCV = cvMap.default;\nlet techStack = \"AI Engineering\";\n\n// 🧠 Smart Selection Logic\n// Iterate through keys to find the first match in the text\nfor (const key in cvMap) {\n    if (key !== 'default' && text.includes(key)) {\n        selectedCV = cvMap[key];\n        techStack = key.toUpperCase();\n        break; \n    }\n}\n\n// Construct the Raw GitHub URL\nconst baseUrl = \"https://raw.githubusercontent.com/rifaterdemsahin/CVLauncher/main/5_Symbols/cvs/\";\n\nreturn {\n  json: {\n    downloadUrl: baseUrl + selectedCV,\n    fileName: selectedCV,\n    techStack: techStack,\n    ...$json // Keep original email data\n  }\n};\n"
+        },
+        "name": "Select Best CV",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          656,
+          64
+        ],
+        "id": "f26308ec-c750-43f1-b1fe-e92287409306"
+      },
+      {
+        "parameters": {
+          "url": "={{ $json[\"downloadUrl\"] }}",
+          "options": {}
+        },
+        "name": "Download from GitHub",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.1,
+        "position": [
+          1600,
+          64
+        ],
+        "id": "6249857b-5687-4ea4-9c33-f884b20abbba"
+      },
+      {
+        "parameters": {
+          "operation": "reply",
+          "messageId": "={{ $node[\"Select Best CV\"].json[\"id\"] }}",
+          "message": "\n<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n    <p>Thank you for reaching out regarding the <strong>{{ $node[\"Select Best CV\"].json[\"techStack\"] }}</strong> opportunity.</p>\n    <p>I’ve linked my relevant CV and related documents for your review. If you’d prefer to communicate directly or find email inconvenient, feel free to call me.</p>\n\n    <div style=\"margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #007bff;\">\n        <p><strong>📄 <a href=\"{{ $json.downloadUrl }}\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">View CV (PDF)</a></strong></p>\n        <p><strong>🔗 <a href=\"{{ $json.downloadUrl }}\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">Download CV (Word)</a></strong></p>\n        <p><strong>🖥️ <a href=\"https://rifaterdemsahin.com/presentation\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">Presentation (PDF)</a></strong></p>\n        <p><strong>📅 <a href=\"https://calendly.com/rifaterdem/schedule\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">Schedule on Calendly</a></strong></p>\n        <p><strong>📞 <a href=\"tel:+447848024173\" style=\"text-decoration: none; color: #007bff; font-weight: bold;\">+44 7848 024173</a></strong></p>\n    </div>\n\n    <h2 style=\"color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px;\">CV Summary</h2>\n    <p><strong>Erdem Sahin — CV Summary</strong></p>\n    \n    <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\n        <tr>\n            <td style=\"padding: 5px 0;\">🇬🇧 <strong>Citizenship:</strong> British</td>\n            <td style=\"padding: 5px 0;\">📍 <strong>Location:</strong> London, United Kingdom</td>\n        </tr>\n        <tr>\n            <td style=\"padding: 5px 0;\">✉️ <strong>Email:</strong> <a href=\"mailto:contact@rifaterdemsahin.com\">contact@rifaterdemsahin.com</a></td>\n            <td style=\"padding: 5px 0;\">📞 <strong>Phone:</strong> +44 7848 024173</td>\n        </tr>\n        <tr>\n            <td style=\"padding: 5px 0;\">🔗 <strong>LinkedIn:</strong> <a href=\"https://linkedin.com/in/rifaterdemsahin\">rifaterdemsahin</a></td>\n            <td style=\"padding: 5px 0;\">🐙 <strong>GitHub:</strong> <a href=\"https://github.com/rifaterdemsahin\">rifaterdemsahin</a></td>\n        </tr>\n    </table>\n\n    <h3 style=\"color: #2c3e50;\">Professional Profile</h3>\n    <p>An experienced engineer with deep expertise in CI/CD, DevOps, and AI-based architectures, with a proven track record in optimizing and automating enterprise systems. Focused on automation, scalability, and security across both cloud and on-premise solutions.</p>\n\n    <h3 style=\"color: #2c3e50;\">Core Competencies</h3>\n    <ul style=\"list-style-type: none; padding: 0;\">\n        <li style=\"margin-bottom: 8px;\">🤖 Deep expertise in building and deploying Generative AI solutions; extensive hands-on experience developing LLM applications.</li>\n        <li style=\"margin-bottom: 8px;\">🔄 Advanced implementation of RAG architectures, vector databases, and modern LLM frameworks.</li>\n        <li style=\"margin-bottom: 8px;\">🔒 Expert-level AI security practices: prompt-injection prevention, data privacy controls, secure model deployment.</li>\n        <li style=\"margin-bottom: 8px;\">🏗️ Enterprise architecture leadership with focus on scalable, maintainable AI solutions.</li>\n        <li style=\"margin-bottom: 8px;\">🧪 Mastery of testing across unit, integration, and end-to-end, ensuring robust AI deployments.</li>\n        <li style=\"margin-bottom: 8px;\">👥 Collaborative team player with agile delivery of complex AI projects.</li>\n    </ul>\n\n    <h3 style=\"color: #2c3e50;\">Key Accomplishments</h3>\n    <ul style=\"list-style-type: none; padding: 0;\">\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2024:</strong> AI-driven CI/CD framework for Goldman Sachs (Muscat, Oman), 300% higher deployment frequency and 30% cost reduction.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2023:</strong> IoT migrations and workflow optimization at Ypsomed (Switzerland); 40% fewer versioning conflicts.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2022:</strong> Automated ETL for Cushman & Wakefield (London, UK); 50% faster data processing.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2021:</strong> Kubernetes + GPU containers for Emerson (USA); 45% efficiency improvement.</li>\n        <li style=\"margin-bottom: 8px;\">🏆 <strong>2016:</strong> Enterprise Transformation Architect at Microsoft; 50% increase in technology utilization.</li>\n    </ul>\n\n    <h3 style=\"color: #2c3e50;\">Skills & Certifications</h3>\n    <p><strong>Core Skills:</strong> DevOps, Transformation Specialist, SRE, Security Clearance, AI Consultant.</p>\n    <p><strong>Technical Expertise:</strong> CI/CD, AI Integration, Cloud Computing, Infrastructure as Code, Kubernetes, Docker, Data Engineering.</p>\n    <p><strong>Certifications:</strong> Microsoft Certified Architect in Cloud Solutions (70-532)</p>\n    <p><strong>Security Clearances:</strong> UK SC (2028), NATO (2029)</p>\n\n    <p style=\"margin-top: 20px; font-size: 0.9em; color: #7f8c8d;\">\n        <em>Availability: Open for scheduling through <a href=\"https://calendly.com/rifaterdem/schedule\">Calendly</a>.</em>\n    </p>\n</div>\n",
+          "options": {}
+        },
+        "name": "Reply with CV",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2,
+        "position": [
+          1856,
+          64
+        ],
+        "id": "75579fc6-34cf-42cb-a81e-c7b63e1f6af2",
+        "webhookId": "38b1e22d-42c8-4a29-9fca-10d60b9b6660",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "YJWBLL2NMyRjSIOr",
+            "name": "Gmail account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "parameters": {
+          "operation": "removeLabels",
+          "messageId": "={{ $node[\"Select Best CV\"].json[\"id\"] }}",
+          "labelIds": [
+            "UNREAD"
+          ]
+        },
+        "name": "Mark as Read",
+        "type": "n8n-nodes-base.gmail",
+        "typeVersion": 2,
+        "position": [
+          2112,
+          64
+        ],
+        "id": "ec269a5e-fd7e-4a92-adce-a9e895ffea73",
+        "webhookId": "8ba32744-feb9-462d-ae98-2c797a891a52",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "YJWBLL2NMyRjSIOr",
+            "name": "Gmail account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "parameters": {
+          "chatId": "-1002793496878",
+          "text": "✅ <b>Auto-Reply Sent!</b>\n\n<b>To:</b> {{ ($node[\"Select Best CV\"].json.from?.text || $node[\"Select Best CV\"].json.from || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>Tech Stack:</b> {{ ($node[\"Select Best CV\"].json[\"techStack\"] || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>CV:</b> {{ ($node[\"Select Best CV\"].json[\"fileName\"] || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n\nStatus: Sent Successfully\n🔗 <a href=\"https://mail.google.com/mail/u/0/#inbox/{{ $node[\"Select Best CV\"].json[\"threadId\"] }}\">Open in Gmail</a>",
+          "additionalFields": {
+            "parse_mode": "HTML"
+          }
+        },
+        "name": "Telegram Notify",
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.1,
+        "position": [
+          2352,
+          64
+        ],
+        "id": "99b90949-d009-4bef-96bf-e4f6cb4dbebc",
+        "webhookId": "f3f28087-605e-45b5-9a72-87537a1c5883",
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "credentials": {
+          "telegramApi": {
+            "id": "FNhCBbEpIegop14Z",
+            "name": "Telegram account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "529443ed-ff68-4b54-bab2-6fa41275e81f",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -800,
+          -448
+        ],
+        "id": "866f7f20-8724-4903-af93-445599d0cbae",
+        "name": "Webhook",
+        "webhookId": "529443ed-ff68-4b54-bab2-6fa41275e81f"
+      },
+      {
+        "parameters": {
+          "content": "## 1. Monitor Inbox & Filter\nTrigger on unread emails from primary category. Check for recruiter keywords like 'opportunity', 'hiring', 'rate'.",
+          "height": 240,
+          "width": 380,
+          "color": 2
+        },
+        "id": "c2865565-6341-474d-b684-095f30c8725e",
+        "name": "Sticky Note 1",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -768,
+          -752
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## 2. Decision & Action\nAnalyze email text to detect tech stack (Azure/AWS/GCP). Select correct CV PDF and download from GitHub.",
+          "height": 240,
+          "width": 350,
+          "color": 4
+        },
+        "id": "04ef4844-b7b5-4170-ad61-59496ff09f8d",
+        "name": "Sticky Note 2",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          208,
+          -656
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## 3. Response & Notification\nReply with CV attachment, mark email as read, and send summary to Telegram.",
+          "height": 240,
+          "width": 450,
+          "color": 5
+        },
+        "id": "5a56aaf2-baf6-4acc-ab50-16ef5af7c189",
+        "name": "Sticky Note 3",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          1600,
+          -656
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## 🚀 Version Info\n**Deployed**: 2026-01-23\n**Repo**: [CVLauncher](https://github.com/rifaterdemsahin/CVLauncher)\n**Commit**: [d73c402](https://github.com/rifaterdemsahin/CVLauncher/commit/d73c402eaba56539df5767abe5993867d4aa684c)",
+          "height": 200,
+          "width": 300,
+          "color": 7
+        },
+        "id": "e0ad5c2d-eef5-4668-84bf-b093f1636cdb",
+        "name": "Version Tag",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -800,
+          160
+        ]
+      },
+      {
+        "parameters": {
+          "content": "## TEST TRIGGER\n\n**Always click 'Test Workflow' after updates!**\n\nEnsures credentials and expressions are valid.",
+          "height": 240,
+          "width": 380,
+          "color": 2
+        },
+        "id": "0751d4d2-6646-4891-9716-b580a69f5395",
+        "name": "Sticky Note ",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1152,
+          -672
+        ]
+      },
+      {
+        "parameters": {},
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          -800,
+          64
+        ],
+        "id": "manual-trigger-node-id"
+      },
+      {
+        "parameters": {
+          "values": {
+            "string": [
+              {
+                "name": "subject",
+                "value": "Immediate Requirement: Azure DevOps Engineer needed"
+              },
+              {
+                "name": "snippet",
+                "value": "We have a new contract opportunity for an Azure expert."
+              },
+              {
+                "name": "body",
+                "value": "Hello, we are looking for someone with strong Terraform and Azure skills. Rate is competitive."
+              },
+              {
+                "name": "from",
+                "value": "recruiter@example.com"
+              },
+              {
+                "name": "id",
+                "value": "mock-email-id-123"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "name": "Set Mock Data",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [
+          -608,
+          48
+        ],
+        "id": "set-mock-data-node-id"
+      },
+      {
+        "parameters": {
+          "content": "## 🤝 Acknowledgement\n**David Gilchrist**\nWe worked together.\n[LinkedIn Profile](https://www.linkedin.com/in/david-gilchrist-61b158301/)",
+          "height": 200,
+          "width": 300,
+          "color": 3
+        },
+        "id": "3517beeb-eea7-4a4b-95c8-8ab531e329c5",
+        "name": "Acknowledgement",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -272,
+          -1056
+        ]
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "1inzRAo0s1ov4Pz155QwiST7wpYBvjNYSPsU4ag-4Mok",
+            "mode": "id"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "all",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1inzRAo0s1ov4Pz155QwiST7wpYBvjNYSPsU4ag-4Mok/edit#gid=0"
+          },
+          "options": {}
+        },
+        "name": "Check Blacklist",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.5,
+        "position": [
+          656,
+          -256
+        ],
+        "id": "ac0cf507-8143-4842-8c90-59693a3c42f6",
+        "alwaysOutputData": true,
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "nR5sxsdC53TDpXoB",
+            "name": "Google Sheets account"
+          }
+        },
+        "continueOnFail": true
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "boolean": [
+              {
+                "value1": "={{ !!$json[\"email\"] }}",
+                "value2": true
+              }
+            ]
+          }
+        },
+        "name": "Is Blacklisted?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          1360,
+          -96
+        ],
+        "id": "1395f463-808c-4571-bc22-d467796c8272"
+      },
+      {
+        "parameters": {
+          "content": "## ⚠️ Action Required\n**Configure Google Sheets Credentials** for 'Check Blacklist' node.\n\nSheet ID: `1inzRAo0s1ov4Pz155QwiST7wpYBvjNYSPsU4ag-4Mok`\n\nhttps://rifaterdemsahin.github.io/contractormarketing-email-helper/blacklist.html",
+          "height": 352,
+          "width": 492,
+          "color": 6
+        },
+        "id": "55a266f0-e36b-4bff-895c-02d1b7e3eed8",
+        "name": "Credential Warning",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          656,
+          -640
+        ]
+      },
+      {
+        "parameters": {
+          "chatId": "-1002793496878",
+          "text": "🚫 <b>BLOCKED: Blacklisted Email Attempt</b>\n\n<b>From:</b> {{ ($json.from?.text || $json.from || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>Subject:</b> {{ ($json[\"subject\"] || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n\n<b>Action:</b> No CV sent.\n\n🔗 <a href=\"https://mail.google.com/mail/u/0/#inbox/{{ $json[\"threadId\"] }}\">Open in Gmail</a>",
+          "additionalFields": {
+            "parse_mode": "HTML"
+          }
+        },
+        "name": "Notify Blocked",
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.1,
+        "position": [
+          1600,
+          -304
+        ],
+        "id": "c50af6ee-6909-4799-bb1c-da301dfeecd8",
+        "webhookId": "2d5f5541-0b90-40f0-9557-bdaa0d30de11",
+        "retryOnFail": true,
+        "maxTries": 3,
+        "waitBetweenTries": 2000,
+        "credentials": {
+          "telegramApi": {
+            "id": "FNhCBbEpIegop14Z",
+            "name": "Telegram account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combinationMode": "mergeByPosition",
+          "options": {}
+        },
+        "name": "Restore Context",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 2,
+        "position": [
+          960,
+          -96
+        ],
+        "id": "b6ba3f95-5328-4b27-b6aa-30eaf77176b3"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          1312,
+          448
+        ],
+        "id": "fa8ebea8-99cc-4797-b655-5f8e147d5457",
+        "name": "Limit1"
+      },
+      {
+        "parameters": {},
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          480,
+          96
+        ],
+        "id": "4ab6b2db-f627-4581-8d55-746d0b51cdef",
+        "name": "Limit2"
+      },
+      {
+        "parameters": {
+          "jsCode": "console.log('🔹 DEBUG: Reached Start of Loop');\nreturn items;"
+        },
+        "name": "Debug: Start",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -224,
+          -96
+        ],
+        "id": "79a6bcdd-7fa6-4eaf-abc1-0eb2d325c2d5"
+      },
+      {
+        "parameters": {
+          "jsCode": "console.log('🔹 DEBUG: Reached Keywords Matched');\nreturn items;"
+        },
+        "name": "Debug: Keywords Passed",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          496,
+          -160
+        ],
+        "id": "10c398dd-5261-433c-bdfa-0275e3f6f54d"
+      },
+      {
+        "parameters": {
+          "jsCode": "console.log('🔹 DEBUG: Reached Data Merged');\nreturn items;"
+        },
+        "name": "Debug: Context Restored",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1152,
+          -96
+        ],
+        "id": "f1cd699c-b52b-4539-9748-4d0688643208"
+      },
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyMinute"
+              }
+            ]
+          },
+          "simple": false,
+          "filters": {
+            "labelIds": [
+              "Label_4716836601042464671"
+            ],
+            "q": "is:unread (cv OR resume OR job OR contract OR opportunity OR hiring OR \"send cv\" OR role OR position OR architect)"
+          },
+          "options": {}
+        },
+        "name": "Gmail Trigger Follow Through",
+        "type": "n8n-nodes-base.gmailTrigger",
+        "typeVersion": 1,
+        "position": [
+          -800,
+          -128
+        ],
+        "id": "3859dcc3-37fd-4363-9ff0-b37590257dfc",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "YJWBLL2NMyRjSIOr",
+            "name": "Gmail account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyMinute"
+              }
+            ]
+          },
+          "simple": false,
+          "filters": {
+            "labelIds": [
+              "INBOX"
+            ],
+            "q": "is:unread (cv OR resume OR job OR contract OR opportunity OR hiring OR \"send cv\" OR role OR position OR architect)"
+          },
+          "options": {}
+        },
+        "name": "Gmail Trigger Inbox",
+        "type": "n8n-nodes-base.gmailTrigger",
+        "typeVersion": 1,
+        "position": [
+          -800,
+          -304
+        ],
+        "id": "48c75abc-9c88-4008-a669-b5e00968db19",
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "YJWBLL2NMyRjSIOr",
+            "name": "Gmail account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "## Folder Check\n\n> https://mail.google.com/mail/u/0/#label/1_borrow_followup",
+          "height": 128,
+          "width": 460,
+          "color": 5
+        },
+        "id": "7e2d48ac-c05e-4bc7-944a-bcd7b1d9160d",
+        "name": "Sticky Note 4",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1328,
+          -144
+        ]
+      },
+      {
+        "parameters": {
+          "content": "# Project\nhttps://github.com/rifaterdemsahin/CVLauncher/tree/main/5_Symbols/n8n/Respond%20to%20Job%20Offers%20in%20Gmail\n\nC:\\projects\\CVLauncher\\5_Symbols\\n8n\\Respond to Job Offers in Gmail\\.env\n\nin obsidiain",
+          "height": 480,
+          "width": 732,
+          "color": 5
+        },
+        "id": "043fa2fa-3b49-48a9-a48e-923aad595ea9",
+        "name": "Sticky Note 5",
+        "type": "n8n-nodes-base.stickyNote",
+        "typeVersion": 1,
+        "position": [
+          -1680,
+          336
+        ]
+      },
+      {
+        "parameters": {
+          "jsCode": "\nconsole.log('❌ DEBUG: Keywords Failed Node Hit');\nreturn items.map(item => {\n    return {\n        json: {\n            debugMessage: \"❌ FAILURE: Reached False Branch of 'Check Recruiter Keywords'\",\n            originalData: item.json\n        }\n    }\n});"
+        },
+        "name": "Debug: Keywords Failed",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          496,
+          96
+        ],
+        "id": "debug-keywords-failed-node-id"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ ($json.from?.text || $json.from || $json.body?.from || '').toLowerCase() }} {{ ($json.subject || $json.body?.subject || '').toLowerCase() }}",
+                "operation": "regex",
+                "value2": "/(no[-_.]?reply|do[-_.]?not[-_.]?reply|auto(mated)?|notification|alert|confirm(ation)?|receipt|invoice|subscriptions?|mailer[-_.]?daemon|postmaster|daemon|updates?@|news(letter)?)/i"
+              }
+            ]
+          }
+        },
+        "name": "Is Automated?",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          0,
+          -96
+        ],
+        "id": "node-is-automated-check"
+      },
+      {
+        "parameters": {
+          "chatId": "-1002793496878",
+          "text": "🔕 <b>Ignored Automated Email</b>\n\n<b>From:</b> {{ ($json.from?.text || $json.from || $json.body?.from || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n<b>Subject:</b> {{ ($json.subject || $json.body?.subject || '').toString().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/'/g, '&#39;') }}\n\n<i>Reason: Detected as non-human/no-reply system.</i>",
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "name": "Notify Ignored",
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.1,
+        "position": [
+          240,
+          -352
+        ],
+        "id": "node-notify-ignored",
+        "webhookId": "69443040-acd3-43ce-b22f-5370f52315a5",
+        "credentials": {
+          "telegramApi": {
+            "id": "FNhCBbEpIegop14Z",
+            "name": "Telegram account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Check for Recruiter Keywords": {
+        "main": [
+          [
+            {
+              "node": "Debug: Keywords Passed",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Debug: Keywords Failed",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Select Best CV": {
+        "main": [
+          [
+            {
+              "node": "Download from GitHub",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Download from GitHub": {
+        "main": [
+          [
+            {
+              "node": "Limit2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Reply with CV": {
+        "main": [
+          [
+            {
+              "node": "Mark as Read",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Mark as Read": {
+        "main": [
+          [
+            {
+              "node": "Limit1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Debug: Start",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Manual Trigger": {
+        "main": [
+          [
+            {
+              "node": "Set Mock Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Mock Data": {
+        "main": [
+          [
+            {
+              "node": "Debug: Start",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Check Blacklist": {
+        "main": [
+          [
+            {
+              "node": "Restore Context",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Is Blacklisted?": {
+        "main": [
+          [
+            {
+              "node": "Notify Blocked",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Select Best CV",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Restore Context": {
+        "main": [
+          [
+            {
+              "node": "Debug: Context Restored",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit1": {
+        "main": [
+          [
+            {
+              "node": "Telegram Notify",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit2": {
+        "main": [
+          [
+            {
+              "node": "Reply with CV",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Telegram Notify": {
+        "main": [
+          []
+        ]
+      },
+      "Notify Blocked": {
+        "main": [
+          []
+        ]
+      },
+      "Debug: Start": {
+        "main": [
+          [
+            {
+              "node": "Is Automated?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Debug: Keywords Passed": {
+        "main": [
+          [
+            {
+              "node": "Check Blacklist",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Restore Context",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Debug: Context Restored": {
+        "main": [
+          [
+            {
+              "node": "Is Blacklisted?",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Gmail Trigger Follow Through": {
+        "main": [
+          [
+            {
+              "node": "Debug: Start",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Gmail Trigger Inbox": {
+        "main": [
+          [
+            {
+              "node": "Debug: Start",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Is Automated?": {
+        "main": [
+          [
+            {
+              "node": "Notify Ignored",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Check for Recruiter Keywords",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Notify Ignored": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "authors": "Rifat Sahin",
+    "name": null,
+    "description": null
+  }
+}
