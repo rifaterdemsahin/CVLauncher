@@ -67,16 +67,17 @@ Senior Data Platform Engineer specializing in **enterprise technology solutions,
 ## TECHNICAL EXPERTISE
 
 ### Core Technologies
-**Platforms:** Kubernetes, Docker, AWS, Azure, GCP  
-**Automation:** Terraform, Ansible, GitLab CI/CD, GitHub Actions  
-**Monitoring:** Prometheus, Grafana, ELK Stack, Azure Monitor  
+**Platforms:** Kubernetes, Docker, AWS, Azure, GCP, Red Hat OpenShift (OCP)  
+**Automation:** Terraform, Ansible, GitLab CI/CD, GitHub Actions, OpenShift CLI (oc)  
+**Monitoring:** Prometheus, Grafana, ELK Stack, Azure Monitor, Loki, OCP telemetry  
 **Programming:** Python, Bash, PowerShell, YAML, JSON  
 
 ### Specialized Skills
-**Infrastructure:** Infrastructure as Code, Container orchestration, Cloud architecture  
-**Security:** Zero-trust architectures, Compliance frameworks, Identity management  
-**Operations:** CI/CD pipelines, Monitoring and alerting, Incident response  
-**Integration:** API design, Microservices, Event-driven architectures  
+**Infrastructure:** Infrastructure as Code, Container orchestration, Cloud architecture, OpenShift Operators  
+**Security:** Zero-trust architectures, Compliance frameworks, Identity management, OpenShift SCCs (Security Context Constraints)  
+**Operations:** CI/CD pipelines, Monitoring and alerting, Incident response, OpenShift Routes  
+**Integration:** API design, Microservices, Event-driven architectures, OLM (Operator Lifecycle Manager)  
+**Observability:** Platform-level telemetry with Grafana and Loki, OpenShift Virtualization  
 
 ---
 

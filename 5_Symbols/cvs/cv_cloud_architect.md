@@ -107,9 +107,10 @@ Senior Cloud Architect with expertise in **designing enterprise-scale cloud arch
 
 ### Infrastructure & Automation
 **IaC:** Terraform, CloudFormation, ARM Templates, Ansible, Pulumi  
-**Containers:** Docker, Kubernetes, Helm, Service Mesh (Istio), Container security  
+**Containers:** Docker, Kubernetes, Helm, Service Mesh (Istio), Container security, Red Hat OpenShift (OCP), OpenShift CLI (oc)  
 **CI/CD:** GitLab CI/CD, GitHub Actions, Azure DevOps, Jenkins, ArgoCD  
-**Monitoring:** Prometheus, Grafana, CloudWatch, Azure Monitor, ELK Stack  
+**Monitoring:** Prometheus, Grafana, CloudWatch, Azure Monitor, ELK Stack, Loki, OCP telemetry  
+**OpenShift:** OpenShift Operators, Routes, SCCs (Security Context Constraints), OLM, OpenShift Virtualization
 
 ### Programming & Scripting
 **Languages:** Python, Bash, PowerShell, JavaScript, YAML, JSON, HCL  
