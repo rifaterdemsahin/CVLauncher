@@ -50,7 +50,7 @@ Senior Cloud Security Engineer specializing in **securing multi-cloud environmen
 ### 🏆 2023 | Enterprise Retail | Remote
 **Kubernetes Security Overhaul**
 - **Challenge:** Secure a large-scale EKS environment handling PII data.
-- **Solution:** Implemented OPA Gatekeeper for policy enforcement and Falco for runtime security.
+- **Solution:** Implemented OPA Gatekeeper for policy enforcement and Falco for runtime security, integrated OpenShift SCCs.
 - **Impact:**
   - Blocked 100% of non-compliant deployments.
   - Real-time detection of container escape attempts.

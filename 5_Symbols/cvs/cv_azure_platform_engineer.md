@@ -46,7 +46,7 @@ Senior Azure Platform Engineer specializing in **Azure cloud platforms, DevOps a
   - Reduced team onboarding time from 2 weeks to 4 hours.
   - Enforced 100% policy compliance automatically across 50+ subscriptions.
   - Standardized deployment patterns reducing configuration drift by 90%.
-- **Technologies:** Azure DevOps, Bicep, Azure Policy, AKS, Azure Monitor
+- **Technologies:** Azure DevOps, Bicep, Azure Policy, AKS, Azure Monitor, Red Hat OpenShift (OCP), Loki, OpenShift CLI
 
 ---
 

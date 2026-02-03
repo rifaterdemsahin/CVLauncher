@@ -46,7 +46,7 @@ Senior Infrastructure Engineer specializing in **system infrastructure design, a
   - 300% improvement in infrastructure provisioning speed
   - 30% reduction in operational overhead via automation
   - 99.9% infrastructure availability through automated monitoring
-- **Technologies:** Terraform, Ansible, Kubernetes, Prometheus, Grafana, ELK Stack
+- **Technologies:** Terraform, Ansible, Kubernetes, Prometheus, Grafana, ELK Stack, Red Hat OpenShift (OCP), OpenShift CLI, Loki
 
 ---
 
