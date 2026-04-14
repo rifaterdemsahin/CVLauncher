@@ -27,6 +27,7 @@
     { "id": "devops_engineer", "name": "DevOps Engineer", "desc": "DevOps Engineer", "tag": "DevOps", "file": "cvs/cv_devops_engineer.md" },
     { "id": "devsecops_engineer", "name": "DevSecOps Engineer", "desc": "DevSecOps Engineer", "tag": "Security", "file": "cvs/cv_devsecops_engineer.md" },
     { "id": "etl_developer", "name": "ETL Developer", "desc": "ETL Developer", "tag": "Data", "file": "cvs/cv_etl_developer.md" },
+    { "id": "full_stack_developer", "name": "Full Stack Developer", "desc": "Full Stack Developer", "tag": "Engineering", "file": "cvs/cv_full_stack_software_engineer.md" },
     { "id": "gcp_architect", "name": "GCP Architect", "desc": "Google Cloud Architect", "tag": "Cloud", "file": "cvs/cv_gcp_architect.md" },
     { "id": "genai_consultant", "name": "GenAI Consultant", "desc": "Generative AI Consultant", "tag": "AI/ML", "file": "cvs/cv_genai_consultant.md" },
     { "id": "iac_specialist", "name": "IaC Specialist", "desc": "Infrastructure as Code Specialist", "tag": "DevOps", "file": "cvs/cv_iac_specialist.md" },
