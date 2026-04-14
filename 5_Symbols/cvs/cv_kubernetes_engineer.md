@@ -104,11 +104,11 @@ Senior Kubernetes Engineer specializing in **container orchestration, microservi
 ## TECHNICAL KUBERNETES EXPERTISE
 
 ### Kubernetes Core Technologies
-**Orchestration:** Kubernetes, Docker, Containerd, CRI-O  
-**Deployment:** Helm, Kustomize, ArgoCD, Flux, GitOps workflows  
-**Networking:** Calico, Cilium, Flannel, Istio, Linkerd, Ingress controllers  
+**Orchestration:** Kubernetes, Docker, Containerd, CRI-O, Red Hat OpenShift (OCP)  
+**Deployment:** Helm, Kustomize, ArgoCD, Flux, GitOps workflows, OpenShift CLI (oc)  
+**Networking:** Calico, Cilium, Flannel, Istio, Linkerd, Ingress controllers, OpenShift Routes  
 **Storage:** Persistent Volumes, CSI drivers, StatefulSets, Storage classes  
-**Security:** Pod Security Standards, RBAC, Network Policies, OPA Gatekeeper  
+**Security:** Pod Security Standards, RBAC, Network Policies, OPA Gatekeeper, OpenShift SCCs (Security Context Constraints)  
 
 ### Cloud Kubernetes Services
 **AWS:** Amazon EKS, EC2, ELB, Route53, IAM, VPC CNI  
@@ -120,13 +120,14 @@ Senior Kubernetes Engineer specializing in **container orchestration, microservi
 **CI/CD:** GitLab CI/CD, GitHub Actions, Azure DevOps, Jenkins, Tekton  
 **GitOps:** ArgoCD, Flux, Git-based deployment automation, progressive delivery  
 **Infrastructure as Code:** Terraform, Pulumi, Ansible, Kubernetes YAML  
-**Package Management:** Helm, Kustomize, Operator SDK, Custom Resource Definitions  
+**Package Management:** Helm, Kustomize, Operator SDK, Custom Resource Definitions, OpenShift Operators, OLM (Operator Lifecycle Manager)  
 
 ### Monitoring & Observability
-**Monitoring:** Prometheus, Grafana, Kubernetes Dashboard, Lens  
+**Monitoring:** Prometheus, Grafana, Kubernetes Dashboard, Lens, OCP telemetry  
 **Logging:** ELK Stack, Fluentd, Loki, Azure Monitor, CloudWatch  
 **Tracing:** Jaeger, Zipkin, OpenTelemetry, Distributed tracing  
 **Alerting:** AlertManager, PagerDuty integration, Slack notifications  
+**OpenShift:** OpenShift Virtualization, platform-level telemetry with Grafana and Loki  
 
 ---
 

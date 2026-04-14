@@ -56,7 +56,7 @@ Senior Platform Engineer specializing in **developer platforms, internal tooling
   - 300% improvement in development velocity through platform automation
   - 30% reduction in operational overhead for development teams
   - Self-service capabilities reducing time-to-market by 50%
-- **Technologies:** Kubernetes, GitLab, ArgoCD, Backstage, Prometheus, Grafana
+- **Technologies:** Kubernetes, GitLab, ArgoCD, Backstage, Prometheus, Grafana, Red Hat OpenShift (OCP), OpenShift CLI, OpenShift Operators, Loki
 
 ---
 

@@ -40,9 +40,10 @@ DevOps transformation specialist with 15+ years optimizing CI/CD pipelines, auto
 🔧 **Technical Skills**
 - **Languages:** Python, Bash, PowerShell, YAML, JSON
 - **CI/CD:** Jenkins, GitLab CI, GitHub Actions, Azure DevOps
-- **Containers:** Docker, Kubernetes, Helm, Istio
-- **Infrastructure:** Terraform, Ansible, CloudFormation
-- **Monitoring:** Prometheus, Grafana, ELK Stack, Splunk
+- **Containers:** Docker, Kubernetes, Helm, Istio, Red Hat OpenShift (OCP), OpenShift CLI (oc)
+- **Infrastructure:** Terraform, Ansible, CloudFormation, OpenShift Operators
+- **Monitoring:** Prometheus, Grafana, ELK Stack, Splunk, Loki, OCP telemetry
+- **OpenShift:** Routes, SCCs (Security Context Constraints), OLM (Operator Lifecycle Manager), OpenShift Virtualization
 
 ---
 

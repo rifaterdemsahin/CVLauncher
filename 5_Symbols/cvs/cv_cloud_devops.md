@@ -106,8 +106,8 @@ Senior Cloud DevOps Engineer specializing in **Infrastructure as Code, CI/CD aut
 ### DevOps Tools & Platforms
 **CI/CD:** GitLab CI/CD, GitHub Actions, Azure DevOps, Jenkins, ArgoCD, Flux  
 **IaC:** Terraform, Ansible, CloudFormation, ARM Templates, Pulumi, CDK  
-**Containerization:** Docker, Kubernetes, Helm, OpenShift, Docker Compose  
-**Monitoring:** Prometheus, Grafana, ELK Stack, Datadog, New Relic, Azure Monitor  
+**Containerization:** Docker, Kubernetes, Helm, OpenShift, Docker Compose, OpenShift CLI (oc), OpenShift Operators  
+**Monitoring:** Prometheus, Grafana, ELK Stack, Datadog, New Relic, Azure Monitor, Loki, OCP telemetry  
 **Version Control:** Git, GitLab, GitHub, Azure Repos, Branching strategies  
 
 ### Cloud Platforms & Services
@@ -123,10 +123,11 @@ Senior Cloud DevOps Engineer specializing in **Infrastructure as Code, CI/CD aut
 **APIs:** REST APIs, CLI automation, Infrastructure APIs, Monitoring APIs  
 
 ### Security & Compliance
-**Security Tools:** Vault, SOPS, Sealed Secrets, OPA, Falco, Twistlock  
+**Security Tools:** Vault, SOPS, Sealed Secrets, OPA, Falco, Twistlock, OpenShift SCCs (Security Context Constraints)  
 **Compliance:** SOC2, PCI DSS, GDPR, ISO 27001, CIS Benchmarks  
-**Network Security:** VPNs, Firewalls, Network Policies, Service Mesh, mTLS  
+**Network Security:** VPNs, Firewalls, Network Policies, Service Mesh, mTLS, OpenShift Routes  
 **Identity:** RBAC, IAM, Active Directory, LDAP, OAuth, SAML  
+**OpenShift:** OLM (Operator Lifecycle Manager), OpenShift Virtualization, platform-level telemetry with Grafana and Loki  
 
 ---
 

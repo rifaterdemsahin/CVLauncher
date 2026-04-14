@@ -56,7 +56,7 @@ Senior AI Platform Engineer specializing in **MLOps, AI infrastructure, and scal
   - 300% increase in model deployment frequency through automated ML pipelines
   - 30% reduction in infrastructure costs via intelligent resource optimization
   - Real-time model inference supporting millions of daily transactions
-- **Technologies:** Kubernetes, MLflow, Kubeflow, TensorFlow Serving, Prometheus, Grafana
+- **Technologies:** Kubernetes, MLflow, Kubeflow, TensorFlow Serving, Prometheus, Grafana, Red Hat OpenShift (OCP), Loki
 
 ---
 

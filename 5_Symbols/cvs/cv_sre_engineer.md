@@ -56,7 +56,7 @@ Senior SRE Engineer specializing in **site reliability engineering, performance 
   - 300% improvement in system reliability through SRE practices
   - 30% reduction in operational toil via automation
   - 99.99% uptime achievement for critical financial systems
-- **Technologies:** Prometheus, Grafana, PagerDuty, Kubernetes, Terraform, Chaos Monkey
+- **Technologies:** Prometheus, Grafana, PagerDuty, Kubernetes, Terraform, Chaos Monkey, Red Hat OpenShift (OCP), Loki, OpenShift CLI
 
 ---
 
