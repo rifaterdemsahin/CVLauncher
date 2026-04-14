@@ -35,6 +35,7 @@
     { "id": "infrastructure_engineer", "name": "Infrastructure Engineer", "desc": "Infrastructure Engineer", "tag": "Engineering", "file": "cvs/cv_infrastructure_engineer.md" },
     { "id": "kubernetes_engineer", "name": "Kubernetes Engineer", "desc": "Kubernetes Engineer", "tag": "Engineering", "file": "cvs/cv_kubernetes_engineer.md" },
     { "id": "llm_engineer", "name": "LLM Engineer", "desc": "Large Language Model Engineer", "tag": "AI/ML", "file": "cvs/cv_llm_engineer.md" },
+    { "id": "machine_learning_lead", "name": "Machine Learning Lead", "desc": "Machine Learning Lead", "tag": "AI/ML", "file": "cvs/cv_ml_lead.md" },
     { "id": "ml_data_engineer", "name": "ML Data Engineer", "desc": "ML Data Engineer", "tag": "AI/ML", "file": "cvs/cv_ml_data_engineer.md" },
     { "id": "ml_ops_engineer", "name": "MLOps Engineer", "desc": "MLOps Engineer", "tag": "AI/ML", "file": "cvs/cv_ml_ops_engineer.md" },
     { "id": "ml_research_engineer", "name": "ML Research Engineer", "desc": "ML Research Engineer", "tag": "AI/ML", "file": "cvs/cv_ml_research_engineer.md" },
