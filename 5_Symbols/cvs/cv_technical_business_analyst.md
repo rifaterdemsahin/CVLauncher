@@ -42,6 +42,16 @@ Technical Business Analyst with deep expertise in **API integration, data modell
 
 ## KEY ACCOMPLISHMENTS
 
+### 🏆 2025 | IBM | London, UK
+**Enterprise AI & Cloud Transformation - Technical Business Analysis**
+- **Challenge:** Define technical requirements for large-scale hybrid cloud and AI integration programmes for enterprise clients
+- **Solution:** Authored API specifications, data mapping documents, and technical requirements for IBM Cloud + watsonx AI adoption, bridging business needs with engineering delivery
+- **Impact:** 
+  - Reduced integration defects by 40% through precise technical interface definitions
+  - Accelerated client AI adoption by 6 weeks via clear watsonx API documentation
+  - Enabled zero-downtime migration of 10M+ records to IBM Cloud infrastructure
+- **Technologies:** IBM Cloud, watsonx AI, REST APIs, OpenAPI/Swagger, SQL, Azure, Terraform, JIRA, Confluence
+
 ### 🏆 2024 | Home Office | Contract
 **Border Systems Interoperability Programme**
 - **Challenge:** Integrate legacy border control systems with new biometric data platforms.
@@ -73,7 +83,16 @@ Technical Business Analyst with deep expertise in **API integration, data modell
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Technical Business Analyst** | 2020 - Present  
+**Senior Technical Business Analyst / AI Integration Lead** | January 2025 - Present  
+*IBM | London, UK*
+
+- Defining technical requirements and API specifications for IBM Cloud and watsonx AI integration programmes
+- Authoring source-to-target data mapping documents for hybrid cloud migration engagements
+- Bridging business stakeholders and engineering teams for AI-driven process automation initiatives
+- Validating data integrity across cloud migrations involving 10M+ records with automated test scripts
+- Creating technical documentation (OpenAPI, data dictionaries, process flows) for enterprise AI adoptions
+
+**Senior Technical Business Analyst** | 2020 - 2025  
 *UK Public Sector (Various Departments via Consultancy)*
 
 - Led discovery, alpha, beta, and live phases for high-profile government digital services

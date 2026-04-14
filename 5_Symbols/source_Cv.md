@@ -65,6 +65,15 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ## KEY ACCOMPLISHMENTS [REORDER BY RELEVANCE]
 
+### 🏆 2025 | IBM | London, UK
+**Enterprise AI & Hybrid Cloud Transformation**
+- Architected hybrid cloud transformation platform using IBM Cloud + Red Hat OpenShift for Fortune 500 enterprises
+- Implemented watsonx AI solutions for intelligent automation reducing operational overhead by 35%
+- Led DevSecOps transformation integrating Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivered zero-downtime Kubernetes migrations for mission-critical financial and government workloads
+- **Keywords:** IBM, Hybrid Cloud, AI Automation, DevSecOps, OpenShift, watsonx
+- **Technologies:** IBM Cloud, Red Hat OpenShift, watsonx AI, Ansible, Terraform, Kubernetes, GitHub Actions
+
 ### 🏆 2024 | Goldman Sachs | Muscat, Oman
 **AI-Driven CI/CD Framework**
 - Developed an AI-driven CI/CD framework increasing deployment frequency by 300%

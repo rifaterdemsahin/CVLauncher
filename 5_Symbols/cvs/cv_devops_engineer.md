@@ -67,7 +67,14 @@ DevOps transformation specialist with 15+ years optimizing CI/CD pipelines, auto
 
 ## EXPERIENCE HIGHLIGHTS
 
-**Senior DevOps Engineer** | *Various Organizations* | *2018-Present*
+**Senior DevOps Engineer / AI Solutions Architect** | *IBM, London, UK* | *January 2025 - Present*
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+
+**Senior DevOps Engineer** | *Goldman Sachs, Ypsomed, Cushman & Wakefield* | *2020 - 2025*
 - Designed and implemented enterprise-scale CI/CD pipelines serving 1M+ users
 - Built Infrastructure as Code frameworks reducing provisioning time by 80%
 - Implemented monitoring and alerting systems with 99.5% accuracy

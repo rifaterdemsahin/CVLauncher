@@ -34,6 +34,16 @@ Senior Cyber Security Architect specializing in **designing resilient security e
 
 ## KEY ACCOMPLISHMENTS
 
+### 🏆 2025 | IBM | London, UK
+**Enterprise AI & Hybrid Cloud Transformation**
+- **Challenge:** Lead enterprise-scale hybrid cloud transformation and AI integration for global clients
+- **Solution:** Architected comprehensive IBM Cloud + Red Hat OpenShift platform with watsonx AI integration and DevSecOps practices
+- **Impact:** 
+  - 35% reduction in operational overhead through AI-driven automation with watsonx
+  - 40% improvement in deployment frequency via DevSecOps and Ansible Automation Platform
+  - Zero-downtime migration of mission-critical workloads to hybrid cloud architecture
+- **Technologies:** IBM Cloud, Red Hat OpenShift, watsonx AI, Ansible Automation Platform, Terraform, Kubernetes, GitHub Actions
+
 ### 🏆 2024 | Goldman Sachs | Muscat, Oman
 **Enterprise Cyber Defense Platform**
 - **Challenge:** Fortify the financial services platform against improved advanced persistent threats (APTs).
@@ -84,7 +94,16 @@ Senior Cyber Security Architect specializing in **designing resilient security e
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Cyber Security Architect / Technical Lead** | 2020 - Present  
+**Senior Cyber Security Architect / AI Solutions Architect** | January 2025 - Present  
+*IBM | London, UK*
+
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+
+**Senior Cyber Security Architect / Technical Lead** | 2020 - 2025  
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led cyber security architecture for global enterprises in finance, healthcare, and real estate

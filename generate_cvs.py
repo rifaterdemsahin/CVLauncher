@@ -45,7 +45,16 @@ def get_cv_template(role_title, role_subtitle, summary, competencies, accomplish
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior {role_title} / Technical Lead** | 2020 - Present  
+**Senior {role_title} / AI Solutions Architect** | January 2025 - Present
+*IBM | London, UK*
+
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+
+**Senior {role_title} / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led {role_title.lower()} initiatives across finance, healthcare, and real estate sectors
@@ -54,7 +63,7 @@ def get_cv_template(role_title, role_subtitle, summary, competencies, accomplish
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**{role_title}** | 2016 - 2020  
+**{role_title}** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives

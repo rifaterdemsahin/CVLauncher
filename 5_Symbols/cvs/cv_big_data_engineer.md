@@ -32,6 +32,16 @@ Senior Big Data Engineer specializing in **large-scale data processing, distribu
 
 ## KEY ACCOMPLISHMENTS
 
+### 🏆 2025 | IBM | London, UK
+**Enterprise AI & Hybrid Cloud Transformation**
+- **Challenge:** Lead enterprise-scale hybrid cloud transformation and AI integration for global clients
+- **Solution:** Architected comprehensive IBM Cloud + Red Hat OpenShift platform with watsonx AI integration and DevSecOps practices
+- **Impact:** 
+  - 35% reduction in operational overhead through AI-driven automation with watsonx
+  - 40% improvement in deployment frequency via DevSecOps and Ansible Automation Platform
+  - Zero-downtime migration of mission-critical workloads to hybrid cloud architecture
+- **Technologies:** IBM Cloud, Red Hat OpenShift, watsonx AI, Ansible Automation Platform, Terraform, Kubernetes, GitHub Actions
+
 ### 🏆 2024 | Goldman Sachs | Muscat, Oman
 **Enterprise Big Data Engineer Platform**
 - **Challenge:** Implement scalable big data engineer solutions for financial services environment
@@ -82,7 +92,16 @@ Senior Big Data Engineer specializing in **large-scale data processing, distribu
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Big Data Engineer / Technical Lead** | 2020 - Present  
+**Senior Big Data Engineer / AI Solutions Architect** | January 2025 - Present  
+*IBM | London, UK*
+
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+
+**Senior Big Data Engineer / Technical Lead** | 2020 - 2025  
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led big data engineer initiatives across finance, healthcare, and real estate sectors

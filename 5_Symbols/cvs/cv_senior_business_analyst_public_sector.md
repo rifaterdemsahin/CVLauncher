@@ -44,6 +44,16 @@ Senior Business Analyst with extensive experience in the **UK Public Sector**, s
 
 ## KEY ACCOMPLISHMENTS
 
+### 🏆 2025 | IBM | London, UK
+**Enterprise Digital Transformation - Business Analysis Lead**
+- **Challenge:** Lead business analysis for large-scale hybrid cloud and AI transformation programmes for public sector clients
+- **Solution:** Facilitated stakeholder workshops, mapped as-is/to-be processes, and defined requirements for IBM Cloud and watsonx AI adoption across government departments
+- **Impact:** 
+  - Reduced process cycle times by 35% through intelligent automation requirements design
+  - Delivered GDS-compliant service designs for AI-assisted citizen services
+  - Enabled cloud migration of 3 legacy systems with zero service disruption
+- **Technologies:** IBM Cloud, watsonx AI, Azure, Agile/SAFe, GDS Service Standards, JIRA, Confluence
+
 ### 🏆 2024 | Department for Work and Pensions (DWP) | Contract
 **Universal Credit Service Modernization**
 - **Challenge:** Improve the claimant experience for a critical benefit service while adhering to new policy changes.
@@ -75,7 +85,16 @@ Senior Business Analyst with extensive experience in the **UK Public Sector**, s
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Senior Business Analyst - Public Sector** | 2020 - Present  
+**Senior Business Analyst / Transformation Lead** | January 2025 - Present  
+*IBM | London, UK*
+
+- Leading business analysis for IBM's enterprise digital transformation engagements across public sector clients
+- Facilitating stakeholder workshops to define requirements for IBM Cloud and watsonx AI adoption programmes
+- Mapping complex as-is/to-be processes for hybrid cloud migration and intelligent automation initiatives
+- Ensuring GDS Service Standards compliance for AI-assisted citizen-facing services
+- Partnering with technical architects to translate business requirements into cloud-native solution designs
+
+**Senior Senior Business Analyst - Public Sector** | 2020 - 2025  
 *UK Public Sector (Various Departments via Consultancy)*
 
 - Led discovery, alpha, beta, and live phases for high-profile government digital services

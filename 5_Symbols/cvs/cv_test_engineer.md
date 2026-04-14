@@ -61,7 +61,16 @@ Senior Test Engineer specializing in **test automation frameworks, continuous te
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Senior Test Engineer (SDET) / Technical Lead** | 2020 - Present  
+**Senior Senior Test Engineer (SDET) / AI Solutions Architect** | January 2025 - Present  
+*IBM | London, UK*
+
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+
+**Senior Senior Test Engineer (SDET) / Technical Lead** | 2020 - 2025  
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led senior test engineer (sdet) initiatives across finance, healthcare, and real estate sectors

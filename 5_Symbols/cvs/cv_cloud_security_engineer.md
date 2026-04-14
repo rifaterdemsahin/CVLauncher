@@ -60,7 +60,16 @@ Senior Cloud Security Engineer specializing in **securing multi-cloud environmen
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Cloud Security Engineer / Technical Lead** | 2020 - Present  
+**Senior Cloud Security Engineer / AI Solutions Architect** | January 2025 - Present  
+*IBM | London, UK*
+
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+
+**Senior Cloud Security Engineer / Technical Lead** | 2020 - 2025  
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led cloud security engineer initiatives across finance, healthcare, and real estate sectors
