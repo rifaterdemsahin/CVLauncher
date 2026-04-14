@@ -47,6 +47,7 @@
     { "id": "security_devops", "name": "Security DevOps", "desc": "Security DevOps Engineer", "tag": "Security", "file": "cvs/cv_security_devops.md" },
     { "id": "security_engineer", "name": "Security Engineer", "desc": "Security Engineer", "tag": "Security", "file": "cvs/cv_security_engineer.md" },
     { "id": "senior_devops", "name": "Senior DevOps", "desc": "Senior DevOps Engineer", "tag": "DevOps", "file": "cvs/cv_senior_devops.md" },
+    { "id": "servicenow_senior_developer", "name": "ServiceNow Senior Developer", "desc": "ServiceNow Senior Developer", "tag": "Engineering", "file": "cvs/cv_servicenow_senior_developer.md" },
     { "id": "software_engineering_trainer", "name": "Software Engineering Trainer", "desc": "Software Engineering Trainer", "tag": "Training", "file": "cvs/cv_software_engineering_trainer.md" },
     { "id": "sre_engineer", "name": "SRE Engineer", "desc": "Site Reliability Engineer", "tag": "Engineering", "file": "cvs/cv_sre_engineer.md" },
     { "id": "systems_engineer", "name": "Systems Engineer", "desc": "Systems Engineer", "tag": "Engineering", "file": "cvs/cv_systems_engineer.md" },
