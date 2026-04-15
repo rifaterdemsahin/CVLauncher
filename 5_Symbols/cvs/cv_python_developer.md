@@ -1,5 +1,5 @@
 # RIFAT ERDEM SAHIN
-## Senior Python Developer | Python Ecytosprostem & Backend Specialist
+## Senior Python Developer | Python Ecosystem & Backend Specialist
 
 ---
 
@@ -61,31 +61,31 @@ Senior Python Developer specializing in **building high-performance backend syst
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Senior Python Developer / AI Solutions Architect** | January 2025 - Present  
+**Senior Python Developer / AI Solutions Architect** | January 2025 - Present  
 *IBM | London, UK*
 
-- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
-- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%
-- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments
-- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
-- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
+- Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises.
+- Implementing watsonx AI solutions for intelligent automation, reducing operational overhead by 35%.
+- Leading DevSecOps transformation with Ansible Automation Platform and Terraform IaC across multi-cloud environments.
+- Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads.
+- Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally.
 
-**Senior Senior Python Developer / Technical Lead** | 2020 - 2025  
+**Senior Python Developer / Technical Lead** | 2020 - 2025  
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
-- Led senior python developer initiatives across finance, healthcare, and real estate sectors
-- Designed and implemented solutions supporting millions of daily transactions
-- Established best practices and automated frameworks
-- Mentored engineering teams on modern technologies and practices
-- Delivered solutions achieving 300% improvement in operational efficiency
+- Led Python developer initiatives across finance, healthcare, and real estate sectors.
+- Designed and implemented solutions supporting millions of daily transactions.
+- Established best practices and automated frameworks.
+- Mentored engineering teams on modern technologies and practices.
+- Delivered solutions achieving 300% improvement in operational efficiency.
 
-**Senior Python Developer** | 2016 - 2020  
+**Python Developer** | 2016 - 2020  
 *Microsoft, Emerson, Various Fortune 500*
 
-- Built enterprise solutions for digital transformation initiatives
-- Led cross-functional teams designing scalable applications
-- Established frameworks and implementation strategies
-- Evangelized modern technologies through technical leadership
+- Built enterprise solutions for digital transformation initiatives.
+- Led cross-functional teams designing scalable applications.
+- Established frameworks and implementation strategies.
+- Evangelized modern technologies through technical leadership.
 
 ---
 
@@ -121,7 +121,7 @@ Southern New Hampshire University, USA 🇺🇸 | 2013
 
 ## AVAILABILITY & CONTACT
 
-**Immediate Availability** for senior python developer roles
+**Immediate Availability** for Senior Python Developer roles
 
 📅 **Schedule a Discussion:** https://calendly.com/rifaterdem/schedule  
 📧 **Email:** contact@rifaterdemsahin.com  
@@ -133,12 +133,6 @@ Southern New Hampshire University, USA 🇺🇸 | 2013
 
 📄 **Download Full CV (PDF):**  
 https://rifaterdemsahin.com/wp-content/uploads/2025/05/erdem-sahin-cv_summary_2025_may.pdf
-
-📄 **Download Full CV (Word):**  
-https://rifaterdemsahin.com/wp-content/uploads/2025/05/erdem-sahin-cv_summary_2025_may.docx
-
-📊 **Technical Portfolio & Presentations:**  
-https://rifaterdemsahin.com/wp-content/uploads/2025/02/rifaterdemsahinprofilepresentation.v2025.2.pdf
 
 ---
 
