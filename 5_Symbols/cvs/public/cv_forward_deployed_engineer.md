@@ -61,7 +61,7 @@ Senior Forward Deployed Engineer specializing in **deploying mission-critical pl
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Forward Deployed Engineer / AI Solutions Architect** | January 2025 - Present  
+**Senior Forward Deployed Engineer / AI Solutions Architect** | January 2025 - Present
 *IBM | London, UK*
 
 - Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
@@ -70,7 +70,7 @@ Senior Forward Deployed Engineer specializing in **deploying mission-critical pl
 - Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
 - Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
 
-**Senior Forward Deployed Engineer / Technical Lead** | 2020 - 2025  
+**Senior Forward Deployed Engineer / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led forward deployed engineer initiatives across finance, healthcare, and real estate sectors
@@ -79,7 +79,7 @@ Senior Forward Deployed Engineer specializing in **deploying mission-critical pl
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**Forward Deployed Engineer** | 2016 - 2020  
+**Forward Deployed Engineer** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives

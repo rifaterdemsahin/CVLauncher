@@ -59,7 +59,7 @@ Senior Mobile Developer specializing in **building high-performance native and c
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Mobile App Developer / AI Solutions Architect** | January 2025 - Present  
+**Senior Mobile App Developer / AI Solutions Architect** | January 2025 - Present
 *IBM | London, UK*
 
 - Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
@@ -68,7 +68,7 @@ Senior Mobile Developer specializing in **building high-performance native and c
 - Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
 - Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
 
-**Senior Mobile App Developer / Technical Lead** | 2020 - 2025  
+**Senior Mobile App Developer / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led mobile app developer initiatives across finance, healthcare, and real estate sectors
@@ -77,7 +77,7 @@ Senior Mobile Developer specializing in **building high-performance native and c
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**Mobile App Developer** | 2016 - 2020  
+**Mobile App Developer** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives

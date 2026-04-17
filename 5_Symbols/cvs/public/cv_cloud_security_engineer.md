@@ -50,7 +50,7 @@ Senior Cloud Security Engineer specializing in **securing multi-cloud environmen
 ### 🏆 2023 | Enterprise Retail | Remote
 **Kubernetes Security Overhaul**
 - **Challenge:** Secure a large-scale EKS environment handling PII data.
-- **Solution:** Implemented OPA Gatekeeper for policy enforcement and Falco for runtime security, integrated OpenShift SCCs.
+- **Solution:** Implemented OPA Gatekeeper for policy enforcement and Falco for runtime security.
 - **Impact:**
   - Blocked 100% of non-compliant deployments.
   - Real-time detection of container escape attempts.
@@ -60,7 +60,7 @@ Senior Cloud Security Engineer specializing in **securing multi-cloud environmen
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Cloud Security Engineer / AI Solutions Architect** | January 2025 - Present  
+**Senior Cloud Security Engineer / AI Solutions Architect** | January 2025 - Present
 *IBM | London, UK*
 
 - Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
@@ -69,7 +69,7 @@ Senior Cloud Security Engineer specializing in **securing multi-cloud environmen
 - Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
 - Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
 
-**Senior Cloud Security Engineer / Technical Lead** | 2020 - 2025  
+**Senior Cloud Security Engineer / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led cloud security engineer initiatives across finance, healthcare, and real estate sectors
@@ -78,7 +78,7 @@ Senior Cloud Security Engineer specializing in **securing multi-cloud environmen
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**Cloud Security Engineer** | 2016 - 2020  
+**Cloud Security Engineer** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives

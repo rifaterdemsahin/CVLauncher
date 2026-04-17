@@ -61,7 +61,7 @@ Senior Deep Learning Engineer specializing in **designing, training, and deployi
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior Deep Learning Engineer / AI Solutions Architect** | January 2025 - Present  
+**Senior Deep Learning Engineer / AI Solutions Architect** | January 2025 - Present
 *IBM | London, UK*
 
 - Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
@@ -70,7 +70,7 @@ Senior Deep Learning Engineer specializing in **designing, training, and deployi
 - Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
 - Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
 
-**Senior Deep Learning Engineer / Technical Lead** | 2020 - 2025  
+**Senior Deep Learning Engineer / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led deep learning engineer initiatives across finance, healthcare, and real estate sectors
@@ -79,7 +79,7 @@ Senior Deep Learning Engineer specializing in **designing, training, and deployi
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**Deep Learning Engineer** | 2016 - 2020  
+**Deep Learning Engineer** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives

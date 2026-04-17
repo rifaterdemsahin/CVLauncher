@@ -1301,7 +1301,7 @@ def create_cv_file(filename, role_config):
         role_config["accomplishments"]
     )
     
-    filepath = os.path.join(r"c:\projects\CVLauncher\5_Symbols\cvs", filename)
+    filepath = os.path.join(r"/Users/rifaterdemsahin/projects/CVLauncher/5_Symbols/cvs/public", filename)
     try:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(content)

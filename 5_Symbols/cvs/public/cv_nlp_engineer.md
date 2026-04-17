@@ -60,7 +60,7 @@ Senior NLP Engineer specializing in **building intelligent text processing syste
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior NLP Engineer / AI Solutions Architect** | January 2025 - Present  
+**Senior NLP Engineer / AI Solutions Architect** | January 2025 - Present
 *IBM | London, UK*
 
 - Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
@@ -69,7 +69,7 @@ Senior NLP Engineer specializing in **building intelligent text processing syste
 - Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
 - Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
 
-**Senior NLP Engineer / Technical Lead** | 2020 - 2025  
+**Senior NLP Engineer / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
 - Led nlp engineer initiatives across finance, healthcare, and real estate sectors
@@ -78,7 +78,7 @@ Senior NLP Engineer specializing in **building intelligent text processing syste
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**NLP Engineer** | 2016 - 2020  
+**NLP Engineer** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives

@@ -247,7 +247,7 @@ def create_cv_file(filename, role_config):
         role_config["competencies"]
     )
     
-    filepath = f"/Users/rifaterdemsahin/projects/CVLauncher/5_Symbols/cvs/{filename}"
+    filepath = f"/Users/rifaterdemsahin/projects/CVLauncher/5_Symbols/cvs/public/{filename}"
     
     # Check if file exists and is empty or doesn't exist
     try:
@@ -272,7 +272,7 @@ print("\\nCV generation complete!")
 print("\\nGenerating files for remaining empty CVs...")
 
 # Get list of all CV files and check which ones are still empty
-cv_dir = "/Users/rifaterdemsahin/projects/CVLauncher/5_Symbols/cvs"
+cv_dir = "/Users/rifaterdemsahin/projects/CVLauncher/5_Symbols/cvs/public"
 all_cv_files = [f for f in os.listdir(cv_dir) if f.startswith('cv_') and f.endswith('.md')]
 
 empty_files = []
