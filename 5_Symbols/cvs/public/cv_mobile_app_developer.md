@@ -129,12 +129,6 @@ Southern New Hampshire University, USA 🇺🇸 | 2013
 
 ## SUPPORTING DOCUMENTS
 
-📄 **Download Full CV (PDF):**  
-https://rifaterdemsahin.com/wp-content/uploads/2025/05/erdem-sahin-cv_summary_2025_may.pdf
-
-📄 **Download Full CV (Word):**  
-https://rifaterdemsahin.com/wp-content/uploads/2025/05/erdem-sahin-cv_summary_2025_may.docx
-
 📊 **Technical Portfolio & Presentations:**  
 https://rifaterdemsahin.com/wp-content/uploads/2025/02/rifaterdemsahinprofilepresentation.v2025.2.pdf
 
