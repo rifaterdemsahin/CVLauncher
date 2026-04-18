@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
+            --primary: #818cf8;
+            --primary-hover: #6366f1;
             --bg: #0f172a;
-            --panel-bg: #1e293b;
+            --panel-bg: rgba(30, 41, 59, 0.7);
             --text: #f8fafc;
             --text-muted: #94a3b8;
-            --border: #334155;
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #c084fc;
         }
 
         * {
@@ -25,7 +26,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
             color: var(--text);
             height: 100vh;
             display: flex;
@@ -34,120 +35,190 @@
         }
 
         header {
-            padding: 1rem 2rem;
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
+            padding: 1.25rem 2.5rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 10;
         }
 
         .logo {
             font-weight: 600;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             background: linear-gradient(to right, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
         }
 
         main {
             flex: 1;
             display: flex;
-            gap: 1px;
-            background-color: var(--border);
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .panel {
             flex: 1;
-            background-color: var(--panel-bg);
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
             display: flex;
             flex-direction: column;
             padding: 2rem;
-            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .panel:hover {
+            border-color: rgba(129, 140, 248, 0.3);
         }
 
         h2 {
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 2px;
         }
 
         textarea {
             flex: 1;
-            background: #0f172a;
+            background: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border);
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             color: var(--text);
-            padding: 1rem;
+            padding: 1.25rem;
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.7;
             resize: none;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            font-family: inherit;
         }
 
         textarea:focus {
             border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
         }
 
         .submit-btn {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             border: none;
-            padding: 1rem;
-            border-radius: 0.5rem;
+            padding: 1.125rem;
+            border-radius: 0.75rem;
             font-weight: 600;
             margin-top: 1.5rem;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
         .submit-btn:hover {
-            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            filter: brightness(1.1);
         }
 
-        .submit-btn:active {
-            transform: scale(0.98);
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .response-container {
-            background: #0f172a;
+            flex: 1;
+            background: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border);
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             padding: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.6;
-            min-height: 200px;
+            overflow-y: auto;
+            scrollbar-width: thin;
         }
 
-        .response-container p { margin-bottom: 1rem; }
-        .response-container h1, .response-container h2 { margin: 1.5rem 0 1rem 0; }
-        .response-container ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .response-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
 
-        .loading {
-            color: var(--text-muted);
-            font-style: italic;
+        .response-content p { margin-bottom: 1.25rem; }
+        .response-content h1, .response-content h2, .response-content h3 { 
+            color: white; 
+            margin: 1.5rem 0 1rem 0; 
+        }
+        .response-content a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .response-content a:hover {
+            border-color: var(--primary);
+        }
+
+        .loading-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
         .copy-btn {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
             margin-top: 1rem;
             width: fit-content;
             cursor: pointer;
             font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .copy-btn:hover {
-            background: var(--border);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
         }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            main { flex-direction: column; overflow-y: auto; }
+            .panel { min-height: 400px; }
+        }
+    </style>
 
         /* Scrollbar styling */
         ::-webkit-scrollbar { width: 8px; }
@@ -167,16 +238,27 @@
     </header>
     <main>
         <section class="panel">
-            <h2>Recruiter's Request</h2>
+            <h2>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Recruiter's Request
+            </h2>
             <textarea id="requestInput" placeholder="Paste the recruiter's email or LinkedIn message here..."></textarea>
-            <button class="submit-btn" id="submitBtn">Generate Response</button>
+            <button class="submit-btn" id="submitBtn">Generate Professional Response</button>
         </section>
         <section class="panel">
-            <h2>Generated Response</h2>
+            <h2>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                Generated Response
+            </h2>
             <div id="responseOutput" class="response-container">
-                <p class="loading">Response will appear here...</p>
+                <div class="response-content">
+                    <p style="color: var(--text-muted); font-style: italic;">The AI will generate a tailored response here based on your master CV...</p>
+                </div>
             </div>
-            <button class="copy-btn" id="copyBtn" style="display: none;">Copy to Clipboard</button>
+            <button class="copy-btn" id="copyBtn" style="display : none;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                Copy to Clipboard
+            </button>
         </section>
     </main>
 
@@ -192,8 +274,9 @@
             if (!request) return alert('Please enter a request');
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Generating...';
-            responseOutput.innerHTML = '<p class="loading">Consulting xAI and reviewing your CV...</p>';
+            submitBtn.innerHTML = 'Consulting xAI...';
+            responseOutput.className = 'response-container loading-shimmer';
+            responseOutput.innerHTML = '<div class="response-content"><p>Analyzing recruiter intent and matching with your experience...</p></div>';
             copyBtn.style.display = 'none';
 
             try {
@@ -206,19 +289,22 @@
                 const data = await res.json();
                 if (data.error) throw new Error(data.error);
 
-                responseOutput.innerHTML = md.render(data.response);
-                copyBtn.style.display = 'block';
+                responseOutput.className = 'response-container';
+                responseOutput.innerHTML = `<div class="response-content">${md.render(data.response)}</div>`;
+                copyBtn.style.display = 'flex';
                 copyBtn.onclick = () => {
                     navigator.clipboard.writeText(data.response);
-                    copyBtn.textContent = 'Copied!';
-                    setTimeout(() => copyBtn.textContent = 'Copy to Clipboard', 2000);
+                    const originalContent = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '✓ Copied to Clipboard';
+                    setTimeout(() => copyBtn.innerHTML = originalContent, 2000);
                 };
 
             } catch (err) {
-                responseOutput.innerHTML = `<p style="color: #ef4444">Error: ${err.message}</p>`;
+                responseOutput.className = 'response-container';
+                responseOutput.innerHTML = `<div class="response-content" style="color: #f87171">Error: ${err.message}</div>`;
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Generate Response';
+                submitBtn.textContent = 'Generate Professional Response';
             }
         });
     </script>

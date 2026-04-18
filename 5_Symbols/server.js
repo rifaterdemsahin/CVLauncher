@@ -10,7 +10,9 @@ const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from the root and cvs/public directory
+app.use(express.static(__dirname));
+app.use('/cvs/public', express.static(path.join(__dirname, 'cvs/public')));
 
 const SOURCE_CV_PATH = path.join(__dirname, 'Source/cv.md');
 const PUBLIC_CVS_DIR = path.join(__dirname, 'cvs/public');
