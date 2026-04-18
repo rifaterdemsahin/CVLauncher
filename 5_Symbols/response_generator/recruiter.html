@@ -9,7 +9,6 @@
     <style>
         :root {
             --primary: #818cf8;
-            --primary-hover: #6366f1;
             --bg: #0f172a;
             --panel-bg: rgba(30, 41, 59, 0.7);
             --text: #f8fafc;
@@ -17,6 +16,7 @@
             --border: rgba(255, 255, 255, 0.1);
             --accent: #c084fc;
             --error: #f87171;
+            --success: #34d399;
             --debug-bg: rgba(15, 23, 42, 0.95);
         }
 
@@ -26,110 +26,114 @@
             font-family: 'Inter', sans-serif;
             background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
             color: var(--text);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         header {
-            padding: 1.25rem 2.5rem;
+            padding: 1rem 2rem;
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
+            flex-shrink: 0;
         }
 
         .logo {
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             background: linear-gradient(to right, #818cf8, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
         }
 
         main {
             flex: 1;
-            display: flex;
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1600px;
-            margin: 0 auto;
-            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 1.25rem;
+            padding: 1.25rem;
+            overflow: hidden;
+            min-height: 0;
         }
 
         .panel {
-            flex: 1;
             background: var(--panel-bg);
             backdrop-filter: blur(16px);
             border: 1px solid var(--border);
             border-radius: 1.25rem;
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            min-height: 0;
+            overflow: hidden;
         }
 
-        .panel:hover { border-color: rgba(129, 140, 248, 0.3); }
+        .panel:hover { border-color: rgba(129, 140, 248, 0.25); }
 
-        h2 {
-            font-size: 0.875rem;
+        .panel-label {
+            font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            flex-shrink: 0;
         }
 
-        h2::before {
+        .panel-label::before {
             content: '';
             display: block;
-            width: 4px;
-            height: 16px;
+            width: 3px;
+            height: 14px;
             background: var(--primary);
             border-radius: 2px;
         }
 
+        /* ── Input panel ── */
         textarea {
             flex: 1;
-            min-height: 260px;
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border);
             border-radius: 0.75rem;
             color: var(--text);
-            padding: 1.25rem;
-            font-size: 1rem;
+            padding: 1rem;
+            font-size: 0.95rem;
             line-height: 1.7;
             resize: none;
             outline: none;
             transition: all 0.2s;
             font-family: inherit;
+            min-height: 0;
         }
 
         textarea:focus {
             border-color: var(--primary);
             background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
         .submit-btn {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             border: none;
-            padding: 1.125rem;
+            padding: 0.9rem;
             border-radius: 0.75rem;
             font-weight: 600;
-            margin-top: 1.5rem;
+            margin-top: 0.75rem;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 1rem;
+            font-size: 0.95rem;
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            flex-shrink: 0;
         }
 
         .submit-btn:hover {
@@ -140,120 +144,167 @@
 
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-        .response-container {
+        /* ── CV panel ── */
+        .cv-scroll {
             flex: 1;
-            min-height: 260px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
             overflow-y: auto;
+            min-height: 0;
             scrollbar-width: thin;
         }
 
-        .response-content { font-size: 1.05rem; line-height: 1.8; color: #d1d5db; }
-        .response-content p { margin-bottom: 1.25rem; }
-        .response-content h1, .response-content h2, .response-content h3 {
-            color: white;
-            margin: 1.5rem 0 1rem 0;
+        .cv-content {
+            font-size: 0.78rem;
+            line-height: 1.65;
+            color: #94a3b8;
         }
-        .response-content a {
-            color: var(--primary);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+
+        .cv-content h1 { font-size: 1rem; color: #e2e8f0; margin: 0.75rem 0 0.35rem; }
+        .cv-content h2 { font-size: 0.85rem; color: #cbd5e1; margin: 0.75rem 0 0.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.2rem; }
+        .cv-content h3 { font-size: 0.8rem; color: #cbd5e1; margin: 0.5rem 0 0.2rem; }
+        .cv-content p { margin-bottom: 0.5rem; }
+        .cv-content ul, .cv-content ol { padding-left: 1.2rem; margin-bottom: 0.5rem; }
+        .cv-content li { margin-bottom: 0.15rem; }
+        .cv-content table { width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; font-size: 0.75rem; }
+        .cv-content td, .cv-content th { border: 1px solid var(--border); padding: 0.3rem 0.5rem; vertical-align: top; }
+        .cv-content strong { color: #e2e8f0; }
+        .cv-content hr { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
+        .cv-content code { background: rgba(0,0,0,0.3); padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.75rem; }
+
+        .cv-loading { color: var(--text-muted); font-style: italic; font-size: 0.85rem; }
+
+        /* ── Output panel ── */
+        .response-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            scrollbar-width: thin;
         }
+
+        .response-content { font-size: 0.95rem; line-height: 1.8; color: #d1d5db; }
+        .response-content p { margin-bottom: 1rem; }
+        .response-content h1, .response-content h2, .response-content h3 { color: white; margin: 1.25rem 0 0.75rem; }
+        .response-content a { color: var(--primary); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
         .response-content a:hover { border-color: var(--primary); }
+        .response-content strong { color: #e2e8f0; }
 
         .btn-row {
             display: flex;
-            gap: 0.75rem;
-            margin-top: 1rem;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
             flex-wrap: wrap;
+            flex-shrink: 0;
         }
 
         .copy-btn {
-            background: rgba(129, 140, 248, 0.15);
+            background: rgba(129, 140, 248, 0.12);
             border: 1px solid var(--primary);
             color: var(--primary);
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.1rem;
             border-radius: 0.5rem;
             cursor: pointer;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
+            font-family: inherit;
         }
 
-        .copy-btn:hover {
-            background: rgba(129, 140, 248, 0.25);
-            transform: translateY(-1px);
-        }
-
-        .copy-btn.success {
-            background: rgba(52, 211, 153, 0.15);
-            border-color: #34d399;
-            color: #34d399;
-        }
+        .copy-btn:hover { background: rgba(129, 140, 248, 0.22); transform: translateY(-1px); }
+        .copy-btn.success { background: rgba(52, 211, 153, 0.12); border-color: var(--success); color: var(--success); }
 
         .debug-toggle-btn {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border);
             color: var(--text-muted);
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.1rem;
             border-radius: 0.5rem;
             cursor: pointer;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             font-weight: 500;
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
+            font-family: inherit;
         }
 
-        .debug-toggle-btn:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+        .debug-toggle-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
 
-        /* Debug panel */
+        .prompt-panel {
+            margin-top: 0.75rem;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            display: none;
+            flex-shrink: 0;
+        }
+
+        .prompt-panel.visible { display: block; }
+
+        .prompt-panel-header {
+            background: rgba(129, 140, 248, 0.08);
+            border-bottom: 1px solid rgba(129, 140, 248, 0.2);
+            padding: 0.5rem 0.875rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .prompt-panel pre {
+            padding: 0.75rem;
+            font-size: 0.75rem;
+            line-height: 1.55;
+            color: #94a3b8;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+
         .debug-panel {
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             background: var(--debug-bg);
             border: 1px solid rgba(248, 113, 113, 0.3);
             border-radius: 0.75rem;
             overflow: hidden;
             display: none;
+            flex-shrink: 0;
         }
 
         .debug-panel.visible { display: block; }
 
         .debug-panel-header {
-            background: rgba(248, 113, 113, 0.1);
+            background: rgba(248, 113, 113, 0.08);
             border-bottom: 1px solid rgba(248, 113, 113, 0.2);
-            padding: 0.6rem 1rem;
-            font-size: 0.75rem;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: var(--error);
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .debug-panel pre {
-            padding: 1rem;
-            font-size: 0.8rem;
-            line-height: 1.6;
+            padding: 0.75rem;
+            font-size: 0.75rem;
+            line-height: 1.55;
             color: #94a3b8;
             overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-all;
             font-family: 'SF Mono', 'Fira Code', monospace;
+            max-height: 180px;
+            overflow-y: auto;
         }
 
-        .loading-shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
         }
@@ -264,68 +315,106 @@
         }
 
         /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
 
-        @media (max-width: 1024px) {
-            main { flex-direction: column; }
-            .panel { min-height: 350px; }
+        @media (max-width: 1100px) {
+            body { overflow: auto; }
+            main { grid-template-columns: 1fr; height: auto; overflow: visible; }
+            .panel { min-height: 320px; }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">Recruiter AI Agent</div>
-        <div style="font-size: 0.875rem; color: var(--text-muted)">Powered by xAI Grok</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted)">Powered by xAI Grok-3</div>
     </header>
-    <main>
-        <!-- Input Panel -->
-        <section class="panel">
-            <h2>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                Recruiter's Request
-            </h2>
-            <textarea id="requestInput" placeholder="Paste the recruiter's email or LinkedIn message here..."></textarea>
-            <button class="submit-btn" id="submitBtn">Generate Professional Response</button>
-        </section>
 
-        <!-- Output Panel -->
-        <section class="panel">
-            <h2>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+    <main>
+        <!-- Panel 1: Recruiter Input -->
+        <div class="panel">
+            <div class="panel-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Recruiter's Message
+            </div>
+            <textarea id="requestInput" placeholder="Paste the recruiter's email or LinkedIn message here..."></textarea>
+            <button class="submit-btn" id="submitBtn">Generate Response</button>
+        </div>
+
+        <!-- Panel 2: Source CV -->
+        <div class="panel">
+            <div class="panel-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                Source CV
+            </div>
+            <div class="cv-scroll">
+                <div id="cvContent" class="cv-loading">Loading CV...</div>
+            </div>
+        </div>
+
+        <!-- Panel 3: Generated Response -->
+        <div class="panel">
+            <div class="panel-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
                 Generated Response
-            </h2>
-            <div id="responseOutput" class="response-container">
+            </div>
+            <div class="response-scroll" id="responseOutput">
                 <div class="response-content">
-                    <p style="color: var(--text-muted); font-style: italic;">The AI will generate a tailored response here based on your master CV...</p>
+                    <p style="color: var(--text-muted); font-style: italic;">AI response will appear here, drawing specific evidence from the CV...</p>
                 </div>
             </div>
 
             <div class="btn-row" id="btnRow" style="display: none;">
                 <button class="copy-btn" id="copyBtn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                     Copy Response
                 </button>
+                <button class="debug-toggle-btn" id="promptToggleBtn" style="display:none">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Show Prompt
+                </button>
                 <button class="debug-toggle-btn" id="debugToggleBtn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    Debug Info
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Debug
                 </button>
             </div>
 
+            <div class="prompt-panel" id="promptPanel">
+                <div class="prompt-panel-header">Full Prompt Sent to Grok-3</div>
+                <pre id="promptContent"></pre>
+            </div>
+
             <div class="debug-panel" id="debugPanel">
-                <div class="debug-panel-header">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                    Debug / Error Info
-                </div>
+                <div class="debug-panel-header">Debug / Error Info</div>
                 <pre id="debugContent"></pre>
             </div>
-        </section>
+        </div>
     </main>
 
     <script>
         const md = window.markdownit();
+
+        // ── Load CV on page load ──
+        (async () => {
+            const cvEl = document.getElementById('cvContent');
+            try {
+                const res = await fetch('/api/cv');
+                const data = await res.json();
+                if (data.content) {
+                    cvEl.className = 'cv-content';
+                    cvEl.innerHTML = md.render(data.content);
+                } else {
+                    cvEl.textContent = 'CV not available.';
+                }
+            } catch (e) {
+                cvEl.textContent = 'Failed to load CV: ' + e.message;
+            }
+        })();
+
+        // ── Response generation ──
         const submitBtn = document.getElementById('submitBtn');
         const requestInput = document.getElementById('requestInput');
         const responseOutput = document.getElementById('responseOutput');
@@ -334,59 +423,53 @@
         const debugToggleBtn = document.getElementById('debugToggleBtn');
         const debugPanel = document.getElementById('debugPanel');
         const debugContent = document.getElementById('debugContent');
+        const promptToggleBtn = document.getElementById('promptToggleBtn');
+        const promptPanel = document.getElementById('promptPanel');
+        const promptContent = document.getElementById('promptContent');
 
         let rawResponse = '';
 
         debugToggleBtn.addEventListener('click', () => {
             debugPanel.classList.toggle('visible');
-            debugToggleBtn.textContent = debugPanel.classList.contains('visible') ? '▲ Hide Debug' : '▼ Debug Info';
+        });
+
+        promptToggleBtn.addEventListener('click', () => {
+            const open = promptPanel.classList.toggle('visible');
+            promptToggleBtn.innerHTML = `
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                ${open ? 'Hide Prompt' : 'Show Prompt'}`;
         });
 
         copyBtn.addEventListener('click', async () => {
             if (!rawResponse) return;
-            try {
-                await navigator.clipboard.writeText(rawResponse);
-                copyBtn.classList.add('success');
-                copyBtn.innerHTML = `
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    Copied!`;
-                setTimeout(() => {
-                    copyBtn.classList.remove('success');
-                    copyBtn.innerHTML = `
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        Copy Response`;
-                }, 2000);
-            } catch (e) {
-                // Fallback for non-HTTPS or older browsers
-                const ta = document.createElement('textarea');
-                ta.value = rawResponse;
-                ta.style.position = 'fixed';
-                ta.style.opacity = '0';
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
-                copyBtn.classList.add('success');
-                copyBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
-                setTimeout(() => {
-                    copyBtn.classList.remove('success');
-                    copyBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy Response';
-                }, 2000);
+            const svgCopy = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+            const svgCheck = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+            try { await navigator.clipboard.writeText(rawResponse); }
+            catch {
+                const ta = Object.assign(document.createElement('textarea'), { value: rawResponse, style: 'position:fixed;opacity:0' });
+                document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
             }
+            copyBtn.classList.add('success');
+            copyBtn.innerHTML = svgCheck + ' Copied!';
+            setTimeout(() => { copyBtn.classList.remove('success'); copyBtn.innerHTML = svgCopy + ' Copy Response'; }, 2000);
         });
 
         submitBtn.addEventListener('click', async () => {
             const request = requestInput.value.trim();
-            if (!request) return alert('Please enter a request');
+            if (!request) return alert('Please paste a recruiter message first');
 
             rawResponse = '';
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Consulting xAI Grok...';
-            responseOutput.className = 'response-container loading-shimmer';
-            responseOutput.innerHTML = '<div class="response-content"><p style="color: var(--text-muted)">Analyzing recruiter intent and matching with your experience...</p></div>';
+            submitBtn.textContent = 'Generating...';
+            responseOutput.className = 'response-scroll shimmer';
+            responseOutput.innerHTML = '<div class="response-content"><p style="color:var(--text-muted)">Analysing message and matching against CV...</p></div>';
             btnRow.style.display = 'none';
             debugPanel.classList.remove('visible');
             debugContent.textContent = '';
+            promptPanel.classList.remove('visible');
+            promptContent.textContent = '';
+            promptToggleBtn.style.display = 'none';
+            promptToggleBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> Show Prompt`;
 
             try {
                 const res = await fetch('/api/respond', {
@@ -396,39 +479,37 @@
                 });
 
                 const data = await res.json();
-
-                // Always show debug info if available
                 if (data.debug) {
-                    debugContent.textContent = JSON.stringify(data.debug, null, 2);
+                    const { prompt, ...rest } = data.debug;
+                    debugContent.textContent = JSON.stringify(rest, null, 2);
+                    if (prompt) {
+                        promptContent.textContent = prompt;
+                        promptToggleBtn.style.display = '';
+                    }
                 }
 
                 if (!res.ok || data.error) {
-                    const errMsg = data.error || `HTTP ${res.status}`;
-                    responseOutput.className = 'response-container';
-                    responseOutput.innerHTML = `<div class="response-content" style="color: var(--error)">
-                        <strong>Error:</strong> ${errMsg}
-                    </div>`;
+                    responseOutput.className = 'response-scroll';
+                    responseOutput.innerHTML = `<div class="response-content" style="color:var(--error)"><strong>Error:</strong> ${data.error || 'HTTP ' + res.status}</div>`;
                     btnRow.style.display = 'flex';
                     debugPanel.classList.add('visible');
                     return;
                 }
 
                 rawResponse = data.response;
-                responseOutput.className = 'response-container';
+                responseOutput.className = 'response-scroll';
                 responseOutput.innerHTML = `<div class="response-content">${md.render(data.response)}</div>`;
                 btnRow.style.display = 'flex';
 
             } catch (err) {
-                responseOutput.className = 'response-container';
-                responseOutput.innerHTML = `<div class="response-content" style="color: var(--error)">
-                    <strong>Network error:</strong> ${err.message}
-                </div>`;
-                debugContent.textContent = `Fetch error: ${err.message}\nStack: ${err.stack}`;
+                responseOutput.className = 'response-scroll';
+                responseOutput.innerHTML = `<div class="response-content" style="color:var(--error)"><strong>Network error:</strong> ${err.message}</div>`;
+                debugContent.textContent = `${err.message}\n${err.stack}`;
                 btnRow.style.display = 'flex';
                 debugPanel.classList.add('visible');
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Generate Professional Response';
+                submitBtn.textContent = 'Generate Response';
             }
         });
     </script>

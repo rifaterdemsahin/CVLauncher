@@ -29,6 +29,15 @@ async function fetchCvLinks() {
     }
 }
 
+// Serve CV content for display
+app.get('/api/cv', (req, res) => {
+    if (fs.existsSync(SOURCE_CV_PATH)) {
+        res.json({ content: fs.readFileSync(SOURCE_CV_PATH, 'utf8') });
+    } else {
+        res.status(404).json({ error: 'CV not found' });
+    }
+});
+
 // Endpoint to generate response
 app.post('/api/respond', async (req, res) => {
     const { recruiterRequest } = req.body;
@@ -63,29 +72,35 @@ app.post('/api/respond', async (req, res) => {
         debugInfo.apiKey = `Set (${xaiApiKey.slice(0, 8)}...)`;
 
         const prompt = `
-You are an AI assistant helping a candidate respond to a recruiter.
-Using the provided CV as the source of truth, generate a professional and tailored response to the recruiter's request.
+You are writing a reply on behalf of Rifat Erdem Sahin to a recruiter message.
+Your job is to craft a concise, professional response that pulls SPECIFIC evidence from the CV below.
 
-RECRUITER REQUEST:
+RECRUITER MESSAGE:
 ${recruiterRequest}
 
-SOURCE CV CONTENT:
+--- CV START ---
 ${sourceCvContent}
+--- CV END ---
 
-AVAILABLE CV LINKS (include the most relevant one in your response):
+AVAILABLE CV LINKS (pick the single most relevant one and include it):
 ${publicCvLinks.join('\n')}
 
-INSTRUCTIONS:
-- Be concise, professional, and highlight relevant skills.
-- Explicitly mention that a detailed CV is attached/linked.
-- Use one of the provided links if it matches the role.
+RULES:
+1. Open with a one-sentence hook that directly addresses the role/need in the recruiter message.
+2. Pull 2-4 specific, quantified achievements or technologies from the CV that match the role (use exact names: project names, tools, clients, metrics).
+3. Mention security clearance and UK work authorisation only if relevant to the role.
+4. Include exactly one CV link — choose the filename that best matches the job title.
+5. Close with a clear call to action (availability for a call, asking for the job spec, etc.).
+6. Keep the total response under 200 words. No bullet points — write in short paragraphs.
+7. Never make up facts not present in the CV.
 `;
 
         debugInfo.promptLength = prompt.length;
-        debugInfo.model = 'grok-beta';
+        debugInfo.model = 'grok-3';
+        debugInfo.prompt = prompt;
 
         const response = await axios.post('https://api.x.ai/v1/chat/completions', {
-            model: 'grok-beta',
+            model: 'grok-3',
             messages: [
                 { role: 'system', content: 'You are a helpful assistant for job applications.' },
                 { role: 'user', content: prompt }

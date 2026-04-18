@@ -20,15 +20,22 @@ def generate_html():
     cv_cards = ""
     for f in files:
         title = format_title(f)
+        full_url = f"https://rifat-cvs.fly.dev/{f}"
         cv_cards += f"""
-            <a href="/{f}" class="card" target="_blank">
-                <div class="card-icon">📄</div>
-                <div class="card-content">
-                    <h3>{title}</h3>
-                    <p>PDF Document</p>
-                </div>
-                <div class="card-action">↓</div>
-            </a>
+            <div class="card-wrapper">
+                <a href="/{f}" class="card" target="_blank">
+                    <div class="card-icon">📄</div>
+                    <div class="card-content">
+                        <h3>{title}</h3>
+                        <p>PDF Document</p>
+                    </div>
+                    <div class="card-action">↓</div>
+                </a>
+                <button class="copy-btn" data-url="{full_url}" title="Copy link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy Link
+                </button>
+            </div>
         """
 
     html_content = f"""<!DOCTYPE html>
@@ -100,6 +107,12 @@ def generate_html():
             animation: fadeIn 1s ease-out 0.2s both;
         }}
 
+        .card-wrapper {{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }}
+
         .card {{
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -115,7 +128,7 @@ def generate_html():
         }}
 
         .card:hover {{
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: var(--primary);
             box-shadow: 0 10px 30px -10px var(--primary-glow);
             background: rgba(30, 41, 59, 0.9);
@@ -159,6 +172,36 @@ def generate_html():
             transform: translateX(0);
         }}
 
+        .copy-btn {{
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--primary);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+            width: 100%;
+        }}
+
+        .copy-btn:hover {{
+            background: rgba(59, 130, 246, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+        }}
+
+        .copy-btn.copied {{
+            background: rgba(52, 211, 153, 0.15);
+            border-color: #34d399;
+            color: #34d399;
+        }}
+
         @keyframes fadeInDown {{
             from {{ opacity: 0; transform: translateY(-20px); }}
             to {{ opacity: 1; transform: translateY(0); }}
@@ -186,6 +229,33 @@ def generate_html():
             {cv_cards}
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(btn => {{
+            btn.addEventListener('click', async () => {{
+                const url = btn.dataset.url;
+                const svgCopy = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+                const svgCheck = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                try {{
+                    await navigator.clipboard.writeText(url);
+                }} catch (e) {{
+                    const ta = document.createElement('textarea');
+                    ta.value = url;
+                    ta.style.position = 'fixed';
+                    ta.style.opacity = '0';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                }}
+                btn.classList.add('copied');
+                btn.innerHTML = svgCheck + ' Copied!';
+                setTimeout(() => {{
+                    btn.classList.remove('copied');
+                    btn.innerHTML = svgCopy + ' Copy Link';
+                }}, 2000);
+            }});
+        }});
+    </script>
 </body>
 </html>
 """
