@@ -1,4 +1,4 @@
-app = "cv-recruiter-agent"
+app = "rifat-cvs-response-generator"
 primary_region = "ams"
 
 [http_service]
