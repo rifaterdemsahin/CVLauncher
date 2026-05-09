@@ -529,19 +529,23 @@ async function main() {
 Process Specific Email from Gmail URL
 ======================================
 
-Usage:
-  node process-specific-email.js "GMAIL_URL" --dry-run
-  node process-specific-email.js "GMAIL_URL" --execute
-  node process-specific-email.js "GMAIL_URL" --execute --tactic recruiter_job_offer
+Usage (run with Doppler for secrets):
+  doppler run -- node scripts/process-specific-email.js "GMAIL_URL" --dry-run
+  doppler run -- node scripts/process-specific-email.js "GMAIL_URL" --execute
+  doppler run -- node scripts/process-specific-email.js "GMAIL_URL" --execute --tactic recruiter_job_offer
 
 Examples:
-  node process-specific-email.js "https://mail.google.com/mail/u/0/#inbox/FMfcgz..." --dry-run
-  node process-specific-email.js "https://mail.google.com/mail/u/0/#label/1_borrow_followup/FMfcgz..." --execute
+  doppler run -- node scripts/process-specific-email.js "https://mail.google.com/mail/u/0/#inbox/FMfcgz..." --dry-run
+  doppler run -- node scripts/process-specific-email.js "https://mail.google.com/mail/u/0/#label/1_borrow_followup/FMfcgz..." --execute
 
 Modes:
   --dry-run    Show analysis and proposed reply, do NOT send (default)
   --execute    Send reply, mark as replied, log to sheet
   --tactic     Force a specific tactic ID (overrides AI classification)
+
+Prerequisites:
+  1. Run: doppler setup --project pexabo-email-automation --config prd
+  2. Ensure secrets are in Doppler: N8N_MCP_ACCESS_TOKEN, OPENAI_API_KEY, etc.
 
 Outputs:
   - Console: email analysis + proposed reply + model used

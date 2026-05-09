@@ -342,11 +342,15 @@ async function main() {
 n8n Workflow Updater
 ====================
 
-Usage:
-  node n8n-workflow-updater.js --create              Create new auto-reply workflow
-  node n8n-workflow-updater.js --list                List all workflows
-  node n8n-workflow-updater.js --backup <id>         Backup a workflow
-  node n8n-workflow-updater.js --activate <id>       Activate a workflow
+Usage (run with Doppler for secrets):
+  doppler run -- node scripts/n8n-workflow-updater.js --create
+  doppler run -- node scripts/n8n-workflow-updater.js --list
+  doppler run -- node scripts/n8n-workflow-updater.js --backup <id>
+  doppler run -- node scripts/n8n-workflow-updater.js --activate <id>
+
+Prerequisites:
+  1. Run: doppler setup --project pexabo-email-automation --config prd
+  2. Ensure N8N_HOST and N8N_API_KEY are in Doppler
 
 Environment:
   N8N_HOST=${N8N_HOST}

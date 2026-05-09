@@ -2,7 +2,7 @@
 
 > **Policy**: All secrets live in Doppler ONLY. No `.env` files are committed or used.
 >
-> **Run everything with**: `doppler run --config prd -- <command>`
+> **Run everything with**: `doppler run -- <command>` (after `doppler setup`)
 
 ---
 
@@ -90,14 +90,17 @@ You should see all secrets listed. If any are missing, add them.
 ## Step 3: Test Locally with Doppler
 
 ```bash
+# Navigate to project folder first
+cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
+
 # Test Gmail connection
-doppler run --config prd -- node scripts/gmail-query-builder.js --show-labels
+doppler run -- node scripts/gmail-query-builder.js --show-labels
 
 # Test n8n MCP connection
-doppler run --config prd -- node -e "console.log('MCP token length:', process.env.N8N_MCP_ACCESS_TOKEN.length)"
+doppler run -- node -e "console.log('MCP token length:', process.env.N8N_MCP_ACCESS_TOKEN.length)"
 
 # Test script execution
-doppler run --config prd -- node scripts/process-specific-email.js "URL" --dry-run
+doppler run -- node scripts/process-specific-email.js "URL" --dry-run
 ```
 
 ---
@@ -144,17 +147,24 @@ echo "*.env" >> .gitignore
 
 ## Running Scripts (Always Use Doppler)
 
-**Correct:**
+**Correct (after `doppler setup`):**
 ```bash
-doppler run --config prd -- node scripts/n8n-mcp-deployer.js --create
-doppler run --config prd -- node scripts/process-specific-email.js "URL" --dry-run
-doppler run --config prd -- node scripts/gmail-query-builder.js --show-labels
+cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
+doppler run -- node scripts/n8n-mcp-deployer.js --create
+doppler run -- node scripts/process-specific-email.js "URL" --dry-run
+doppler run -- node scripts/gmail-query-builder.js --show-labels
+```
+
+**Or with explicit project (if no setup):**
+```bash
+doppler run --project pexabo-email-automation --config prd -- node scripts/process-specific-email.js
 ```
 
 **Incorrect (Never do this):**
 ```bash
 node scripts/n8n-mcp-deployer.js --create          # ❌ No secrets available
 source .env && node scripts/...                    # ❌ .env files not used
+doppler run --config prd --                        # ❌ Missing command after --
 ```
 
 ---

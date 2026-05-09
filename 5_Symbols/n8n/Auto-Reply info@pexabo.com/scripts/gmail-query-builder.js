@@ -182,10 +182,14 @@ async function main() {
 Gmail Query Builder & Tester
 ============================
 
-Usage:
-  node gmail-query-builder.js --interactive       Build query interactively
-  node gmail-query-builder.js --test-query "..."  Test a specific query
-  node gmail-query-builder.js --show-labels       List Gmail label IDs
+Usage (run with Doppler for secrets):
+  doppler run -- node scripts/gmail-query-builder.js --interactive
+  doppler run -- node scripts/gmail-query-builder.js --test-query "..."
+  doppler run -- node scripts/gmail-query-builder.js --show-labels
+
+Prerequisites:
+  1. Run: doppler setup --project pexabo-email-automation --config prd
+  2. Ensure GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN are in Doppler
 
 Recommended queries for info@pexabo.com:
 

@@ -159,13 +159,14 @@ Created: `scripts/n8n-mcp-deployer.js`
 
 ```bash
 # Deploy using MCP
-doppler run --config prd -- node scripts/n8n-mcp-deployer.js --create
+cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
+doppler run -- node scripts/n8n-mcp-deployer.js --create
 
 # Update using MCP
-doppler run --config prd -- node scripts/n8n-mcp-deployer.js --update <workflow-id>
+doppler run -- node scripts/n8n-mcp-deployer.js --update <workflow-id>
 
 # Test execution
-doppler run --config prd -- node scripts/n8n-mcp-deployer.js --test <workflow-id>
+doppler run -- node scripts/n8n-mcp-deployer.js --test <workflow-id>
 ```
 
 ---

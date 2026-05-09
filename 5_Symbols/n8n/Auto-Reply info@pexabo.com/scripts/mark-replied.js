@@ -161,10 +161,14 @@ async function main() {
 Bulk Mark Emails as Replied
 ===========================
 
-Usage:
-  node mark-replied.js --query "to:info@pexabo.com newer_than:1d" --dry-run
-  node mark-replied.js --query "to:info@pexabo.com newer_than:1d" --execute
-  node mark-replied.js --file email-ids.txt --execute --no-archive
+Usage (run with Doppler for secrets):
+  doppler run -- node scripts/mark-replied.js --query "to:info@pexabo.com newer_than:1d" --dry-run
+  doppler run -- node scripts/mark-replied.js --query "to:info@pexabo.com newer_than:1d" --execute
+  doppler run -- node scripts/mark-replied.js --file email-ids.txt --execute --no-archive
+
+Prerequisites:
+  1. Run: doppler setup --project pexabo-email-automation --config prd
+  2. Ensure GMAIL_REFRESH_TOKEN is in Doppler
 
 Options:
   --dry-run      Show what would happen without making changes (default)
@@ -173,10 +177,10 @@ Options:
 
 Examples:
   # Preview what would be marked
-  node mark-replied.js --query "to:info@pexabo.com is:unread" --dry-run
+  doppler run -- node scripts/mark-replied.js --query "to:info@pexabo.com is:unread" --dry-run
 
   # Mark all unread emails as replied
-  node mark-replied.js --query "to:info@pexabo.com is:unread" --execute
+  doppler run -- node scripts/mark-replied.js --query "to:info@pexabo.com is:unread" --execute
 `);
   }
 }

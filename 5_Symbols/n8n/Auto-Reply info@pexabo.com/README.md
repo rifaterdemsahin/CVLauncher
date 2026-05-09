@@ -30,10 +30,11 @@ We use **MCP (Model Context Protocol)** for n8n code generation. This means:
 ## Batch Mode (Auto — Every 6 Hours)
 
 1. **Define Tactics**: Open `tactics-template.md` and fill in your reply strategies
-2. **Set Secrets**: Add to Doppler (`doppler-import.md`)
+2. **Set Secrets**: Add to Doppler (`doppler-import.md` + `doppler-windows-guide.md`)
 3. **Deploy Workflow**: I generate and push n8n workflow JSON via MCP
-   ```bash
-   doppler run --config prd -- node scripts/n8n-mcp-deployer.js --create
+   ```powershell
+   cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
+   doppler run -- node scripts/n8n-mcp-deployer.js --create
    ```
 4. **Test**: Run a manual trigger with a test email
 5. **Monitor**: Check Telegram alerts and Google Sheets tracker
@@ -41,13 +42,14 @@ We use **MCP (Model Context Protocol)** for n8n code generation. This means:
 ## Individual Mode (Manual — When You Find a Missed Email)
 
 1. **Paste the Gmail URL**: Run the individual processor
-   ```bash
-   doppler run --config prd -- node scripts/process-specific-email.js "https://mail.google.com/mail/u/0/#.../MESSAGE_ID" --dry-run
+   ```powershell
+   cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
+   doppler run -- node scripts/process-specific-email.js "https://mail.google.com/mail/u/0/#.../MESSAGE_ID" --dry-run
    ```
 2. **Review the AI draft reply** and Fix Prompt in the console
 3. **Approve and send**:
-   ```bash
-   doppler run --config prd -- node scripts/process-specific-email.js "URL" --execute
+   ```powershell
+   doppler run -- node scripts/process-specific-email.js "URL" --execute
    ```
 4. **Check `investigations/`** for the generated Fix Prompt markdown
 5. **Apply the fix** to the batch workflow so it doesn't happen again
