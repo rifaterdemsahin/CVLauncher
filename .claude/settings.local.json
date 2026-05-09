@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pandoc \"C:\\projects\\CVLauncher\\5_Symbols\\cvs\\cv_technology_architect_databricks.md\" -s -o \"C:\\projects\\CVLauncher\\5_Symbols\\cvs\\cv_technology_architect_databricks.pdf\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

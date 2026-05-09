@@ -28,7 +28,8 @@ const readline = require('readline');
 const { google } = require('googleapis');
 const OpenAI = require('openai');
 
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+// Secrets are injected by Doppler at runtime
+// Run with: doppler run -- node scripts/process-specific-email.js
 
 // --- CONFIG ---
 const CLIENT_ID = process.env.GMAIL_CLIENT_ID || process.env.GOOGLE_CLIENT_ID;

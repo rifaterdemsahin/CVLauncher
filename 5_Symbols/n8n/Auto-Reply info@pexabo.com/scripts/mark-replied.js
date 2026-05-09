@@ -16,7 +16,8 @@ const readline = require('readline');
  *   4. Logs what was done
  */
 
-require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+// Secrets are injected by Doppler at runtime
+// Run with: doppler run -- node scripts/mark-replied.js
 
 const CLIENT_ID = process.env.GMAIL_CLIENT_ID || process.env.GOOGLE_CLIENT_ID;
 const CLIENT_SECRET = process.env.GMAIL_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET;

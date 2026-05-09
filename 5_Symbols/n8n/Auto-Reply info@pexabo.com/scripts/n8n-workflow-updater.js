@@ -16,7 +16,8 @@ const path = require('path');
  *   - N8N_HOST
  */
 
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+// Secrets are injected by Doppler at runtime
+// Run with: doppler run -- node scripts/n8n-workflow-updater.js
 
 const N8N_HOST = (process.env.N8N_HOST || 'https://n8n.rifaterdemsahin.com').replace(/\/$/, '');
 const N8N_API_KEY = process.env.N8N_API_KEY;

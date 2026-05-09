@@ -30,10 +30,10 @@ We use **MCP (Model Context Protocol)** for n8n code generation. This means:
 ## Batch Mode (Auto — Every 6 Hours)
 
 1. **Define Tactics**: Open `tactics-template.md` and fill in your reply strategies
-2. **Set Secrets**: Follow `doppler-config.md` and `prerequisites.md`
+2. **Set Secrets**: Add to Doppler (`doppler-import.md`)
 3. **Deploy Workflow**: I generate and push n8n workflow JSON via MCP
    ```bash
-   node scripts/n8n-workflow-updater.js --create
+   doppler run --config prd -- node scripts/n8n-mcp-deployer.js --create
    ```
 4. **Test**: Run a manual trigger with a test email
 5. **Monitor**: Check Telegram alerts and Google Sheets tracker
@@ -42,12 +42,12 @@ We use **MCP (Model Context Protocol)** for n8n code generation. This means:
 
 1. **Paste the Gmail URL**: Run the individual processor
    ```bash
-   doppler run -- node scripts/process-specific-email.js "https://mail.google.com/mail/u/0/#.../MESSAGE_ID" --dry-run
+   doppler run --config prd -- node scripts/process-specific-email.js "https://mail.google.com/mail/u/0/#.../MESSAGE_ID" --dry-run
    ```
 2. **Review the AI draft reply** and Fix Prompt in the console
 3. **Approve and send**:
    ```bash
-   doppler run -- node scripts/process-specific-email.js "URL" --execute
+   doppler run --config prd -- node scripts/process-specific-email.js "URL" --execute
    ```
 4. **Check `investigations/`** for the generated Fix Prompt markdown
 5. **Apply the fix** to the batch workflow so it doesn't happen again
