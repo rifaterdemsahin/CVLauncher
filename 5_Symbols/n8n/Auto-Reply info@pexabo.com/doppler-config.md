@@ -1,68 +1,160 @@
 # Doppler Configuration Guide
 
-## Why Doppler?
-
-Instead of hardcoding API keys in n8n or environment files, Doppler acts as a secure vault. n8n and Fly.io fetch secrets at runtime.
+> **Policy**: All secrets live in Doppler ONLY. No `.env` files are committed or used.
+>
+> **Run everything with**: `doppler run -- <command>` (after setup)
+>
+> **Troubleshooting**: See `doppler-windows-guide.md` if commands fail
 
 ---
 
 ## Step 1: Create Doppler Project
 
 1. Go to https://dashboard.doppler.com
-2. Create new project: `pexabo-email-automation`
-3. Environments: `dev`, `stg`, `prd`
+2. Sign up or log in
+3. Create new project: `pexabo-email-automation`
+4. Create environments:
+   ```bash
+   doppler configs create dev --project pexabo-email-automation
+   doppler configs create stg --project pexabo-email-automation
+   doppler configs create prd --project pexabo-email-automation
+   ```
 
 ---
 
-## Step 2: Add Secrets
+## Step 2: Set Up Local Directory
 
-### Required Secrets
+Navigate to the project folder and run setup:
 
-| Secret Name | Description | Example |
-|-------------|-------------|---------|
-| `GMAIL_CLIENT_ID` | Google OAuth Client ID | `123456789-abc.apps.googleusercontent.com` |
-| `GMAIL_CLIENT_SECRET` | Google OAuth Client Secret | `GOCSPX-xxxxxxxx` |
-| `GMAIL_REFRESH_TOKEN` | OAuth Refresh Token for info@pexabo.com | `1//04xxxxxxxx` |
-| `OPENAI_API_KEY` | OpenAI API Key | `sk-proj-xxxxxxxx` |
-| `N8N_API_KEY` | n8n API Key | `n8n_api_xxxxxxxx` |
-| `N8N_HOST` | n8n instance URL | `https://n8n.rifaterdemsahin.com` |
-| `GOOGLE_SHEETS_DOC_ID` | Tracker spreadsheet ID | `1BxiMVs0XXXXXXXXXXXXXXXXX` |
-| `GOOGLE_SHEETS_CREDENTIALS` | Service account JSON (base64) | `eyJ0eXBlIjoic2Vy...` |
-| `FLY_IO_API_TOKEN` | Fly.io deploy token | `FlyV1 xxxxxxxx` |
-| `FLY_IO_APP_URL` | Fly.io app URL | `https://pexabo-email-brain.fly.dev` |
-| `RECRUITER_GENERATOR_URL` | CV Response Generator endpoint | `https://rifat-cvs-response-generator.fly.dev/recruiter` |
-| `GEMINI_API_KEY` | Google AI Studio API Key | `AIzaSyxxxxxxxx` |
-| `GROQ_API_KEY` | Groq API Key | `gsk_xxxxxxxx` |
-| `ANTHROPIC_API_KEY` | Anthropic API Key | `sk-ant-api03-xxxxxxxx` |
-| `TELEGRAM_BOT_TOKEN` | Telegram bot token | `123456:ABC-DEF1234...` |
-| `TELEGRAM_CHAT_ID` | Your Telegram chat ID | `-1001234567890` |
+```powershell
+cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
+doppler setup --project pexabo-email-automation --config prd
+```
 
-### How to Get Gmail Refresh Token
+Verify setup:
+```powershell
+doppler setup --print
+```
 
-```bash
-# Install oauth2l or use Google OAuth Playground
-# Recommended: Google OAuth Playground (https://developers.google.com/oauthplayground)
-
-# Step 1: Select scope
-https://www.googleapis.com/auth/gmail.modify
-
-# Step 2: Exchange authorization code for refresh token
-# Store the refresh token in Doppler
+Expected output:
+```
+Project: pexabo-email-automation
+Config: prd
 ```
 
 ---
 
-## Step 3: Integrate with n8n
+## Step 3: Add Secrets
+
+### Required Secrets
+
+Run these commands one by one. Replace placeholders with your actual values.
+
+#### N8N
+```powershell
+doppler secrets set N8N_HOST="https://n8n.rifaterdemsahin.com"
+doppler secrets set N8N_MCP_ACCESS_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5M2ZmNTM4NS01YWZhLTRjZGQ4YzY2LTViMjI5Mjk3OWY4OCIsImlzcyI6Im44biIsImF1ZCI6Im1jcC1zZXJ2ZXItYXBpIiwianRpIjoiNmNmODViYmYtNmZlZS00MDJlLWI5NTQtZGU5ZTRkNGYwZTFiIiwiaWF0IjoxNzY0MjQ0OTEsImV4cCI6MTc2NjgzNjkxMX0.RtJxmM9u171Ccw840oALxeTHigEG5cKUADkkj5ECU-U"
+doppler secrets set N8N_MCP_ENDPOINT="https://n8n.rifaterdemsahin.com/mcp-server/http"
+doppler secrets set N8N_API_KEY="REPLACE_WITH_N8N_API_KEY"
+```
+
+#### Gmail API
+```powershell
+doppler secrets set GMAIL_CLIENT_ID="REPLACE_WITH_GMAIL_CLIENT_ID"
+doppler secrets set GMAIL_CLIENT_SECRET="REPLACE_WITH_GMAIL_CLIENT_SECRET"
+doppler secrets set GMAIL_REFRESH_TOKEN="REPLACE_WITH_GMAIL_REFRESH_TOKEN"
+```
+
+#### AI Models
+```powershell
+doppler secrets set OPENAI_API_KEY="REPLACE_WITH_OPENAI_KEY"
+doppler secrets set GEMINI_API_KEY="REPLACE_WITH_GEMINI_KEY"
+doppler secrets set GROQ_API_KEY="REPLACE_WITH_GROQ_KEY"
+doppler secrets set ANTHROPIC_API_KEY="REPLACE_WITH_ANTHROPIC_KEY"
+```
+
+#### Fly.io
+```powershell
+doppler secrets set FLY_IO_API_TOKEN="FlyV1 fm2_lJPECAAAAAAAEkhKxBDXBZ3Y9uaEbh0UJdAG6hmowrVodHRwczovL2FwaS5mbHkuaW8jGUAJLOABdCOB8Lk7lodHRwczovL2FwaS5mbHkuaW8vYWFhL3YxxDzDulYuSMdzwTSH5TBl"
+doppler secrets set FLY_IO_APP_URL="https://pexabo-email-brain.fly.dev"
+```
+
+#### Recruiter Generator
+```powershell
+doppler secrets set RECRUITER_GENERATOR_URL="https://rifat-cvs-response-generator.fly.dev/recruiter"
+```
+
+#### Telegram (Optional)
+```powershell
+doppler secrets set TELEGRAM_BOT_TOKEN="REPLACE_WITH_TELEGRAM_BOT_TOKEN"
+doppler secrets set TELEGRAM_CHAT_ID="REPLACE_WITH_TELEGRAM_CHAT_ID"
+```
+
+#### Google Sheets (Optional)
+```powershell
+doppler secrets set GOOGLE_SHEETS_DOC_ID="REPLACE_WITH_SPREADSHEET_ID"
+doppler secrets set GOOGLE_SHEETS_CREDENTIALS="REPLACE_WITH_BASE64_CREDENTIALS"
+```
+
+---
+
+## Step 4: Verify Secrets
+
+```powershell
+doppler secrets
+```
+
+Should show all secrets. If any are missing, add them.
+
+---
+
+## Step 5: Test Secret Access
+
+### Test 1: Simple Environment Variable
+```powershell
+doppler run -- node -e "console.log('N8N_HOST:', process.env.N8N_HOST)"
+```
+
+### Test 2: Gmail Connection
+```powershell
+doppler run -- node scripts/gmail-query-builder.js --show-labels
+```
+
+### Test 3: n8n MCP Connection
+```powershell
+doppler run -- node -e "console.log('MCP token length:', process.env.N8N_MCP_ACCESS_TOKEN.length)"
+```
+
+---
+
+## Step 6: Running Scripts (Doppler Only)
+
+**Correct:**
+```powershell
+doppler run -- node scripts/n8n-mcp-deployer.js --create
+doppler run -- node scripts/process-specific-email.js "URL" --dry-run
+doppler run -- node scripts/gmail-query-builder.js --show-labels
+```
+
+**Incorrect (Never do this):**
+```powershell
+node scripts/n8n-mcp-deployer.js --create          # ❌ No secrets available
+doppler run --config prd --                        # ❌ Missing command after --
+```
+
+---
+
+## Step 7: Integrate with n8n
 
 ### Option A: Doppler CLI (Recommended for self-hosted n8n)
 
-```bash
+```powershell
 # On your n8n server
-sudo doppler login
-sudo doppler setup --project pexabo-email-automation --config prd
+doppler login
+doppler setup --project pexabo-email-automation --config prd
 
 # Run n8n with Doppler
-sudo doppler run -- docker-compose up -d n8n
+doppler run -- docker-compose up -d n8n
 ```
 
 ### Option B: n8n Credentials (Easier for cloud/hosted)
@@ -86,7 +178,7 @@ For Multi-Model Fallback:
 
 ---
 
-## Step 4: Integrate with Fly.io
+## Step 8: Integrate with Fly.io
 
 ### In `fly.toml`
 
@@ -110,33 +202,8 @@ ENTRYPOINT ["doppler", "run", "--", "node", "server.js"]
 
 ### Deploy with Doppler Token
 
-```bash
+```powershell
 fly deploy --build-arg DOPPLER_TOKEN=$(doppler configs tokens create --project pexabo-email-automation --config prd fly-deploy-token --plain)
-```
-
----
-
-## Step 5: Test Secret Access
-
-### From n8n (Code Node)
-
-```javascript
-// Test that secrets are available
-return {
-  json: {
-    n8n_host: $env.N8N_HOST,
-    has_openai_key: !!$env.OPENAI_API_KEY,
-    has_gmail_token: !!$env.GMAIL_REFRESH_TOKEN
-  }
-};
-```
-
-### From Fly.io
-
-```javascript
-// server.js
-console.log('OpenAI Key present:', !!process.env.OPENAI_API_KEY);
-console.log('Gmail Token present:', !!process.env.GMAIL_REFRESH_TOKEN);
 ```
 
 ---
@@ -154,10 +221,45 @@ console.log('Gmail Token present:', !!process.env.GMAIL_REFRESH_TOKEN);
 
 | Issue | Fix |
 |-------|-----|
+| "requires at least 1 arg(s), received 0" | Add command after `--`: `doppler run -- node script.js` |
+| "Could not find config prd" | Run `doppler configs create prd --project pexabo-email-automation` |
+| "Doppler project not configured" | Run `doppler setup --project pexabo-email-automation --config prd` |
+| "Unauthorized" | Run `doppler login` |
+| Secrets not showing | Run `doppler secrets --project pexabo-email-automation --config prd` |
 | `GMAIL_REFRESH_TOKEN` expired | Re-authorize in Google OAuth Playground |
 | `OPENAI_API_KEY` rate limited | Add rate limiting in n8n or upgrade plan |
 | n8n can't see env vars | Ensure `doppler run` wraps n8n process |
 | Fly.io secrets missing | Verify `DOPPLER_TOKEN` is set in `fly.toml` |
+
+---
+
+## Already Provided Secrets
+
+| Secret | Value | Status |
+|--------|-------|--------|
+| `N8N_HOST` | `https://n8n.rifaterdemsahin.com` | ✅ |
+| `N8N_MCP_ACCESS_TOKEN` | JWT from n8n | ✅ |
+| `N8N_MCP_ENDPOINT` | `https://n8n.rifaterdemsahin.com/mcp-server/http` | ✅ |
+| `FLY_IO_API_TOKEN` | FlyV1 ... | ✅ |
+| `FLY_IO_APP_URL` | `https://pexabo-email-brain.fly.dev` | ✅ |
+| `RECRUITER_GENERATOR_URL` | `https://rifat-cvs-response-generator.fly.dev/recruiter` | ✅ |
+
+## Still Needed
+
+| Secret | Where to Get |
+|--------|--------------|
+| `N8N_API_KEY` | n8n.rifaterdemsahin.com → Settings → API |
+| `GMAIL_CLIENT_ID` | Google Cloud Console → Credentials |
+| `GMAIL_CLIENT_SECRET` | Google Cloud Console → Credentials |
+| `GMAIL_REFRESH_TOKEN` | OAuth Playground (see prerequisites.md) |
+| `OPENAI_API_KEY` | platform.openai.com/api-keys |
+| `GEMINI_API_KEY` | aistudio.google.com/app/apikey |
+| `GROQ_API_KEY` | console.groq.com/keys (optional) |
+| `ANTHROPIC_API_KEY` | console.anthropic.com (optional) |
+| `TELEGRAM_BOT_TOKEN` | @BotFather (optional) |
+| `TELEGRAM_CHAT_ID` | getUpdates API (optional) |
+| `GOOGLE_SHEETS_DOC_ID` | Sheets URL (optional) |
+| `GOOGLE_SHEETS_CREDENTIALS` | Service account key (optional) |
 
 ---
 
