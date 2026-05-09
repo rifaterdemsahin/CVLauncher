@@ -167,7 +167,7 @@ Usage (run with Doppler for secrets):
   doppler run -- node scripts/mark-replied.js --file email-ids.txt --execute --no-archive
 
 Prerequisites:
-  1. Run: doppler setup --project pexabo-email-automation --config prd
+  1. Run: doppler setup --project pexabo-email-automation --config prd_main
   2. Ensure GMAIL_REFRESH_TOKEN is in Doppler
 
 Options:

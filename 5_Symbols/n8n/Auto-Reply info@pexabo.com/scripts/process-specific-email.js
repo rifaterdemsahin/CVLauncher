@@ -544,7 +544,7 @@ Modes:
   --tactic     Force a specific tactic ID (overrides AI classification)
 
 Prerequisites:
-  1. Run: doppler setup --project pexabo-email-automation --config prd
+  1. Run: doppler setup --project pexabo-email-automation --config prd_main
   2. Ensure secrets are in Doppler: N8N_MCP_ACCESS_TOKEN, OPENAI_API_KEY, etc.
 
 Outputs:

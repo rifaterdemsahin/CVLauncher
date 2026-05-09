@@ -28,7 +28,7 @@ Navigate to the project folder and run setup:
 
 ```powershell
 cd "C:\projects\CVLauncher\5_Symbols\n8n\Auto-Reply info@pexabo.com"
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 ```
 
 Verify setup:
@@ -139,7 +139,7 @@ doppler run -- node scripts/gmail-query-builder.js --show-labels
 **Incorrect (Never do this):**
 ```powershell
 node scripts/n8n-mcp-deployer.js --create          # ❌ No secrets available
-doppler run --config prd --                        # ❌ Missing command after --
+doppler run --config prd_main --                        # ❌ Missing command after --
 ```
 
 ---
@@ -151,7 +151,7 @@ doppler run --config prd --                        # ❌ Missing command after -
 ```powershell
 # On your n8n server
 doppler login
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 
 # Run n8n with Doppler
 doppler run -- docker-compose up -d n8n
@@ -222,10 +222,10 @@ fly deploy --build-arg DOPPLER_TOKEN=$(doppler configs tokens create --project p
 | Issue | Fix |
 |-------|-----|
 | "requires at least 1 arg(s), received 0" | Add command after `--`: `doppler run -- node script.js` |
-| "Could not find config prd" | Run `doppler configs create prd --project pexabo-email-automation` |
-| "Doppler project not configured" | Run `doppler setup --project pexabo-email-automation --config prd` |
+| "Could not find config prd" | Run `doppler configs create prd_main --project pexabo-email-automation --environment prd` |
+| "Doppler project not configured" | Run `doppler setup --project pexabo-email-automation --config prd_main` |
 | "Unauthorized" | Run `doppler login` |
-| Secrets not showing | Run `doppler secrets --project pexabo-email-automation --config prd` |
+| Secrets not showing | Run `doppler secrets --project pexabo-email-automation --config prd_main` |
 | `GMAIL_REFRESH_TOKEN` expired | Re-authorize in Google OAuth Playground |
 | `OPENAI_API_KEY` rate limited | Add rate limiting in n8n or upgrade plan |
 | n8n can't see env vars | Ensure `doppler run` wraps n8n process |

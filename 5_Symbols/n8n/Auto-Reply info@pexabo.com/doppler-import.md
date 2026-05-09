@@ -23,7 +23,7 @@ Run these commands one by one. Replace `REPLACE_WITH_*` with your actual values.
 
 ```bash
 doppler login
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 
 doppler secrets set N8N_HOST="https://n8n.rifaterdemsahin.com"
 doppler secrets set N8N_MCP_ACCESS_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5M2ZmNTM4NS01YWZhLTRjZGQ4YzY2LTViMjI5Mjk3OWY4OCIsImlzcyI6Im44biIsImF1ZCI6Im1jcC1zZXJ2ZXItYXBpIiwianRpIjoiNmNmODViYmYtNmZlZS00MDJlLWI5NTQtZGU5ZTRkNGYwZTFiIiwiaWF0IjoxNzY0MjQ0OTEsImV4cCI6MTc2NjgzNjkxMX0.RtJxmM9u171Ccw840oALxeTHigEG5cKUADkkj5ECU-U"

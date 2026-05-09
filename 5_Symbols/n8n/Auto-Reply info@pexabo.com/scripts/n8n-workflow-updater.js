@@ -349,7 +349,7 @@ Usage (run with Doppler for secrets):
   doppler run -- node scripts/n8n-workflow-updater.js --activate <id>
 
 Prerequisites:
-  1. Run: doppler setup --project pexabo-email-automation --config prd
+  1. Run: doppler setup --project pexabo-email-automation --config prd_main
   2. Ensure N8N_HOST and N8N_API_KEY are in Doppler
 
 Environment:

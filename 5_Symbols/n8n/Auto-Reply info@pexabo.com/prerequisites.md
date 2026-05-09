@@ -189,7 +189,7 @@ Before we start deployment, confirm you have:
 1. Store them in Doppler
 2. Run this locally to verify Doppler has everything:
    ```bash
-   doppler secrets --config prd
+   doppler secrets --config prd_main
    ```
 3. I will write code that reads from Doppler at runtime
 4. If a script needs a secret, you run it with Doppler:

@@ -171,7 +171,7 @@ Run this command to verify Doppler has everything:
 
 ```bash
 doppler login
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 doppler secrets
 ```
 

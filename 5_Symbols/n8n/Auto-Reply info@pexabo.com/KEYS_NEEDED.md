@@ -97,7 +97,7 @@ I will create the `.env` file for you locally.
 4. Run locally:
    ```bash
    doppler login
-   doppler setup --project pexabo-email-automation --config prd
+   doppler setup --project pexabo-email-automation --config prd_main
    ```
 5. Tell me "Doppler is ready"
 

@@ -105,7 +105,7 @@ This will ask:
 
 Or manually:
 ```powershell
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 ```
 
 Verify setup:
@@ -169,7 +169,7 @@ doppler run --config dev -- node script.js
 **Fix**:
 ```powershell
 # Option A: Run setup
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 
 # Option B: Specify project every time
 doppler run --project pexabo-email-automation --config prd -- node script.js
@@ -191,10 +191,10 @@ doppler login
 **Fix**:
 ```powershell
 # Check which secrets exist
-doppler secrets --project pexabo-email-automation --config prd
+doppler secrets --project pexabo-email-automation --config prd_main
 
 # Add missing ones
-doppler secrets set --project pexabo-email-automation --config prd KEY="VALUE"
+doppler secrets set --project pexabo-email-automation --config prd_main KEY="VALUE"
 ```
 
 ---
@@ -256,7 +256,7 @@ doppler me
 doppler projects list
 
 # 5. Setup local config
-doppler setup --project pexabo-email-automation --config prd
+doppler setup --project pexabo-email-automation --config prd_main
 
 # 6. Verify setup
 doppler setup --print
@@ -325,7 +325,7 @@ doppler run -- node scripts/n8n-mcp-deployer.js --create
 |---------------|---------|
 | Check Doppler version | `doppler --version` |
 | Login to Doppler | `doppler login` |
-| Setup project locally | `doppler setup --project pexabo-email-automation --config prd` |
+| Setup project locally | `doppler setup --project pexabo-email-automation --config prd_main` |
 | List secrets | `doppler secrets` |
 | Add a secret | `doppler secrets set KEY="VALUE"` |
 | Run script with secrets | `doppler run -- node script.js` |
