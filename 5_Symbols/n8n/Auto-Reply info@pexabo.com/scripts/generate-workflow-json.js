@@ -539,11 +539,7 @@ return { json: { ...email, reply_body: reply } };
       saveExecutionProgress: true,
       saveManualExecutions: true,
       timezone: 'Europe/London'
-    },
-    staticData: null,
-    tags: ['pexabo', 'email', 'auto-reply', 'ai'],
-    versionId: null,
-    id: undefined // Let n8n assign
+    }
   };
 }
 

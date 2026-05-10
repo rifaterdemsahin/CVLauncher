@@ -1,0 +1,682 @@
+{
+  "name": "Auto-Reply info@pexabo.com",
+  "nodes": [
+    {
+      "id": "trigger-schedule",
+      "name": "Every 6 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        100
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6,
+              "triggerAtHour": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "trigger-webhook",
+      "name": "Process Single Email",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "auto-reply-single-email",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-single-email",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "gmail-find",
+      "name": "Find Lost Emails",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        450,
+        100
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "parameters": {
+        "operation": "getAll",
+        "limit": 50,
+        "q": "to:info@pexabo.com -from:me -in:sent -label:replied_by_bot newer_than:7d",
+        "format": "full",
+        "options": {
+          "includeSpamTrash": false
+        }
+      }
+    },
+    {
+      "id": "check-thread",
+      "name": "Check Thread Replies",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        450,
+        300
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "parameters": {
+        "operation": "getAll",
+        "limit": 20,
+        "q": "from:me in:sent",
+        "format": "metadata"
+      }
+    },
+    {
+      "id": "code-check-replied",
+      "name": "Already Replied?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        650,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const threadMessages = $input.all()[0]?.json || [];\nconst hasReplied = threadMessages.some(msg => {\n  const from = msg.payload?.headers?.find(h => h.name === 'From')?.value || '';\n  return from.includes('info@pexabo.com') || from.includes('rifaterdemsahin');\n});\n\nreturn {\n  json: {\n    ...$input.first().json,\n    already_replied: hasReplied,\n    skip: hasReplied\n  }\n};"
+      }
+    },
+    {
+      "id": "if-skip",
+      "name": "Skip?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        850,
+        200
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false
+          },
+          "conditions": [
+            {
+              "id": "cond-skip",
+              "leftValue": "={{ $json.skip }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "classify-intent",
+      "name": "Classify Intent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1050,
+        200
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.OPENAI_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "gpt-4o-mini"
+            },
+            {
+              "name": "messages",
+              "value": "=[{\"role\":\"system\",\"content\":\"Classify email intent into: pricing_inquiry, partnership, support_request, recruiter_job_offer, general_inquiry, spam. Return JSON with intent, urgency, confidence.\"},{\"role\":\"user\",\"content\":\"Subject: {{ $json.subject }}\\nBody: {{ $json.body }}\"}]"
+            },
+            {
+              "name": "response_format",
+              "value": "{\"type\":\"json_object\"}"
+            },
+            {
+              "name": "temperature",
+              "value": "0.3"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 15000
+        }
+      }
+    },
+    {
+      "id": "code-extract-class",
+      "name": "Extract Classification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        200
+      ],
+      "parameters": {
+        "jsCode": "const email = $input.first().json;\nconst aiResponse = JSON.parse(email.choices?.[0]?.message?.content || '{}');\n\nreturn {\n  json: {\n    ...email,\n    classification: {\n      intent: aiResponse.intent || 'general_inquiry',\n      urgency: aiResponse.urgency || 'medium',\n      confidence: aiResponse.confidence || 0.5,\n      needs_human: aiResponse.needs_human || false\n    }\n  }\n};"
+      }
+    },
+    {
+      "id": "if-route",
+      "name": "Route by Intent",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        200
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false
+          },
+          "conditions": [
+            {
+              "id": "cond-recruiter",
+              "leftValue": "={{ $json.classification.intent }}",
+              "rightValue": "recruiter_job_offer",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "select-cv",
+      "name": "Select Best CV",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1650,
+        100
+      ],
+      "parameters": {
+        "jsCode": "const email = $input.first().json;\nconst text = (email.subject + ' ' + email.body).toLowerCase();\n\nconst cvMap = [\n  { keywords: ['azure','microsoft','entra','m365'], cv: 'cv_azure_architect.pdf', techStack: 'Azure Cloud Architect' },\n  { keywords: ['aws','amazon web services','ec2','s3'], cv: 'cv_aws_architect.pdf', techStack: 'AWS Solutions Architect' },\n  { keywords: ['kubernetes','k8s','docker'], cv: 'cv_kubernetes_engineer.pdf', techStack: 'Kubernetes Engineer' },\n  { keywords: ['devops','cicd','pipeline'], cv: 'cv_devops_engineer.pdf', techStack: 'DevOps Engineer' },\n  { keywords: ['security','soc','cyber'], cv: 'cv_security_engineer.pdf', techStack: 'Security Engineer' },\n  { keywords: ['ai','machine learning','ml','generative ai'], cv: 'cv_ai_engineer.pdf', techStack: 'AI Engineer' },\n  { keywords: ['data','databricks','spark'], cv: 'cv_data_engineer.pdf', techStack: 'Data Engineer' }\n];\n\nlet best = { cv: 'cv_ai_engineer.pdf', techStack: 'AI Engineer' };\nlet maxScore = 0;\n\nfor (const m of cvMap) {\n  const score = m.keywords.reduce((a, k) => a + (text.includes(k) ? 1 : 0), 0);\n  if (score > maxScore) { maxScore = score; best = m; }\n}\n\nconst baseUrl = 'https://raw.githubusercontent.com/rifaterdemsahin/CVLauncher/main/5_Symbols/cvs/';\n\nreturn {\n  json: {\n    ...email,\n    selected_cv: best.cv,\n    tech_stack: best.techStack,\n    cv_download_url: baseUrl + best.cv\n  }\n};"
+      }
+    },
+    {
+      "id": "call-recruiter-gen",
+      "name": "Generate Recruiter Response",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1850,
+        100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.RECRUITER_GENERATOR_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "recruiter_message",
+              "value": "={{ $json.body }}"
+            },
+            {
+              "name": "cv_source_url",
+              "value": "={{ $json.cv_download_url }}"
+            },
+            {
+              "name": "ai_provider",
+              "value": "gemini"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 15000
+        }
+      }
+    },
+    {
+      "id": "format-recruiter",
+      "name": "Format Recruiter Email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2050,
+        100
+      ],
+      "parameters": {
+        "jsCode": "const email = $input.first().json;\nconst gen = email.generated_response || 'Thank you for the opportunity.';\n\nconst html = `\n<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">\n  <p>Hi,</p>\n  <p>${gen}</p>\n  <div style=\"margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #007bff;\">\n    <p><strong>📄 <a href=\"${email.cv_download_url}\" style=\"text-decoration: none; color: #007bff;\">View CV — ${email.tech_stack} (PDF)</a></strong></p>\n    <p><strong>📅 <a href=\"https://calendly.com/rifaterdem/schedule\" style=\"text-decoration: none; color: #007bff;\">Book a clear intro call</a></strong></p>\n  </div>\n  <p>Best regards,</p>\n  <p><strong>Rifat Erdem Sahin</strong></p>\n  <p style=\"font-size: 14px; color: #7f8c8d;\">Director | DevOps & Cloud Architect | Pexabo<br>+44 7848 024173 | contact@rifaterdemsahin.com</p>\n</div>\n`;\n\nreturn { json: { ...email, reply_body: html } };"
+      }
+    },
+    {
+      "id": "draft-general",
+      "name": "Draft General Reply",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1650,
+        300
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.OPENAI_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "gpt-4o"
+            },
+            {
+              "name": "messages",
+              "value": "=[{\"role\":\"system\",\"content\":\"You are the AI assistant for Pexabo (info@pexabo.com). Reply professionally, concisely (max 3 paragraphs), warm tone.\"},{\"role\":\"user\",\"content\":\"Subject: {{ $json.subject }}\\nFrom: {{ $json.from }}\\nBody: {{ $json.body }}\"}]"
+            },
+            {
+              "name": "temperature",
+              "value": "0.7"
+            },
+            {
+              "name": "max_tokens",
+              "value": "800"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      }
+    },
+    {
+      "id": "extract-general",
+      "name": "Extract Reply Text",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1850,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const email = $input.first().json;\nconst reply = email.choices?.[0]?.message?.content || 'Thank you for your email. We will get back to you shortly.';\nreturn { json: { ...email, reply_body: reply } };"
+      }
+    },
+    {
+      "id": "send-reply",
+      "name": "Send Reply",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        2250,
+        200
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "parameters": {
+        "operation": "send",
+        "to": "={{ $json.from }}",
+        "subject": "Re: {{ $json.subject }}",
+        "message": "={{ $json.reply_body }}",
+        "options": {
+          "sendAsHtml": true,
+          "threadId": "={{ $json.threadId }}"
+        }
+      }
+    },
+    {
+      "id": "mark-replied",
+      "name": "Mark Replied",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        2450,
+        200
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "Label_REPLIED_BY_BOT"
+        ],
+        "removeLabelIds": [
+          "UNREAD"
+        ]
+      }
+    },
+    {
+      "id": "log-tracker",
+      "name": "Log to Tracker",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2650,
+        200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "nR5sxsdC53TDpXoB",
+          "name": "Google Sheets account"
+        }
+      },
+      "parameters": {
+        "operation": "append",
+        "documentId": "={{ $env.GOOGLE_SHEETS_DOC_ID }}",
+        "sheetName": "Tracker",
+        "columns": {
+          "mappingMode": "autoMapInputData"
+        }
+      }
+    },
+    {
+      "id": "telegram-success",
+      "name": "Telegram Notify",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [
+        2850,
+        200
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "FNhCBbEpIegop14Z",
+          "name": "Telegram account"
+        }
+      },
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "✅ <b>Auto-Reply Sent!</b>\n\n<b>To:</b> {{ $json.from }}\n<b>Subject:</b> {{ $json.subject }}\n<b>Intent:</b> {{ $json.classification.intent }}\n<b>Confidence:</b> {{ $json.classification.confidence }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000
+    },
+    {
+      "id": "skip-noop",
+      "name": "Skip",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1050,
+        400
+      ]
+    }
+  ],
+  "connections": {
+    "Every 6 Hours": {
+      "main": [
+        [
+          {
+            "node": "Find Lost Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Single Email": {
+      "main": [
+        [
+          {
+            "node": "Find Lost Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Lost Emails": {
+      "main": [
+        [
+          {
+            "node": "Check Thread Replies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Thread Replies": {
+      "main": [
+        [
+          {
+            "node": "Already Replied?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Already Replied?": {
+      "main": [
+        [
+          {
+            "node": "Skip?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skip?": {
+      "main": [
+        [
+          {
+            "node": "Classify Intent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Skip",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classify Intent": {
+      "main": [
+        [
+          {
+            "node": "Extract Classification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Classification": {
+      "main": [
+        [
+          {
+            "node": "Route by Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Intent": {
+      "main": [
+        [
+          {
+            "node": "Select Best CV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Draft General Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Best CV": {
+      "main": [
+        [
+          {
+            "node": "Generate Recruiter Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Recruiter Response": {
+      "main": [
+        [
+          {
+            "node": "Format Recruiter Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Recruiter Email": {
+      "main": [
+        [
+          {
+            "node": "Send Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Draft General Reply": {
+      "main": [
+        [
+          {
+            "node": "Extract Reply Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Reply Text": {
+      "main": [
+        [
+          {
+            "node": "Send Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Reply": {
+      "main": [
+        [
+          {
+            "node": "Mark Replied",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark Replied": {
+      "main": [
+        [
+          {
+            "node": "Log to Tracker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log to Tracker": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "timezone": "Europe/London"
+  }
+}

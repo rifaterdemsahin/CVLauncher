@@ -1,0 +1,536 @@
+{
+  "name": "Auto-Reply info@pexabo.com",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🎯 Auto-Reply Workflow for info@pexabo.com\n\n**Purpose**: Automatically reply to emails sent to info@pexabo.com\n\n**How it works**:\n1. Webhook receives Gmail URL (for reference)\n2. **Search Gmail** finds the actual email via API\n3. Extract email data (from, subject, body)\n4. Select best CV based on keywords\n5. Generate AI response\n6. Send reply via Gmail API\n7. Mark as read\n8. Notify Telegram\n\n**IMPORTANT**: The web URL message ID != API message ID.\nWe MUST search Gmail to get the real API id.",
+        "height": 380,
+        "width": 520,
+        "color": 2
+      },
+      "id": "38bd270b-1317-4125-b2ce-3d0761891f5e",
+      "name": "Sticky: Overview",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Step 1: Search Gmail\n\nThe Gmail web URL has a different ID format than the API.\n\nInstead of fetching by web ID, we:\n1. Search Gmail API for unread emails to info@pexabo.com\n2. Get the first result (most recent)\n3. Use its API id for all operations\n\n**Query**: `to:info@pexabo.com is:unread`\n\nThis returns proper API messageIds that work with reply/mark operations.",
+        "height": 260,
+        "width": 320,
+        "color": 4
+      },
+      "id": "b2dbdddf-1f6f-44ec-8d42-fa1486d0acd4",
+      "name": "Sticky: Search Gmail",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Step 2-5: Process & Reply\n\n- Extract email data (from, subject, body)\n- Select CV based on tech stack keywords\n- Generate response with AI\n- Send reply via Gmail `reply` operation\n- Mark as read (remove UNREAD label)\n\nAll using the REAL API messageId from search results.",
+        "height": 220,
+        "width": 300,
+        "color": 5
+      },
+      "id": "1d0a9ef2-ac39-4cdd-a015-36e2b32ce4e2",
+      "name": "Sticky: Reply Pipeline",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-single-email",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        200,
+        200
+      ],
+      "id": "b7bb8ddd-a9d2-4496-9b30-e8d7dc69d8fe",
+      "name": "Webhook: Receive URL",
+      "webhookId": "3d3d1ca8-5802-4cd6-8bf0-f74eb7cb6653"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 10,
+        "q": "to:info@pexabo.com is:unread -from:info@pexabo.com",
+        "format": "metadata",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        400,
+        200
+      ],
+      "id": "b87c295f-c861-43b1-a52a-1bdbcbcfed25",
+      "name": "Search Gmail",
+      "webhookId": "c3b967a7-4a06-4909-88df-bd12c5de3194",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        400,
+        400
+      ],
+      "id": "c9af9cfd-f28e-4377-81a2-91bcd55dd148",
+      "name": "DEBUG: Search Results"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "messageId": "={{ $json.id }}",
+        "format": "full",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        600,
+        200
+      ],
+      "id": "0d6dc248-ac3d-4319-a5cc-f549bade6d6d",
+      "name": "Get Email Detail",
+      "webhookId": "9f7fd03d-9736-4b23-9294-b95517e43507",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        600,
+        400
+      ],
+      "id": "a51b8238-2a47-458f-a850-dbdd57d0959d",
+      "name": "DEBUG: Email Fetched"
+    },
+    {
+      "parameters": {
+        "jsCode": "var msg = $json;\n\n// Gmail search already provides Subject, From, To in the item\nvar from = msg.From || msg.from || '';\nvar subject = msg.Subject || msg.subject || '';\nvar to = msg.To || msg.to || '';\nvar date = msg.date || msg.Date || '';\n\n// Extract body text from payload\nvar body = '';\nif (msg.payload && msg.payload.parts) {\n  var textPart = null;\n  var htmlPart = null;\n  for (var i = 0; i < msg.payload.parts.length; i++) {\n    if (msg.payload.parts[i].mimeType === 'text/plain') textPart = msg.payload.parts[i];\n    if (msg.payload.parts[i].mimeType === 'text/html') htmlPart = msg.payload.parts[i];\n  }\n  if (textPart && textPart.body && textPart.body.data) {\n    body = Buffer.from(textPart.body.data, 'base64').toString('utf8');\n  } else if (htmlPart && htmlPart.body && htmlPart.body.data) {\n    body = Buffer.from(htmlPart.body.data, 'base64').toString('utf8');\n  }\n} else if (msg.payload && msg.payload.body && msg.payload.body.data) {\n  body = Buffer.from(msg.payload.body.data, 'base64').toString('utf8');\n} else if (msg.snippet) {\n  body = msg.snippet;\n}\n\nreturn [{\n  json: {\n    id: msg.id,\n    threadId: msg.threadId,\n    snippet: msg.snippet,\n    from_email: from,\n    from_name: from.split('<')[0] ? from.split('<')[0].trim() : from,\n    from_address: (from.match(/<([^>]+)>/) || [])[1] || from,\n    subject: subject,\n    date: date,\n    to: to,\n    body: body.substring(0, 8000),\n    body_preview: body.substring(0, 500)\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        200
+      ],
+      "id": "0121e104-552c-4475-8173-103abcda871c",
+      "name": "Extract Email Data"
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        800,
+        400
+      ],
+      "id": "476d2218-23e8-4ab7-ab83-d525bda3c7e9",
+      "name": "DEBUG: Email Extracted"
+    },
+    {
+      "parameters": {
+        "jsCode": "var email = $json;\nvar text = ((email.subject || '') + ' ' + (email.body || '')).toLowerCase();\n\nvar cvMap = [\n  { keywords: ['azure','microsoft','entra','m365'], cv: 'cv_azure_architect.pdf', techStack: 'Azure Cloud Architect' },\n  { keywords: ['aws','amazon web services','ec2','s3'], cv: 'cv_aws_architect.pdf', techStack: 'AWS Solutions Architect' },\n  { keywords: ['kubernetes','k8s','docker'], cv: 'cv_kubernetes_engineer.pdf', techStack: 'Kubernetes Engineer' },\n  { keywords: ['devops','cicd','pipeline'], cv: 'cv_devops_engineer.pdf', techStack: 'DevOps Engineer' },\n  { keywords: ['security','soc','cyber'], cv: 'cv_security_engineer.pdf', techStack: 'Security Engineer' },\n  { keywords: ['ai','machine learning','ml','generative ai'], cv: 'cv_ai_engineer.pdf', techStack: 'AI Engineer' },\n  { keywords: ['data','databricks','spark'], cv: 'cv_data_engineer.pdf', techStack: 'Data Engineer' }\n];\n\nvar best = { cv: 'cv_ai_engineer.pdf', techStack: 'AI Engineer' };\nvar maxScore = 0;\nfor (var i = 0; i < cvMap.length; i++) {\n  var score = 0;\n  for (var j = 0; j < cvMap[i].keywords.length; j++) {\n    if (text.indexOf(cvMap[i].keywords[j]) !== -1) {\n      score++;\n    }\n  }\n  if (score > maxScore) {\n    maxScore = score;\n    best = cvMap[i];\n  }\n}\n\nvar baseUrl = 'https://raw.githubusercontent.com/rifaterdemsahin/CVLauncher/main/5_Symbols/cvs/';\n\nreturn [{\n  json: {\n    id: email.id,\n    threadId: email.threadId,\n    snippet: email.snippet,\n    from_email: email.from_email,\n    from_name: email.from_name,\n    from_address: email.from_address,\n    subject: email.subject,\n    date: email.date,\n    to: email.to,\n    body: email.body,\n    body_preview: email.body_preview,\n    selected_cv: best.cv,\n    tech_stack: best.techStack,\n    cv_download_url: baseUrl + best.cv\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        200
+      ],
+      "id": "8e450564-0d48-4b58-b6e2-2b05f2117f63",
+      "name": "Select Best CV"
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        400
+      ],
+      "id": "3793b97d-1c40-470b-aca4-783cde6b9e60",
+      "name": "DEBUG: CV Selected"
+    },
+    {
+      "parameters": {
+        "jsCode": "var email = $json;\nvar body = (email.body || '').toLowerCase();\nvar subject = (email.subject || '').toLowerCase();\nvar text = subject + ' ' + body;\n\n// Detect role type\nvar roleType = 'opportunity';\nif (text.indexOf('devops') !== -1) roleType = 'DevOps role';\nelse if (text.indexOf('azure') !== -1) roleType = 'Azure role';\nelse if (text.indexOf('aws') !== -1) roleType = 'AWS role';\nelse if (text.indexOf('kubernetes') !== -1 || text.indexOf('k8s') !== -1) roleType = 'Kubernetes role';\nelse if (text.indexOf('security') !== -1) roleType = 'Security role';\nelse if (text.indexOf('ai') !== -1 || text.indexOf('machine learning') !== -1) roleType = 'AI/ML role';\nelse if (text.indexOf('data') !== -1) roleType = 'Data role';\nelse if (text.indexOf('contract') !== -1) roleType = 'contract role';\nelse if (text.indexOf('permanent') !== -1) roleType = 'permanent role';\n\nvar response = 'Thank you for reaching out regarding the ' + roleType + '.\\n\\n' +\n  'I am a DevOps & Cloud Architect with 20+ years of experience designing, building, and securing scalable platforms for enterprise clients. ' +\n  'My expertise spans Azure, AWS, Kubernetes, CI/CD, and Infrastructure as Code. ' +\n  'I have delivered critical national infrastructure projects and have a strong track record in high-stakes environments.\\n\\n' +\n  'I would be happy to discuss how my background aligns with your requirements. ' +\n  'Please find my CV attached, and feel free to reach out directly if you would like to arrange a call.\\n\\n' +\n  'Looking forward to hearing from you.';\n\nreturn [{\n  json: {\n    ...email,\n    response: response,\n    role_type: roleType\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        200
+      ],
+      "id": "ff70f5cf-4e27-443d-bac9-57271919ce61",
+      "name": "Generate Response"
+    },
+    {
+      "parameters": {
+        "jsCode": "var email = $json;\nvar gen = (email.response || 'Thank you for reaching out.');\n\nvar html = '<div style=\"font-family: Arial, sans-serif; line-height: 1.6; color: #333;\">' +\n  '<p>Hi,</p>' +\n  '<p>' + gen + '</p>' +\n  '<div style=\"margin: 20px 0; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #007bff;\">' +\n    '<p><strong>📄 <a href=\"' + email.cv_download_url + '\" style=\"text-decoration: none; color: #007bff;\">View CV — ' + email.tech_stack + ' (PDF)</a></strong></p>' +\n    '<p><strong>📅 <a href=\"https://calendly.com/rifaterdem/schedule\" style=\"text-decoration: none; color: #007bff;\">Book a clear intro call</a></strong></p>' +\n  '</div>' +\n  '<p>Best regards,</p>' +\n  '<p><strong>Rifat Erdem Sahin</strong></p>' +\n  '<p style=\"font-size: 14px; color: #7f8c8d;\">Director | DevOps & Cloud Architect | Pexabo<br>+44 7848 024173 | contact@rifaterdemsahin.com</p>' +\n'</div>';\n\nreturn [{\n  json: {\n    ...email,\n    reply_body: html,\n    reply_text: gen\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        200
+      ],
+      "id": "7a745645-7e73-4cbb-a66d-8e26cfe2667d",
+      "name": "Format Reply HTML"
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        400
+      ],
+      "id": "ba94aebf-1458-4e00-98e2-38f9ae5b1c80",
+      "name": "DEBUG: Reply Formatted"
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $json.id }}",
+        "message": "={{ $json.reply_body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        1600,
+        200
+      ],
+      "id": "a74e03c9-c694-40ef-82e6-7cd0aa6ffbb6",
+      "name": "Send Reply",
+      "webhookId": "582e5b29-7174-46b3-add7-deb23dcb05be",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        400
+      ],
+      "id": "2b3c9970-b6a9-42de-b0f7-1e476d0c6455",
+      "name": "DEBUG: Reply Sent"
+    },
+    {
+      "parameters": {
+        "operation": "removeLabels",
+        "messageId": "={{ $json.id }}",
+        "labelIds": [
+          "UNREAD"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [
+        1800,
+        200
+      ],
+      "id": "4c147187-a26e-47df-9398-a4b8d178fea1",
+      "name": "Mark as Read",
+      "webhookId": "b4074da0-da2a-426c-932f-66fb063dbf2a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YJWBLL2NMyRjSIOr",
+          "name": "Gmail account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        400
+      ],
+      "id": "04dcb778-c07d-4c60-b7a7-572aff1caa0b",
+      "name": "DEBUG: Marked Read"
+    },
+    {
+      "parameters": {
+        "operation": "sendMessage",
+        "chatId": "-1002793496878",
+        "text": "={{ '✅ Auto-Reply Sent!\\n\\nTo: ' + $json.from_email + '\\nSubject: ' + $json.subject + '\\nCV: ' + $json.tech_stack }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [
+        2000,
+        200
+      ],
+      "id": "022beee6-ff92-4967-8306-d6fc3d61da60",
+      "name": "Telegram Notify",
+      "webhookId": "8a41f7df-d900-44c2-8929-a512b40d5bc7",
+      "credentials": {
+        "telegramApi": {
+          "id": "FNhCBbEpIegop14Z",
+          "name": "Telegram account"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "continueOnFail": true
+    },
+    {
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        400
+      ],
+      "id": "a3641668-3385-40ef-b787-731cd33bdd96",
+      "name": "DEBUG: Notified"
+    },
+    {
+      "name": "Filter Outgoing",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        300
+      ],
+      "id": "filter-2e580zcjfgm",
+      "parameters": {
+        "jsCode": "var emails = $input.all();\nconsole.log(\"Total emails found:\", emails.length);\n\nfor (var i = 0; i < emails.length; i++) {\n  var email = emails[i].json;\n  var from = email.From || email.from || '';\n  \n  console.log(\"Email \" + i + \" from: \" + from);\n  \n  // Skip if from info@pexabo.com\n  if (from.indexOf('info@pexabo.com') !== -1) {\n    console.log(\"  -> Skipped (outgoing)\");\n    continue;\n  }\n  \n  // Skip if it's a reply (starts with Re:)\n  var subject = email.Subject || email.subject || '';\n  if (subject.indexOf('Re:') === 0) {\n    console.log(\"  -> Skipped (reply)\");\n    continue;\n  }\n  \n  // Found an incoming email!\n  console.log(\"  -> SELECTED!\");\n  return [{\n    json: {\n      ...email,\n      source_index: i\n    }\n  }];\n}\n\n// No incoming emails found\nconsole.log(\"No incoming emails found\");\nreturn [{\n  json: {\n    error: \"No incoming emails found\",\n    total_checked: emails.length\n  }\n}];"
+      }
+    },
+    {
+      "name": "DEBUG: Skipped (Outgoing)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        400,
+        500
+      ],
+      "id": "skip-gelfilla29"
+    }
+  ],
+  "connections": {
+    "Webhook: Receive URL": {
+      "main": [
+        [
+          {
+            "node": "Search Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Gmail": {
+      "main": [
+        [
+          {
+            "node": "Filter Outgoing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Search Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Email Detail": {
+      "main": [
+        [
+          {
+            "node": "Extract Email Data",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Email Fetched",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Email Data": {
+      "main": [
+        [
+          {
+            "node": "Select Best CV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Email Extracted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Best CV": {
+      "main": [
+        [
+          {
+            "node": "Generate Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: CV Selected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Response": {
+      "main": [
+        [
+          {
+            "node": "Format Reply HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Reply HTML": {
+      "main": [
+        [
+          {
+            "node": "Send Reply",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Reply Formatted",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Reply": {
+      "main": [
+        [
+          {
+            "node": "Mark as Read",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Reply Sent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mark as Read": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notify",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Marked Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Notify": {
+      "main": [
+        [
+          {
+            "node": "DEBUG: Notified",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Outgoing": {
+      "main": [
+        [
+          {
+            "node": "Get Email Detail",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "DEBUG: Skipped (Outgoing)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveExecutionProgress": true,
+    "saveManualExecutions": true,
+    "timezone": "Europe/London"
+  }
+}
