@@ -34,6 +34,22 @@
 - Normalize whitespace where necessary
 - Test across different browsers
 
+### Issue 6: Recruiter Email Failed — Gemini Billing Hold (Infinity Quest / Adrushya)
+**Page:** https://rifat-cvs-response-generator.fly.dev/recruiter
+**Trigger:** Pasted recruiter email from Adrushya (Infinity Quest Ltd, UK) re: Product Owner (SailPoint) role at Coforge, London hybrid contract
+**Error:** Same 403 PERMISSION_DENIED / billing hold on GCP project `616339871325` — Gemini API key rejected
+**Fix:** Migrated secrets from Doppler to Azure Key Vault `dp-kv-deliverypilot` (subscription `<SUBSCRIPTION_ID>`, RG `deliverypilot-rg`). New Gemini key stored as secret `GEMINI-API-KEY` in the vault.
+
+---
+
+### Issue 5: Gemini API 403 — Lightning Dunning / Payment Denied
+**Page:** https://rifat-cvs-response-generator.fly.dev/recruiter
+**Error:** `{"error":{"code":403,"message":"Lightning dunning decision is deny for project: projects/616339871325","status":"PERMISSION_DENIED"}}`
+**Cause:** Google Cloud project billing suspended due to failed payment. The API key is valid but the GCP project has a billing hold ("dunning" = debt-collection process).
+**Fix Applied:**
+- Detect `PERMISSION_DENIED` / 403 on the server and return a human-readable billing error message
+- Added "Buy Credits" buttons to the UI (Gemini → Google Cloud Billing, Grok → xAI Console)
+
 ## Debugging Tips
 1. Use browser developer tools console
 2. Check network tab for resource loading

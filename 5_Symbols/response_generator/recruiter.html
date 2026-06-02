@@ -144,6 +144,93 @@
 
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
+        .mode-row {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .mode-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.45rem 0.3rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        .mode-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+
+        .mode-btn.active {
+            background: rgba(129, 140, 248, 0.15);
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .mode-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.6rem;
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .credits-row {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .credits-btn {
+            flex: 1;
+            background: transparent;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            color: #34d399;
+            padding: 0.35rem 0.3rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .credits-btn:hover {
+            background: rgba(52, 211, 153, 0.1);
+            border-color: #34d399;
+        }
+
+        .credits-btn.billing-alert {
+            border-color: var(--error);
+            color: var(--error);
+            animation: pulse-border 1.5s ease-in-out infinite;
+        }
+
+        .credits-btn.billing-alert:hover { background: rgba(248, 113, 113, 0.1); }
+
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0); }
+            50% { box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2); }
+        }
+
         /* ── CV panel ── */
         .cv-scroll {
             flex: 1;
@@ -330,7 +417,7 @@
 <body>
     <header>
         <div class="logo">Recruiter AI Agent</div>
-        <div style="font-size: 0.8rem; color: var(--text-muted)">Powered by xAI Grok-3</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted)">Powered by Gemini</div>
     </header>
 
     <main>
@@ -341,6 +428,28 @@
                 Recruiter's Message
             </div>
             <textarea id="requestInput" placeholder="Paste the recruiter's email or LinkedIn message here..."></textarea>
+            <div class="mode-label">AI Provider</div>
+            <div class="mode-row" id="providerRow">
+                <button class="mode-btn active" data-provider="gemini">Gemini</button>
+                <button class="mode-btn" data-provider="grok">Grok</button>
+            </div>
+            <div class="credits-row">
+                <a id="geminiCreditsBtn" class="credits-btn" href="https://console.cloud.google.com/billing" target="_blank" rel="noopener">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Buy Gemini Credits
+                </a>
+                <a id="grokCreditsBtn" class="credits-btn" href="https://console.x.ai" target="_blank" rel="noopener">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Buy Grok Credits
+                </a>
+            </div>
+            <div class="mode-label">CV Context Size</div>
+            <div class="mode-row" id="modeRow">
+                <button class="mode-btn active" data-mode="max">Max</button>
+                <button class="mode-btn" data-mode="large">Large</button>
+                <button class="mode-btn" data-mode="medium">Medium</button>
+                <button class="mode-btn" data-mode="small">Small</button>
+            </div>
             <button class="submit-btn" id="submitBtn">Generate Response</button>
         </div>
 
@@ -383,7 +492,7 @@
             </div>
 
             <div class="prompt-panel" id="promptPanel">
-                <div class="prompt-panel-header">Full Prompt Sent to Grok-3</div>
+                <div class="prompt-panel-header">Full Prompt Sent to AI</div>
                 <pre id="promptContent"></pre>
             </div>
 
@@ -426,8 +535,32 @@
         const promptToggleBtn = document.getElementById('promptToggleBtn');
         const promptPanel = document.getElementById('promptPanel');
         const promptContent = document.getElementById('promptContent');
+        const modeRow = document.getElementById('modeRow');
+        const providerRow = document.getElementById('providerRow');
+        const geminiCreditsBtn = document.getElementById('geminiCreditsBtn');
+        const grokCreditsBtn = document.getElementById('grokCreditsBtn');
 
         let rawResponse = '';
+        let selectedCvMode = 'max';
+        let selectedApiProvider = 'gemini';
+
+        // ── API provider selector ──
+        providerRow.addEventListener('click', (e) => {
+            const btn = e.target.closest('.mode-btn');
+            if (!btn) return;
+            providerRow.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedApiProvider = btn.dataset.provider;
+        });
+
+        // ── CV mode selector ──
+        modeRow.addEventListener('click', (e) => {
+            const btn = e.target.closest('.mode-btn');
+            if (!btn) return;
+            modeRow.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedCvMode = btn.dataset.mode;
+        });
 
         debugToggleBtn.addEventListener('click', () => {
             debugPanel.classList.toggle('visible');
@@ -475,10 +608,16 @@
                 const res = await fetch('/api/respond', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ recruiterRequest: request })
+                    body: JSON.stringify({ recruiterRequest: request, cvMode: selectedCvMode, apiProvider: selectedApiProvider })
                 });
 
-                const data = await res.json();
+                let data;
+                const rawText = await res.text();
+                try {
+                    data = JSON.parse(rawText);
+                } catch {
+                    throw new Error(`Server returned non-JSON (HTTP ${res.status}) — the app may be cold-starting, please retry in a few seconds.\n\n${rawText.slice(0, 300)}`);
+                }
                 if (data.debug) {
                     const { prompt, ...rest } = data.debug;
                     debugContent.textContent = JSON.stringify(rest, null, 2);
@@ -493,8 +632,15 @@
                     responseOutput.innerHTML = `<div class="response-content" style="color:var(--error)"><strong>Error:</strong> ${data.error || 'HTTP ' + res.status}</div>`;
                     btnRow.style.display = 'flex';
                     debugPanel.classList.add('visible');
+                    if (data.billingError) {
+                        const isGrok = selectedApiProvider === 'grok';
+                        geminiCreditsBtn.classList.toggle('billing-alert', !isGrok);
+                        grokCreditsBtn.classList.toggle('billing-alert', isGrok);
+                    }
                     return;
                 }
+                geminiCreditsBtn.classList.remove('billing-alert');
+                grokCreditsBtn.classList.remove('billing-alert');
 
                 rawResponse = data.response;
                 responseOutput.className = 'response-scroll';
