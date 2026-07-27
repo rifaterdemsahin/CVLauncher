@@ -169,6 +169,7 @@ Year: 1999
 
 ## CERTIFICATIONS
 
+📜 **Claude Architect Professional Certification** (Anthropic)  
 📜 **Microsoft Certified Architect in Cloud Solutions** (70-532)  
 📜 Azure Certifications (Various)  
 📜 AWS Certifications  
