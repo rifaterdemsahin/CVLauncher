@@ -39,24 +39,28 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 ## CORE COMPETENCIES [CUSTOMIZE ORDER BY RELEVANCE]
 
 🤖 **AI & Machine Learning**
+
 - Deep expertise in building and deploying Generative AI solutions
 - Extensive hands-on experience developing Large Language Model applications
 - Advanced implementation skills in RAG architectures, vector databases, and modern LLM frameworks
 - Expert-level knowledge of AI security practices, including prompt injection prevention and data privacy controls
 
 🔄 **DevOps & Automation**
+
 - Mastery of CI/CD pipeline design and optimization
 - Infrastructure as Code (IaC) expert with Terraform, Ansible
 - Container orchestration with Kubernetes and Docker at scale
 - Comprehensive testing approaches across unit, integration, and end-to-end testing
 
 🏗️ **Architecture & Leadership**
+
 - Track record of shaping enterprise architecture decisions
 - Focus on scalable, maintainable, and secure solutions
 - Collaborative team player with proven success in agile environments
 - Experience leading technical transformations across Fortune 500 companies
 
 🔒 **Security & Compliance**
+
 - Active UK SC and NATO security clearances
 - Expert in secure deployment practices and compliance automation
 - Background checks: Watchdog (2024), Sterling (2019)
@@ -67,6 +71,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ### 🏆 2025 | IBM | London, UK
 **Enterprise AI & Hybrid Cloud Transformation**
+
 - Architected hybrid cloud transformation platform using IBM Cloud + Red Hat OpenShift for Fortune 500 enterprises
 - Implemented watsonx AI solutions for intelligent automation reducing operational overhead by 35%
 - Led DevSecOps transformation integrating Ansible Automation Platform and Terraform IaC across multi-cloud environments
@@ -76,6 +81,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ### 🏆 2024 | Goldman Sachs | Muscat, Oman
 **AI-Driven CI/CD Framework**
+
 - Developed an AI-driven CI/CD framework increasing deployment frequency by 300%
 - Reduced operational costs by 30% through intelligent automation
 - **Keywords:** AI, CI/CD, Cost Optimization, Finance, Automation
@@ -83,6 +89,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ### 🏆 2023 | Ypsomed | Switzerland
 **IoT Systems Migration & Optimization**
+
 - Migrated IoT systems and optimized workflows
 - Achieved 40% reduction in versioning conflicts
 - **Keywords:** IoT, Migration, Workflow Optimization, Healthcare, DevOps
@@ -90,6 +97,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ### 🏆 2022 | Cushman & Wakefield | London, UK
 **ETL Process Automation**
+
 - Automated ETL processes increasing data processing speed by 50%
 - Streamlined data pipelines for real-time analytics
 - **Keywords:** ETL, Automation, Data Engineering, Real Estate, Python
@@ -97,6 +105,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ### 🏆 2021 | Emerson | USA
 **Kubernetes & GPU Optimization**
+
 - Improved computational efficiency by 45% with Kubernetes and GPU-based containers
 - Scaled ML workloads across distributed infrastructure
 - **Keywords:** Kubernetes, GPU, Performance, Manufacturing, ML
@@ -104,6 +113,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 
 ### 🏆 2016 | Microsoft | Global
 **Enterprise Transformation Architecture**
+
 - Increased technology utilization by 50% as Enterprise Transformation Architect
 - Led digital transformation initiatives across multiple business units
 - **Keywords:** Transformation, Architecture, Enterprise, Technology, Strategy
@@ -114,6 +124,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 ## TECHNICAL SKILLS [CUSTOMIZE BY ROLE]
 
 ### Core Skills
+
 - DevOps Engineering
 - Site Reliability Engineering (SRE)
 - Transformation Specialist
@@ -122,6 +133,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 - Cloud Architecture
 
 ### AI & Machine Learning
+
 - Generative AI & LLM Applications
 - RAG (Retrieval Augmented Generation) Architecture
 - Vector Databases (Pinecone, Weaviate, ChromaDB)
@@ -132,6 +144,7 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 - OpenAI API, Anthropic Claude API
 
 ### DevOps & Infrastructure
+
 - CI/CD Pipeline Design & Implementation
 - Infrastructure as Code (IaC)
 - Container Orchestration
@@ -140,11 +153,13 @@ Security-cleared DevOps engineer (UK SC, NATO) specializing in secure CI/CD impl
 - GitOps Workflows
 
 ### Cloud Platforms
+
 - **Azure:** AKS, Azure DevOps, Functions, Logic Apps, Data Factory
 - **AWS:** EKS, Lambda, S3, RDS, CloudFormation
 - **GCP:** GKE, Cloud Functions, BigQuery
 
 ### Tools & Technologies
+
 - **Containers:** Docker, Kubernetes, Helm, Rancher
 - **CI/CD:** Jenkins, GitLab CI, GitHub Actions, Azure DevOps, CircleCI
 - **IaC:** Terraform, Ansible, ARM Templates, CloudFormation
@@ -213,6 +228,7 @@ https://rifaterdemsahin.com/wp-content/uploads/2025/02/rifaterdemsahinprofilepre
 ## CUSTOMIZATION NOTES FOR 50 VARIANTS
 
 ### By Industry Focus:
+
 - **Finance/Banking:** Emphasize Goldman Sachs, compliance, security clearances
 - **Healthcare/MedTech:** Emphasize Ypsomed, IoT, data privacy, regulatory compliance
 - **Real Estate/PropTech:** Emphasize Cushman & Wakefield, data engineering, automation
@@ -220,6 +236,7 @@ https://rifaterdemsahin.com/wp-content/uploads/2025/02/rifaterdemsahinprofilepre
 - **Technology/Software:** Emphasize Microsoft, transformation, cloud architecture
 
 ### By Technical Focus:
+
 - **AI/ML Specialist:** Lead with AI profile, emphasize LLM work, RAG architecture
 - **DevOps Engineer:** Lead with DevOps profile, emphasize CI/CD, automation metrics
 - **Cloud Architect:** Lead with Cloud profile, emphasize multi-cloud, migration experience
@@ -228,12 +245,14 @@ https://rifaterdemsahin.com/wp-content/uploads/2025/02/rifaterdemsahinprofilepre
 - **SRE:** Emphasize monitoring, observability, performance optimization
 
 ### By Role Level:
+
 - **Senior/Lead:** Include all accomplishments, emphasize leadership and architecture
 - **Principal/Staff:** Focus on strategic impact, transformation, enterprise-wide influence
 - **Consulting:** Emphasize diverse client work, measurable business outcomes
 - **Startup/Scale-up:** Emphasize versatility, rapid delivery, cost optimization
 
 ### By Geography:
+
 - **UK:** Emphasize UK SC clearance, London experience, Cushman & Wakefield
 - **US:** Emphasize US education, Emerson, Microsoft experience
 - **Europe:** Emphasize Ypsomed (Switzerland), multi-cultural experience

@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 Guidance for working in the **CVLauncher** repo — a collection of CV variations
 (plus an n8n recruiter auto-reply pipeline and a fly.io web viewer) for Rifat Erdem Sahin.

@@ -1,4 +1,4 @@
-# CLAUDE.md
+# GEMINI.md
 
 Guidance for working in the **CVLauncher** repo — a collection of CV variations
 (plus an n8n recruiter auto-reply pipeline and a fly.io web viewer) for Rifat Erdem Sahin.
@@ -95,5 +95,5 @@ PDF) before pushing — don't assume the CSS/list output is correct un-inspected
 ## Conventions
 
 - Commit/push only when asked. Existing history commits directly to `main`.
-- End commit messages with the `Co-Authored-By: Claude` trailer.
+- End commit messages with the `Co-Authored-By: Claude` trailer (kept consistent across tools).
 - "open local" / preview a URL → open in **Google Chrome** (`open -a "Google Chrome" <url>`).
