@@ -169,13 +169,13 @@ Earlier and shorter contract engagements, all delivered through Azure DevOps/VST
 
 ## TECHNICAL SKILLS
 
-**Web/Proxy & Application Security:** NGINX (reverse proxy, load balancer, SSL termination), F5 (WAF policy operation, AppProtect-class rule sets), OPSWAT MetaDefender (AV/AM scanning integration), Zscaler, Checkpoint, Cloudflare, Traefik
-**Linux & Platform Hardening:** RHEL, CentOS, SELinux (enforcing-mode policy), Linux/Unix administration, systemd, networking (TCP/IP, routing, firewalls, IPSec)
-**Automation & Scripting:** Ansible, Bash, Python, PowerShell, Terraform, ARM/Bicep templates
-**CI/CD & DevOps:** Azure DevOps (VSTS), GitHub Actions, Jenkins, TeamCity, Tekton, Argo-CD, GitOps
-**Containers & Orchestration:** Kubernetes, OpenShift, Docker, Helm, Kustomize, MetalLB
-**Cloud Platforms:** Azure, AWS, GCP
-**Observability:** Grafana, Prometheus, Thanos, Loki, Jaeger, Kiali, ELK Stack
+**Web/Proxy & Application Security:** NGINX (reverse proxy, load balancer, SSL termination), F5 (WAF policy operation, AppProtect-class rule sets), OPSWAT MetaDefender (AV/AM scanning integration), Zscaler, Checkpoint, Cloudflare, Traefik  
+**Linux & Platform Hardening:** RHEL, CentOS, SELinux (enforcing-mode policy), Linux/Unix administration, systemd, networking (TCP/IP, routing, firewalls, IPSec)  
+**Automation & Scripting:** Ansible, Bash, Python, PowerShell, Terraform, ARM/Bicep templates  
+**CI/CD & DevOps:** Azure DevOps (VSTS), GitHub Actions, Jenkins, TeamCity, Tekton, Argo-CD, GitOps  
+**Containers & Orchestration:** Kubernetes, OpenShift, Docker, Helm, Kustomize, MetalLB  
+**Cloud Platforms:** Azure, AWS, GCP  
+**Observability:** Grafana, Prometheus, Thanos, Loki, Jaeger, Kiali, ELK Stack  
 **Identity & Security:** Active Directory, Azure AD, Keycloak, Kerberos, OAuth2/OIDC, Policy as Code
 
 ---
