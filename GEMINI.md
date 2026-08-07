@@ -83,8 +83,27 @@ not:
 - item two
 ```
 
+**Markdown line-wrap gotcha — multi-line skills/label blocks need hard breaks.**
+A run of lines like `**Category:** item, item` with no blank line between them
+is one markdown *paragraph* — pandoc renders each single `\n` as a space, not
+a line break, so consecutive category lines collapse into one run-on line
+(e.g. "...Traefik Linux & Platform Hardening:..." with no visible separation).
+Fix by ending every line except the last with two trailing spaces (a markdown
+hard break), matching the convention already used in the CV contact block:
+
+```markdown
+**Category A:** item, item, item  
+**Category B:** item, item, item  
+**Category C:** item, item, item
+```
+
+(fixed in `cv_senior_devops_nginx_engineer.md` and
+`cv_platform_security_engineer.md` on 2026-08-06 — found because it makes a
+Skills section unreadable, not because it errors).
+
 **Verifying before committing:** render the HTML and screenshot it (or open the
-PDF) before pushing — don't assume the CSS/list output is correct un-inspected:
+PDF) before pushing — don't assume the CSS/list/line-break output is correct
+un-inspected:
 
 ```bash
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
