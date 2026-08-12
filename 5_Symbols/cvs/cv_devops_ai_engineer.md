@@ -115,18 +115,14 @@ Southern New Hampshire University, USA 🇺🇸
 
 ---
 
-## WHAT HARNESS DOES
+## HARNESS PLATFORM ALIGNMENT
 
-Harness is a comprehensive CI/CD and DevOps automation platform that handles:
-
-- **Continuous Integration (CI)** — building and testing pipelines
-- **Continuous Delivery (CD) & GitOps** — automated deployments across environments
-- **Infrastructure-as-Code management** (Terraform, Helm)
-- **Deployment strategies** — rolling, canary, blue-green deployments
-- **Security, testing, and governance** for CI/CD pipelines
-- **Secrets, connectors, RBAC, and rollback automation**
-
-This maps directly onto twelve years of hands-on delivery: Tekton/Argo-CD GitOps pipelines, Terraform/Helm/Ansible IaC, canary and blue-green cutovers on live CNI and financial-services platforms, F5/Zscaler/OPSWAT governance gates, and secrets/RBAC-governed pipeline design — with the added layer of AI-augmented tooling (RAG over logs and docs, LLM-assisted IaC validation) that Harness's platform is well positioned to absorb natively. The goal: bring that same discipline to Harness's CI/CD and GitOps automation, with a focus on making the AI layer of the platform as production-grade as the deployment engine underneath it.
+- Continuous Integration (CI)
+- Continuous Delivery (CD) & GitOps
+- Infrastructure-as-Code (Terraform, Helm)
+- Deployment Strategies — rolling, canary, blue-green
+- CI/CD Security, Testing & Governance
+- Secrets, Connectors, RBAC & Rollback Automation
 
 ---
 

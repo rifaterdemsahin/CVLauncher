@@ -28,6 +28,14 @@ The project uses a seven-folder architecture (see `README.md` for the full descr
   Professional Summary → Core Competencies → Key Accomplishments →
   Technical Skills → Certifications/Education. Emoji section markers are used
   throughout and are expected.
+- **Never explain what a technical term is.** A CV lists skills/competencies —
+  it does not define them. E.g. write `- Continuous Integration (CI)`, not
+  `- Continuous Integration (CI) — building and testing pipelines`. This
+  applies to role/company-specific sections too (e.g. a "Harness Platform
+  Alignment" section lists the matching capabilities as bare items, it does
+  not restate what each one means). (Fixed in `cv_devops_ai_engineer.md` on
+  2026-08-11 — the "What Harness Does" section originally explained each
+  term with an em-dash definition.)
 - **Contact block** (keep consistent across CVs):
   London, UK · British · contact@rifaterdemsahin.com · +44 7848 024173 ·
   linkedin.com/in/rifaterdemsahin · github.com/rifaterdemsahin ·
