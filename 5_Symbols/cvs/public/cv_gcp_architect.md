@@ -1,5 +1,5 @@
 # RIFAT ERDEM SAHIN
-## GCP Architect | Google Cloud Platform Solutions Expert
+## GCP DevOps & SRE Solutions Architect | Google Cloud Platform & Production Engineering Expert
 
 ---
 
@@ -16,43 +16,46 @@
 
 ## PROFESSIONAL SUMMARY
 
-Senior GCP Architect specializing in **Google Cloud solutions, data analytics, and AI/ML platforms**. Deep expertise in designing and implementing scalable GCP infrastructure supporting data-driven applications and machine learning workloads. Proven track record building GCP platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in Google Cloud's AI/ML services and data analytics capabilities.
+Senior GCP DevOps/SRE Architect specializing in **Google Cloud solutions, continuous delivery (CI/CD), site reliability engineering (SRE), and high-availability infrastructure**. Deep expertise in designing and implementing scalable GCP platforms, containerized environments, and automated GitOps workflows. Proven track record building GCP systems that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in Google Cloud observability, toil reduction, and automated incident recovery.
 
 ---
 
 ## CORE COMPETENCIES
 
-☁️ **GCP Cloud Architecture**
-- End-to-end Google Cloud solution design and implementation
-- Multi-region GCP architectures with global load balancing
-- GCP-native data analytics and AI/ML platforms
-- Cloud-native application development with GCP services
+☁️ **GCP Cloud & DevOps Engineering**
 
-📊 **GCP Data & AI Platforms**
-- BigQuery data warehouse and analytics implementations
-- AI Platform and AutoML model deployment
-- Real-time data processing with Dataflow and Pub/Sub
-- GCP security and identity management
+- Infrastructure as Code (IaC) with Terraform and Config Connector
+- Automated CI/CD and GitOps via Cloud Build and GitHub Actions
+- Container orchestration with Google Kubernetes Engine (GKE) and Cloud Run
+- VPC Service Controls, Cloud IAM security hardening, and KMS secrets management
+
+📊 **Site Reliability Engineering (SRE) & Observability**
+
+- Google Cloud Monitoring, Logging, Trace, and Profiler integrations
+- Service Level Indicator (SLI) and Service Level Objective (SLO) definition
+- Automated incident management, self-healing systems, and disaster recovery runbooks
+- Chaos engineering, performance profiling, and cost optimization (FinOps)
 
 ---
 
 ## KEY ACCOMPLISHMENTS
 
 ### 🏆 2024 | Goldman Sachs | Muscat, Oman
-**GCP Data Analytics Platform**
-- **Challenge:** Build scalable GCP platform for financial data analytics and ML workloads
-- **Solution:** Architected comprehensive GCP data platform with real-time analytics and AI services
+**GCP DevOps & SRE Platform**
+
+- **Challenge:** Modernize deployment pipelines and enforce reliability standards for global financial systems
+- **Solution:** Architected a comprehensive GCP platform with GKE clusters, GitOps deployment automation, and automated SLI/SLO monitoring
 - **Impact:**
-  - 300% improvement in data processing speed through GCP optimization
-  - 30% reduction in data platform costs via intelligent resource management
-  - Real-time insights enabling faster financial decision making
-- **Technologies:** BigQuery, Dataflow, AI Platform, GKE, Cloud SQL, Pub/Sub
+  - 300% improvement in release velocity and developer productivity
+  - 30% reduction in operational infrastructure costs via auto-scaling and resource tuning
+  - 99.99% system availability achieved through automated incident response dashboards
+- **Technologies:** Google Kubernetes Engine (GKE), Terraform, Cloud Build, Cloud Monitoring, BigQuery, Pub/Sub
 
 ---
 
 ## PROFESSIONAL EXPERIENCE HIGHLIGHTS
 
-**Senior GCP Architect / AI Solutions Architect** | January 2025 - Present
+**Senior GCP DevOps & SRE Solutions Architect / AI Solutions Architect** | January 2025 - Present
 *IBM | London, UK*
 
 - Architecting hybrid cloud transformation using IBM Cloud and Red Hat OpenShift for Fortune 500 enterprises
@@ -61,16 +64,16 @@ Senior GCP Architect specializing in **Google Cloud solutions, data analytics, a
 - Delivering zero-downtime Kubernetes cluster migrations for mission-critical financial and government workloads
 - Building enterprise CI/CD pipelines with GitHub Actions and Jenkins serving 500+ developers globally
 
-**Senior GCP Architect / Technical Lead** | 2020 - 2025
+**Senior GCP DevOps & SRE Solutions Architect / Technical Lead** | 2020 - 2025
 *Goldman Sachs, Ypsomed, Cushman & Wakefield*
 
-- Led gcp architect initiatives across finance, healthcare, and real estate sectors
+- Led gcp devops & sre solutions architect initiatives across finance, healthcare, and real estate sectors
 - Designed and implemented solutions supporting millions of daily transactions
 - Established best practices and automated frameworks
 - Mentored engineering teams on modern technologies and practices
 - Delivered solutions achieving 300% improvement in operational efficiency
 
-**GCP Architect** | 2016 - 2020
+**GCP DevOps & SRE Solutions Architect** | 2016 - 2020
 *Microsoft, Emerson, Various Fortune 500*
 
 - Built enterprise solutions for digital transformation initiatives
@@ -112,7 +115,7 @@ Southern New Hampshire University, USA 🇺🇸 | 2013
 
 ## AVAILABILITY & CONTACT
 
-**Immediate Availability** for gcp architect roles
+**Immediate Availability** for gcp devops & sre solutions architect roles
 
 📅 **Schedule a Discussion:** https://calendly.com/rifaterdem/schedule  
 📧 **Email:** contact@rifaterdemsahin.com  

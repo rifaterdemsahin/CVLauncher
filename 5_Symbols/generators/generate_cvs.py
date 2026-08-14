@@ -175,29 +175,32 @@ cv_roles = {
 - **Technologies:** Azure AKS, Functions, Cosmos DB, Key Vault, Monitor, Synapse Analytics"""
     },
     "cv_gcp_architect.md": {
-        "title": "GCP Architect",
-        "subtitle": "Google Cloud Platform Solutions Expert",
-        "summary": "Senior GCP Architect specializing in **Google Cloud solutions, data analytics, and AI/ML platforms**. Deep expertise in designing and implementing scalable GCP infrastructure supporting data-driven applications and machine learning workloads. Proven track record building GCP platforms that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in Google Cloud's AI/ML services and data analytics capabilities.",
-        "competencies": """☁️ **GCP Cloud Architecture**
-- End-to-end Google Cloud solution design and implementation
-- Multi-region GCP architectures with global load balancing
-- GCP-native data analytics and AI/ML platforms
-- Cloud-native application development with GCP services
+        "title": "GCP DevOps & SRE Solutions Architect",
+        "subtitle": "Google Cloud Platform & Production Engineering Expert",
+        "summary": "Senior GCP DevOps/SRE Architect specializing in **Google Cloud solutions, continuous delivery (CI/CD), site reliability engineering (SRE), and high-availability infrastructure**. Deep expertise in designing and implementing scalable GCP platforms, containerized environments, and automated GitOps workflows. Proven track record building GCP systems that delivered 300% productivity improvements and 30% cost reductions across financial services, healthcare, and real estate sectors. Expert in Google Cloud observability, toil reduction, and automated incident recovery.",
+        "competencies": """☁️ **GCP Cloud & DevOps Engineering**
 
-📊 **GCP Data & AI Platforms**
-- BigQuery data warehouse and analytics implementations
-- AI Platform and AutoML model deployment
-- Real-time data processing with Dataflow and Pub/Sub
-- GCP security and identity management""",
+- Infrastructure as Code (IaC) with Terraform and Config Connector
+- Automated CI/CD and GitOps via Cloud Build and GitHub Actions
+- Container orchestration with Google Kubernetes Engine (GKE) and Cloud Run
+- VPC Service Controls, Cloud IAM security hardening, and KMS secrets management
+
+📊 **Site Reliability Engineering (SRE) & Observability**
+
+- Google Cloud Monitoring, Logging, Trace, and Profiler integrations
+- Service Level Indicator (SLI) and Service Level Objective (SLO) definition
+- Automated incident management, self-healing systems, and disaster recovery runbooks
+- Chaos engineering, performance profiling, and cost optimization (FinOps)""",
         "accomplishments": """### 🏆 2024 | Goldman Sachs | Muscat, Oman
-**GCP Data Analytics Platform**
-- **Challenge:** Build scalable GCP platform for financial data analytics and ML workloads
-- **Solution:** Architected comprehensive GCP data platform with real-time analytics and AI services
+**GCP DevOps & SRE Platform**
+
+- **Challenge:** Modernize deployment pipelines and enforce reliability standards for global financial systems
+- **Solution:** Architected a comprehensive GCP platform with GKE clusters, GitOps deployment automation, and automated SLI/SLO monitoring
 - **Impact:**
-  - 300% improvement in data processing speed through GCP optimization
-  - 30% reduction in data platform costs via intelligent resource management
-  - Real-time insights enabling faster financial decision making
-- **Technologies:** BigQuery, Dataflow, AI Platform, GKE, Cloud SQL, Pub/Sub"""
+  - 300% improvement in release velocity and developer productivity
+  - 30% reduction in operational infrastructure costs via auto-scaling and resource tuning
+  - 99.99% system availability achieved through automated incident response dashboards
+- **Technologies:** Google Kubernetes Engine (GKE), Terraform, Cloud Build, Cloud Monitoring, BigQuery, Pub/Sub"""
     },
     "cv_infrastructure_engineer.md": {
         "title": "Infrastructure Engineer",
