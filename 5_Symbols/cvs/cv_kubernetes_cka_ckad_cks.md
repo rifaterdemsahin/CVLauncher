@@ -23,7 +23,7 @@
 
 Infrastructure and platform consultant with **20+ years** in enterprise IT — starting in server virtualisation and datacentre operations and progressing to Kubernetes-native platform engineering, GitOps and production SRE for Critical National Infrastructure (CNI), defence, energy and financial-services clients.
 
-Hands-on across the full CKA / CKAD / CKS skill set (all three exam blueprints are mapped below to real delivery work; formal exam certificate IDs are not claimed): **cluster installation and lifecycle** (kubeadm, k3s, managed Kubernetes, OpenShift), workload design and deployment (Deployments, StatefulSets, DaemonSets, Jobs, HPA/VPA, PDBs, init containers, sidecars, probes), and the full **CKS security surface** (RBAC, NetworkPolicies, Pod Security Admission, admission control, seccomp/AppArmor, mTLS/service mesh, secrets management, supply-chain and image scanning, vulnerability management, CIS benchmarking with kube-bench).
+**CKA certified**; CKAD and CKS are not held as certificates, so their exam blueprints are mapped below to real delivery work instead. Hands-on across the full CKA / CKAD / CKS skill set: **cluster installation and lifecycle** (kubeadm, k3s, managed Kubernetes, OpenShift), workload design and deployment (Deployments, StatefulSets, DaemonSets, Jobs, HPA/VPA, PDBs, init containers, sidecars, probes), and the full **CKS security surface** (RBAC, NetworkPolicies, Pod Security Admission, admission control, seccomp/AppArmor, mTLS/service mesh, secrets management, supply-chain and image scanning, vulnerability management, CIS benchmarking with kube-bench).
 
 Delivered Kubernetes and container platforms for **National Grid / NESO (UK power grid), Lockheed Martin, IBM, Goldman Sachs, Canada Life, ZTE** and other regulated enterprises — including on-premise cluster builds on VMware, multi-cloud clusters on Azure/AWS/GCP, NGINX/ingress and MetalLB/Traefik edge layers, Helm and Kustomize packaging, Argo-CD/Flux GitOps, and **24×7-style SRE operations**: SLOs/error budgets, Prometheus/Thanos/Grafana observability, Loki logging, Jaeger/Kiali tracing, incident response and automated remediation.
 
@@ -143,7 +143,9 @@ Delivered Kubernetes and container platforms for **National Grid / NESO (UK powe
 
 ## TRAINING & CERTIFICATIONS
 
-- Kubernetes training completed: "Kubernetes with CI/CD Solutions" and "Kubernetes: Microservices" — covering the CKA/CKAD syllabus areas (courses, not exam certificates)
+- **Certified Kubernetes Administrator (CKA)** — listed as certified in Rifat Erdem Sahin's published CV (CERTIFICATIONS & CONTINUOUS LEARNING block). Exam ID / issue date available on request.
+- Kubernetes training completed: "Kubernetes with CI/CD Solutions" and "Kubernetes: Microservices"
+- CKAD and CKS: not claimed as certificates in any of his records; their skill areas are mapped below to delivered programme work
 - MCPS: Microsoft Certified Professional; Developing Microsoft Azure Solutions
 - Azure certifications (various) and Microsoft Certified Architect in Cloud Solutions (70-532)
 - AWS certifications, including AWS Machine Learning Specialty
@@ -175,7 +177,7 @@ Delivered Kubernetes and container platforms for **National Grid / NESO (UK powe
 3. **Automate** — GitOps-driven delivery, policy-as-code, and toil elimination via Ansible/Terraform/Python.
 4. **Operate** — run production with alerting, runbooks, incident review and continuous drift detection.
 
-*All experience above is drawn from delivered client programmes recorded in the CVLauncher source CV. Training courses are listed as courses, not as exam certificates. CKA/CKAD/CKS skill areas are mapped to real delivery work so they can be verified in a technical conversation.*
+*All experience above is drawn from delivered client programmes recorded in the CVLauncher source CV. CKA is stated as certified, matching his published CV; CKAD and CKS are not claimed as certificates. CKAD/CKS skill areas are mapped to real delivery work so they can be verified in a technical conversation.*
 
 *References available: prior clients and delivery partners (Capgemini/Experis, IBM/NordCloud, Pexabo, Ardent Blue Technologies, ACLDigital/Alten/Cprime/Omantel).*
 
