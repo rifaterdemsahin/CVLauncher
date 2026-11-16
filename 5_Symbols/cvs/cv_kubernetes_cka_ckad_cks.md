@@ -1,5 +1,5 @@
 # RIFAT ERDEM SAHIN
-## Principal Kubernetes / Cloud-Native Infrastructure & SRE Consultant
+## Principal Kubernetes / Cloud-Native Platform & SRE Consultant
 **Kubernetes Platform Engineering · CKA/CKAD/CKS Skill Coverage · 20+ Years in Virtualisation, Platform Engineering and Production SRE**
 
 ---
@@ -23,7 +23,7 @@
 
 Infrastructure and platform consultant with **20+ years** in enterprise IT — starting in server virtualisation and datacentre operations and progressing to Kubernetes-native platform engineering, GitOps and production SRE for Critical National Infrastructure (CNI), defence, energy and financial-services clients.
 
-Hands-on across the full CKA / CKAD / CKS skill set (all three exam blueprints are mapped below to real delivery work; formal exam certificate IDs are not claimed): **cluster installation and lifecycle** (kubeadm, k3s, managed Kubernetes, OpenShift), workload design and deployment (Deployments, StatefulSets, DaemonSets, Jobs, HPA/VPA, PDBs, init containers, sidecars, probes), and the full **CKS security surface** (RBAC, NetworkPolicies, Pod Security Admission, PSA/PSP migration, admission control, seccomp/AppArmor, mTLS/service mesh, secrets management, supply-chain and image scanning, vulnerability management, CIS benchmarking with kube-bench).
+Hands-on across the full CKA / CKAD / CKS skill set (all three exam blueprints are mapped below to real delivery work; formal exam certificate IDs are not claimed): **cluster installation and lifecycle** (kubeadm, k3s, managed Kubernetes, OpenShift), workload design and deployment (Deployments, StatefulSets, DaemonSets, Jobs, HPA/VPA, PDBs, init containers, sidecars, probes), and the full **CKS security surface** (RBAC, NetworkPolicies, Pod Security Admission, admission control, seccomp/AppArmor, mTLS/service mesh, secrets management, supply-chain and image scanning, vulnerability management, CIS benchmarking with kube-bench).
 
 Delivered Kubernetes and container platforms for **National Grid / NESO (UK power grid), Lockheed Martin, IBM, Goldman Sachs, Canada Life, ZTE** and other regulated enterprises — including on-premise cluster builds on VMware, multi-cloud clusters on Azure/AWS/GCP, NGINX/ingress and MetalLB/Traefik edge layers, Helm and Kustomize packaging, Argo-CD/Flux GitOps, and **24×7-style SRE operations**: SLOs/error budgets, Prometheus/Thanos/Grafana observability, Loki logging, Jaeger/Kiali tracing, incident response and automated remediation.
 
@@ -76,34 +76,50 @@ Delivered Kubernetes and container platforms for **National Grid / NESO (UK powe
 ## SIGNATURE KUBERNETES & VIRTUALISATION DELIVERIES
 
 ### 2025–2026 · NESO (National Energy System Operator) — via Capgemini / Experis, London
-**OpenShift/Kubernetes platform for the UK power grid (CNI)**
-- Operated and hardened an OpenShift estate underpinning national energy balancing, with RHEL nodes, VMware virtualisation, Artefactory artefact management, Tekton pipelines and Argo-CD GitOps
+**SRE / DevOps Onboarding Lead — OpenShift/Kubernetes platform for the UK power grid (CNI)**
+- Operated and hardened an OpenShift estate underpinning national energy balancing, with RHEL nodes, VMware virtualisation, Artifactory artefact management, Tekton pipelines and Argo-CD GitOps
 - Built observability at scale — Prometheus remote-write to Thanos, Grafana, Loki, Jaeger, Kiali
 - Enforced perimeter and workload security with F5, Check Point, Zscaler and Netscaler alongside cluster-level policy
+- Onboarded high-value market participants onto energy systems for critical national infrastructure (electric system operator)
 - Delivered an agentic RAG troubleshooting assistant (n8n + Qdrant + Claude) that cut manual root-cause analysis effort and flagged infrastructure drift proactively
 - Reduced operational risk and legacy maintenance costs while keeping energy-balancing services continuously available
 
 ### 2024–2025 · National Grid — via IBM / NordCloud, UK
-**Kubernetes migration, OpenShift and hybrid-cloud platform**
+**SRE — Kubernetes migration, OpenShift and hybrid-cloud platform**
 - Migrated constrained legacy workloads onto containerised, Kubernetes-orchestrated platforms with rollout, rollback and cutover planning
-- Standardised delivery with Helm operators, GitOps and Tekton/CCP pipelines; introduced feature toggles and progressive release flow
+- Standardised delivery with Helm operators, GitOps and Tekton pipelines; introduced feature toggles and progressive release flow
 - Implemented network segmentation, ingress design and zero-trust access aligned to CNI compliance obligations
 - Introduced Prometheus/Grafana SLO dashboards to make reliability visible to operations and business stakeholders
+- Used GitHub Copilot-style AI assistance to accelerate OpenShift automation and reduce transformation cost
+
+### 2023–2024 · Goldman Sachs — Muscat, Oman (onsite contract)
+**DevOps Release Train Engineer**
+- Modernised release engineering on OpenShift (Kubernetes) with on-premise gateways, Azure Sentinel and AI-driven (LLM) workflows
+- Built CI/CD across GCP, Azure and AWS, including Cloud Build integration and DevSecOps maturity assessment
+- Served a national user base exceeding 4 million users via Azure Logic Apps and Azure Virtual Desktop (VDI)
 
 ### 2019–2020 · Lockheed Martin (Brussels / New York, via Ardent Blue Technologies and Pexabo)
-**Defence-grade platform delivery**
-- Delivered containerised build and deployment pipelines for a defence customer under strict security and change-control regimes
-- Worked to defence-sector handling requirements with SC-cleared delivery teams; consistently ranked in top delivery performance
+**DevOps Lead — defence-grade release automation**
+- Automated the Oculus VR release cycle for a defence customer, coordinating delivery teams in Brussels and New York
+- Built pipelines with Unity Cloud Build, TeamCity, Jenkins, AWS Step Functions, GitHub and Python under strict security and change control
+- Applied machine learning (TensorFlow) for VR gesture recognition alongside the delivery work
 
-### 2018–2019 · ZTE · 2015–2018 · Concentra Analytics · 2017–2018 · Smart Space Software
-**Multi-client platform and cloud delivery**
-- Built and operated CI/CD, container and cloud platforms for telecom and analytics clients, including automated release flow, infrastructure as code and environment standardisation
+### 2022–2023 · Ypsomed (Switzerland) and Cushman & Wakefield
+**DevOps Consultant / DevOps Engineer**
+- Led Git and TFS-to-Azure-DevOps migrations for a regulated medtech client, with VMware/Citrix estates and documentation to healthcare compliance standards
+- Built Azure infrastructure as code (ARM/Bicep) for a data environment, cutting manual provisioning effort
 
-### Earlier enterprise platforms — Accenture, Microsoft, British American Tobacco, Turkcell, TÜBİTAK, Craneware, Scottish Enterprise, Canada Life, Goldman Sachs
-**Virtualisation and datacentre foundations (from 2003)**
-- Two decades of server virtualisation and infrastructure automation: VMware vSphere/ESXi, Hyper-V, Citrix, Proxmox VE, Vagrant, Docker Compose and LXD
-- Large-scale Windows/Linux estates, Active Directory, networking and storage, with PowerShell/Bash automation long before "platform engineering" was a job title
+### 2015–2019 · ZTE, Concentra Analytics, Smart Space Software, Red Box Recorders, MMT Digital
+**Senior DevOps Engineer — container and Kubernetes platform delivery**
+- Built an on-premise Kubernetes environment (VMware/CentOS, Docker Compose → Kubernetes) and migrated workloads, using NGINX, MetalLB, Traefik, Helm, ELK, Redis and MinIO
+- Delivered CI/CD, configuration management and infrastructure-as-code across telecom, analytics and software clients
+
+### 2003–2015 · Microsoft, Accenture, British American Tobacco, Turkcell, TÜBİTAK, Craneware, Scottish Enterprise, Canada Life
+**Virtualisation and datacentre foundations**
+- Two decades of server virtualisation and infrastructure automation: VMware vSphere/ESXi, Hyper-V, Citrix, Proxmox VE, Vagrant, LXD
+- Large-scale Windows/Linux estates, Active Directory, networking and storage, with PowerShell/Bash automation
 - Migration programmes from bare metal to virtualised, then containerised, then orchestrated platforms — the through-line of the whole career
+- Served as Cloud Solution Architect at Microsoft and Manager at Accenture; built platforms used by 3 million users and an ad server serving up to 1 billion views per month
 
 ---
 
@@ -111,25 +127,29 @@ Delivered Kubernetes and container platforms for **National Grid / NESO (UK powe
 
 | Client | Context | Scope |
 |---|---|---|
-| **National Grid** | UK TSO / CNI · IBM / NordCloud · 2024–2025 | Kubernetes and OpenShift migration, hybrid cloud platform, GitOps, monitoring |
-| **NESO (National Energy System Operator)** | UK power grid operator · Capgemini / Experis · 2025–2026 | OpenShift platform operations, SRE, observability, security enforcement, AI-assisted ops |
-| **Lockheed Martin** | Defence · via Ardent Blue Technologies / Pexabo · 2019–2020 | Secure delivery pipelines and platform engineering for defence programmes |
-| **IBM** | Technology · 2024–2025 engagement & background-check sponsor | Hybrid cloud and OpenShift platform transformation for enterprise customers |
-| **Goldman Sachs** | Financial services · 2024 | AI-driven CI/CD automation framework (LLM-powered, 300% faster deployments) |
-| **Canada Life / GWLE** | Financial services | Platform and release engineering on regulated estates |
-| **Ypsomed** | MedTech, Switzerland · 2023 | Azure ML/IoT platform with automated data-quality and predictive maintenance |
+| **NESO (National Energy System Operator)** | UK power grid operator · Capgemini / Experis · Mar 2025 – Jan 2026 | SRE / DevOps onboarding lead: OpenShift platform, GitOps, observability, CNI security, AI-assisted ops |
+| **National Grid** | UK transmission operator · IBM / NordCloud · Mar 2024 – Mar 2025 | SRE: OpenShift automation, Kubernetes migration, hybrid cloud, monitoring |
+| **Lockheed Martin** | Defence · Ardent Blue Technologies / Pexabo · Nov 2019 – Apr 2020 | DevOps Lead: VR release automation across Brussels and New York |
+| **Goldman Sachs** | Financial services · Oman onsite · Aug 2023 – Mar 2024 | DevOps Release Train Engineer: OpenShift, multi-cloud CI/CD, 4M+ user platform |
+| **IBM** | Technology · 2024–2025 delivery + background-check sponsor | Hybrid cloud and OpenShift platform work for National Grid |
+| **Ypsomed** | MedTech, Switzerland · Apr 2022 – Apr 2023 | DevOps Consultant: Git/TFS migration under healthcare compliance |
+| **Cushman & Wakefield** | Real estate · Remote · May 2022 – Jan 2023 | DevOps Engineer: Azure IaC (ARM/Bicep) for data environment |
 | **ZTE** | Telecom | Cloud and delivery platform engineering |
-| **Emerson, Cushman & Wakefield, Theta Trading, Red Box Recorders, MMT Digital, Sword, Craneware, Scottish Enterprise, Microsoft, Accenture, British American Tobacco, Turkcell, TÜBİTAK** | Cross-sector | Multi-client consulting engagements across cloud, virtualisation, CI/CD, DevOps and data platforms |
+| **Red Box Recorders** | Software | On-premise Kubernetes migration, NGINX/MetalLB/Traefik, Helm |
+| **Canada Life / GWLE** | Financial services | Platform and release engineering on regulated estates |
+| **Microsoft · Accenture · British American Tobacco · Turkcell · TÜBİTAK · Craneware · Scottish Enterprise** | Cross-sector | Consulting, cloud architecture and platform delivery (2003–2015) |
 
 ---
 
 ## TRAINING & CERTIFICATIONS
 
 - Kubernetes training completed: "Kubernetes with CI/CD Solutions" and "Kubernetes: Microservices" — covering the CKA/CKAD syllabus areas (courses, not exam certificates)
-- Microsoft Certified Architect in Cloud Solutions (70-532); Azure certifications
+- MCPS: Microsoft Certified Professional; Developing Microsoft Azure Solutions
+- Azure certifications (various) and Microsoft Certified Architect in Cloud Solutions (70-532)
 - AWS certifications, including AWS Machine Learning Specialty
 - Claude Architect Professional (Anthropic); AI/LLM engineering specialisms (GenAI, RAG, AI security)
-- DevOps and Agile certifications
+- DevOps and Agile certifications; Udemy "Infrastructure As Code", "Test Automation With AI"; Coursera "Secure AI Models", "SonarQube Technical Debt Management"
+- Instructor on Coursera/Udemy/YouTube — 10k+ aggregate student enrolments
 
 ---
 
@@ -138,10 +158,10 @@ Delivered Kubernetes and container platforms for **National Grid / NESO (UK powe
 **Orchestration:** Kubernetes (self-managed, kubeadm, k3s, AKS, EKS, GKE), Red Hat OpenShift/OCP, Helm, Kustomize, Argo-CD, Argo Rollouts, Tekton, Flux-style GitOps
 **Security (CKS):** RBAC, NetworkPolicy, Pod Security Admission, OPA Gatekeeper, Kyverno, seccomp, AppArmor, Falco concepts, Trivy, Cosign/Sigstore, kube-bench, mTLS, Key Vault
 **SRE & observability:** Prometheus, Thanos, Grafana, Alertmanager, Loki, Jaeger, Kiali, ELK stack
-**Virtualisation (20+ years):** VMware vSphere/ESXi, Hyper-V, Citrix, Proxmox VE, Vagrant, LXD, VMware Tanzu-era container workloads
-**Cloud:** Azure (incl. AKS), AWS (EKS, Lambda, SageMaker), GCP (GKE), IBM Cloud, hybrid/on-premise
-**Infrastructure as code & automation:** Terraform, Ansible, ARM templates, Packer, Bash, PowerShell, Python
-**CI/CD:** Azure DevOps, GitLab CI, Jenkins, GitHub Actions, Octopus
+**Virtualisation (20+ years):** VMware vSphere/ESXi, Hyper-V, Citrix, Proxmox VE, Vagrant, LXD
+**Cloud:** Azure (incl. AKS and VDI), AWS (EKS, Lambda, SageMaker, Step Functions), GCP (GKE, Cloud Build), IBM Cloud, hybrid/on-premise
+**Infrastructure as code & automation:** Terraform, Ansible, ARM templates, Bicep, Packer, Bash, PowerShell, Python
+**CI/CD:** Azure DevOps, GitLab CI, Jenkins, GitHub Actions, Tekton, Octopus, TeamCity, Harness
 **Networking & edge:** NGINX, F5, Check Point, Zscaler, Netscaler, MetalLB, Traefik, Calico/Cilium-class CNI, load balancers, reverse proxies
 **Languages:** Python, Bash, C#, PowerShell, YAML, SQL
 **AI-assisted engineering:** LangChain, RAG architectures, vector databases (Pinecone, Weaviate, ChromaDB, FAISS, Qdrant), n8n orchestration
@@ -150,14 +170,14 @@ Delivered Kubernetes and container platforms for **National Grid / NESO (UK powe
 
 ## OPERATING MODEL
 
-1. **Assess** — map the estate, define SLOs and a risk register against CIS/host-security baselines.
-2. **Stabilise** — fix cluster and pipeline vulnerabilities, close RBAC and NetworkPolicy gaps, establish observability.
+1. **Assess** — map the estate, define SLOs and a risk register against CIS and host-security baselines.
+2. **Stabilise** — close cluster and pipeline vulnerabilities, fix RBAC and NetworkPolicy gaps, establish observability.
 3. **Automate** — GitOps-driven delivery, policy-as-code, and toil elimination via Ansible/Terraform/Python.
 4. **Operate** — run production with alerting, runbooks, incident review and continuous drift detection.
 
 *All experience above is drawn from delivered client programmes recorded in the CVLauncher source CV. Training courses are listed as courses, not as exam certificates. CKA/CKAD/CKS skill areas are mapped to real delivery work so they can be verified in a technical conversation.*
 
-*References available: prior clients and delivery partners (Capgemini/Experis, IBM/NordCloud, Pexabo, Ardent Blue Technologies).*
+*References available: prior clients and delivery partners (Capgemini/Experis, IBM/NordCloud, Pexabo, Ardent Blue Technologies, ACLDigital/Alten/Cprime/Omantel).*
 
 ---
 
